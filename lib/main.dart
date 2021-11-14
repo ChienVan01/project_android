@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_android/constants.dart';
 import 'package:project_android/screens/home/home.dart';
+import 'package:project_android/screens/discount/discount.dart';
 
 void main() {
   runApp(const MyApp());
