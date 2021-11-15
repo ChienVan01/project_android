@@ -1,3 +1,4 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:project_android/screens/home/home_screen.dart';
 
@@ -54,9 +55,18 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: pageList[pageIndex],
+      body: PageTransitionSwitcher(
+        transitionBuilder: (child, primaryAnimation, secondaryAnimation) =>
+            FadeThroughTransition(
+          animation: primaryAnimation,
+          secondaryAnimation: secondaryAnimation,
+          child: child,
+        ),
+        child: Center(child: pageList[pageIndex]),
       ),
+      // body: Center(
+      //   child: pageList[pageIndex],
+      // ),
       bottomNavigationBar: footer(),
     );
   }
