@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_android/constants.dart';
-import 'package:project_android/screens/home/home.dart';
-import 'package:project_android/screens/discount/discount.dart';
+
+import 'screens/main/main_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
             Theme.of(context).textTheme.apply(bodyColor: primaryTextColor),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomeScreen(),
+      home: const MainScreen(),
     );
   }
 }

@@ -4,12 +4,12 @@ import 'package:getwidget/getwidget.dart';
 
 void main() {
   runApp(
-    const MyApp(),
+    const Discount(),
   );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class Discount extends StatelessWidget {
+  const Discount({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
