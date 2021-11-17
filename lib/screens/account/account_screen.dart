@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../constants.dart';
-
 import 'components/header.dart';
 import 'package:project_android/screens/account/components/body.dart';
 
@@ -12,7 +10,7 @@ class AccountsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-          preferredSize: const Size(double.infinity, 100),
+          preferredSize: const Size(double.infinity, 50),
           child: appBar(context)),
       body: Body(),
     );
