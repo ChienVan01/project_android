@@ -1,24 +1,20 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const AccountsScreen());
-}
+import '../../constants.dart';
+
+import 'components/header.dart';
+import 'package:project_android/screens/account/components/body.dart';
 
 class AccountsScreen extends StatelessWidget {
   const AccountsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter layout demo',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Flutter layout demo'),
-        ),
-        body: const Center(
-          child: Text('Hello World'),
-        ),
-      ),
+    return Scaffold(
+      appBar: PreferredSize(
+          preferredSize: const Size(double.infinity, 100),
+          child: appBar(context)),
+      body: Body(),
     );
   }
 }
