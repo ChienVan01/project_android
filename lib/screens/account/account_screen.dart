@@ -12,7 +12,7 @@ class AccountsScreen extends StatelessWidget {
       appBar: PreferredSize(
           preferredSize: const Size(double.infinity, 50),
           child: appBar(context)),
-      body: Body(),
+      body: const Body(),
     );
   }
 }

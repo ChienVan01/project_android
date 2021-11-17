@@ -3,7 +3,7 @@ import 'package:project_android/constants.dart';
 
 Widget listCategory() {
   return Container(
-      margin: EdgeInsets.all(defaultPadding),
+      margin: const EdgeInsets.all(defaultPadding),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -51,10 +51,10 @@ Widget categoryItem(Icon icon, String text) {
               height: 45,
               width: 40,
               decoration: BoxDecoration(
-                color: backgroundColor,
+                color: Colors.white,
                 borderRadius: BorderRadius.circular(10),
                 boxShadow: const [
-                  BoxShadow(color: Colors.black, blurRadius: 1),
+                  BoxShadow(color: Colors.black, blurRadius: 0.5),
                 ],
               ),
               child: IconButton(onPressed: () {}, icon: icon),

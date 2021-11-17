@@ -13,7 +13,7 @@ Widget banner() {
           ),
           boxShadow: [
             BoxShadow(
-                offset: Offset(0, 10),
+                offset: const Offset(0, 10),
                 blurRadius: 10,
                 color: primaryColor.withOpacity(0.3))
           ]),
