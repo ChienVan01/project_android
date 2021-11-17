@@ -14,13 +14,17 @@ class _MainScreenState extends State<MainScreen> {
   int pageIndex = 2;
   List<Widget> pageList = <Widget>[
     const Discount(),
-    const Text('Thông báo',
-        style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+    const Center(
+      child: Text('Thông báo',
+          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+    ),
     const HomeScreen(),
-    const Text('Giỏ hàng',
-        style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
-    const Text('Tài khoản',
-        style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+    const Center(
+        child: Text('Giỏ hàng',
+            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold))),
+    const Center(
+        child: Text('Tài khoản',
+            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold))),
   ];
 
   Widget footer() {
@@ -62,7 +66,7 @@ class _MainScreenState extends State<MainScreen> {
           secondaryAnimation: secondaryAnimation,
           child: child,
         ),
-        child: Center(child: pageList[pageIndex]),
+        child: pageList[pageIndex],
       ),
       // body: Center(
       //   child: pageList[pageIndex],

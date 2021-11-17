@@ -21,7 +21,7 @@ class HomeScreen extends StatelessWidget {
                   keyboardDismissBehavior:
                       ScrollViewKeyboardDismissBehavior.onDrag,
                   child: appBar(context))),
-          body: body(),
+          body: body(context),
         ));
   }
 }
