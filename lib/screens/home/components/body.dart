@@ -4,7 +4,7 @@ import 'package:project_android/constants.dart';
 Widget body() {
   return ListView(
     children: <Widget>[
-      Container(
+      SizedBox(
         height: 300,
         child: Stack(
           children: <Widget>[
@@ -26,7 +26,7 @@ Widget body() {
           ],
         ),
       ),
-      Container(
+      SizedBox(
         height: 300,
         child: Stack(
           children: <Widget>[
@@ -48,7 +48,7 @@ Widget body() {
           ],
         ),
       ),
-      Container(
+      SizedBox(
         height: 300,
         child: Stack(
           children: <Widget>[
