@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
 import 'package:project_android/constants.dart';
 
 class ListProduct extends StatelessWidget {
@@ -42,31 +43,31 @@ class ListProduct extends StatelessWidget {
                 ProductItem(
                     name: 'Laptop ASUS UX3..',
                     image: 'assets/images/product/product01.jpg',
-                    price: 27999990,
+                    price: 27999000,
                     priceStock: 0,
                     press: () {}),
                 ProductItem(
-                    name: 'Laptop ASUS UX3..',
+                    name: 'Màn hình LCD PHILIPS..',
                     image: 'assets/images/product/product02.jpg',
-                    price: 27999990,
+                    price: 5050000,
                     priceStock: 0,
                     press: () {}),
                 ProductItem(
-                    name: 'Laptop ASUS UX3..',
+                    name: 'Lót chuột DAREU ESP1009-XL',
                     image: 'assets/images/product/product03.jpg',
-                    price: 27999990,
+                    price: 189000,
                     priceStock: 0,
                     press: () {}),
                 ProductItem(
-                    name: 'Laptop ASUS UX3..',
+                    name: 'Bàn phím cơ Akko 3084..',
                     image: 'assets/images/product/product04.jpg',
-                    price: 27999990,
+                    price: 1499000,
                     priceStock: 0,
                     press: () {}),
                 ProductItem(
-                    name: 'Laptop ASUS UX3..',
+                    name: 'Laptop Dell Alienware..',
                     image: 'assets/images/product/product05.jpg',
-                    price: 27999990,
+                    price: 62990000,
                     priceStock: 0,
                     press: () {}),
               ],
@@ -91,7 +92,6 @@ class ProductItem extends StatelessWidget {
   final String name, image;
   final int price, priceStock;
   final Function press;
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -137,7 +137,7 @@ class ProductItem extends StatelessWidget {
                       bottom: defaultPadding / 2,
                     ),
                     child: Text(
-                      '$price',
+                      NumberFormat.decimalPattern().format(price),
                       style: const TextStyle(
                         fontSize: 15,
                         color: primaryColor,
@@ -153,70 +153,3 @@ class ProductItem extends StatelessWidget {
     );
   }
 }
-
-// Widget banner(context) {
-//   return SingleChildScrollView(
-//     scrollDirection: Axis.horizontal,
-//     child: Container(),
-//   );
-// }
-
-// class Banner extends StatefulWidget {
-//   const Banner({Key? key}) : super(key: key);
-
-//   @override
-//   BannerState createState() => BannerState();
-// }
-
-// class BannerState extends State<Banner> {
-//   int curentIndex = 0;
-
-//   Widget img(String imgLink, context) {
-//     return Container(
-//         margin: const EdgeInsets.all(20),
-//         alignment: Alignment.center,
-//         child: Column(
-//           crossAxisAlignment: CrossAxisAlignment.start,
-//           mainAxisAlignment: MainAxisAlignment.start,
-//           children: <Widget>[
-//             Container(
-//               width: MediaQuery.of(context).size.width,
-//               height: 150.0,
-//               child: Swiper(
-//                 onIndexChanged: (i) {
-//                   curentIndex = i;
-//                 },
-//               ),
-//             ),
-//           ],
-//         ));
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       height: 165,
-//       decoration: BoxDecoration(
-//         color: primaryColor,
-//         borderRadius: const BorderRadius.only(
-//           bottomLeft: Radius.circular(5),
-//           bottomRight: Radius.circular(5),
-//         ),
-//         boxShadow: [
-//           BoxShadow(
-//               offset: const Offset(0, 10),
-//               blurRadius: 50,
-//               color: primaryColor.withOpacity(0.7)),
-//         ],
-//       ),
-//       child: Row(
-//         children: <Widget>[
-//           img('assets/images/banner01.png', context),
-//           img('assets/images/banner02.png', context),
-//           img('assets/images/banner03.png', context),
-//           // img(),
-//         ],
-//       ),
-//     );
-//   }
-// }
