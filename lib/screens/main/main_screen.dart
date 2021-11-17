@@ -1,4 +1,7 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
+import 'package:project_android/screens/account/account_screen.dart';
+import 'package:project_android/screens/discount/discount.dart';
 import 'package:project_android/screens/home/home_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -11,15 +14,16 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int pageIndex = 2;
   List<Widget> pageList = <Widget>[
-    const Text('Khuyến mãi',
-        style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
-    const Text('Thông báo',
-        style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+    const Discount(),
+    const Center(
+      child: Text('Thông báo',
+          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+    ),
     const HomeScreen(),
-    const Text('Giỏ hàng',
-        style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
-    const Text('Tài khoản',
-        style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+    const Center(
+        child: Text('Giỏ hàng',
+            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold))),
+    const AccountsScreen(),
   ];
 
   Widget footer() {
@@ -47,16 +51,25 @@ class _MainScreenState extends State<MainScreen> {
           BottomNavigationBarItem(
               icon: Icon(Icons.shopping_cart_outlined), label: 'Giỏ hàng'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person_outline, size: 30), label: 'Khuyến mãi'),
+              icon: Icon(Icons.person_outline, size: 30), label: 'Tài khoản'),
         ]);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: PageTransitionSwitcher(
+        transitionBuilder: (child, primaryAnimation, secondaryAnimation) =>
+            FadeThroughTransition(
+          animation: primaryAnimation,
+          secondaryAnimation: secondaryAnimation,
+          child: child,
+        ),
         child: pageList[pageIndex],
       ),
+      // body: Center(
+      //   child: pageList[pageIndex],
+      // ),
       bottomNavigationBar: footer(),
     );
   }

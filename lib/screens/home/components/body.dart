@@ -1,75 +1,16 @@
 import 'package:flutter/widgets.dart';
-import 'package:project_android/constants.dart';
+import 'package:project_android/screens/home/components/banner.dart';
+import 'package:project_android/screens/home/components/list_category.dart';
+import 'package:project_android/screens/home/components/list_product.dart';
 
-Widget body() {
+Widget body(context) {
   return ListView(
     children: <Widget>[
-      Container(
-        height: 300,
-        child: Stack(
-          children: <Widget>[
-            Container(
-              height: 250,
-              decoration: BoxDecoration(
-                color: primaryColor,
-                borderRadius: const BorderRadius.only(
-                    bottomLeft: Radius.circular(20),
-                    bottomRight: Radius.circular(20)),
-                boxShadow: [
-                  BoxShadow(
-                      offset: const Offset(0, 10),
-                      blurRadius: 50,
-                      color: primaryColor.withOpacity(0.7)),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-      Container(
-        height: 300,
-        child: Stack(
-          children: <Widget>[
-            Container(
-              height: 250,
-              decoration: BoxDecoration(
-                color: primaryColor,
-                borderRadius: const BorderRadius.only(
-                    bottomLeft: Radius.circular(20),
-                    bottomRight: Radius.circular(20)),
-                boxShadow: [
-                  BoxShadow(
-                      offset: const Offset(0, 10),
-                      blurRadius: 50,
-                      color: primaryColor.withOpacity(0.7)),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-      Container(
-        height: 300,
-        child: Stack(
-          children: <Widget>[
-            Container(
-              height: 250,
-              decoration: BoxDecoration(
-                color: primaryColor,
-                borderRadius: const BorderRadius.only(
-                    bottomLeft: Radius.circular(20),
-                    bottomRight: Radius.circular(20)),
-                boxShadow: [
-                  BoxShadow(
-                      offset: const Offset(0, 10),
-                      blurRadius: 50,
-                      color: primaryColor.withOpacity(0.7)),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
+      banner(),
+      listCategory(),
+      const ListProduct(title: 'Dành cho bạn'),
+      const ListProduct(title: 'Đề xuất'),
+      const ListProduct(title: 'Sản phẩm bán chạy'),
     ],
   );
 }

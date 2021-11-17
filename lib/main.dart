@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:project_android/constants.dart';
-
 import 'screens/main/main_screen.dart';
 
 void main() {
@@ -26,7 +25,11 @@ class MyApp extends StatelessWidget {
             Theme.of(context).textTheme.apply(bodyColor: primaryTextColor),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const MainScreen(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const MainScreen(),
+      },
+      // home: const MainScreen(),
     );
   }
 }
