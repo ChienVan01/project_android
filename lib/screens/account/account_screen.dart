@@ -11,7 +11,7 @@ class AccountsScreen extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: const Size(double.infinity, 50),
-          child: appBar(context)),
+          child: headerAccount(context)),
       body: const Body(),
     );
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:project_android/screens/account/components/directional_item.dart';
-import 'package:project_android/screens/account/components/info_user.dart';
+import 'package:project_android/screens/order/components/nav_order.dart';
+
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
@@ -9,8 +9,7 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(children: <Widget>[
-      infoUser(),
-      directionalItem(),
+      orderTabs(),
     ]);
   }
 }
