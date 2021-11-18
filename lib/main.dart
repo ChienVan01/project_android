@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_android/constants.dart';
-
+import 'package:project_android/screens/detailProduct/detail_product.dart';
+import 'package:project_android/screens/product/product_screen.dart';
 import 'screens/main/main_screen.dart';
 
 void main() {
@@ -26,7 +27,13 @@ class MyApp extends StatelessWidget {
             Theme.of(context).textTheme.apply(bodyColor: primaryTextColor),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const MainScreen(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const MainScreen(),
+        '/product': (context) => const Product(),
+        '/productdetail': (context) => const ProductDetail(),
+      },
+      // home: const MainScreen(),
     );
   }
 }

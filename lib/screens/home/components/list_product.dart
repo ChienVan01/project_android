@@ -27,7 +27,9 @@ class ListProduct extends StatelessWidget {
                     fontWeight: FontWeight.bold),
               ),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/product');
+                },
                 child: const Text('Xem thêm',
                     style: TextStyle(
                         fontSize: 15,
@@ -39,37 +41,37 @@ class ListProduct extends StatelessWidget {
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
-              children: [
+              children: const [
                 ProductItem(
-                    name: 'Laptop ASUS UX3..',
-                    image: 'assets/images/product/product01.jpg',
-                    price: 27999000,
-                    priceStock: 0,
-                    press: () {}),
+                  name: 'Laptop ASUS UX3..',
+                  image: 'assets/images/product/product01.jpg',
+                  price: 27999000,
+                  priceStock: 0,
+                ),
                 ProductItem(
-                    name: 'Màn hình LCD PHILIPS..',
-                    image: 'assets/images/product/product02.jpg',
-                    price: 5050000,
-                    priceStock: 0,
-                    press: () {}),
+                  name: 'Màn hình LCD PHILIPS..',
+                  image: 'assets/images/product/product02.jpg',
+                  price: 5050000,
+                  priceStock: 0,
+                ),
                 ProductItem(
-                    name: 'Lót chuột DAREU ESP1009-XL',
-                    image: 'assets/images/product/product03.jpg',
-                    price: 189000,
-                    priceStock: 0,
-                    press: () {}),
+                  name: 'Lót chuột DAREU ESP1009-XL',
+                  image: 'assets/images/product/product03.jpg',
+                  price: 189000,
+                  priceStock: 0,
+                ),
                 ProductItem(
-                    name: 'Bàn phím cơ Akko 3084..',
-                    image: 'assets/images/product/product04.jpg',
-                    price: 1499000,
-                    priceStock: 0,
-                    press: () {}),
+                  name: 'Bàn phím cơ Akko 3084..',
+                  image: 'assets/images/product/product04.jpg',
+                  price: 1499000,
+                  priceStock: 0,
+                ),
                 ProductItem(
-                    name: 'Laptop Dell Alienware..',
-                    image: 'assets/images/product/product05.jpg',
-                    price: 62990000,
-                    priceStock: 0,
-                    press: () {}),
+                  name: 'Laptop Dell Alienware..',
+                  image: 'assets/images/product/product05.jpg',
+                  price: 62990000,
+                  priceStock: 0,
+                ),
               ],
             ),
           ),
@@ -86,12 +88,12 @@ class ProductItem extends StatelessWidget {
     required this.image,
     required this.price,
     required this.priceStock,
-    required this.press,
+    // required this.press,
   }) : super(key: key);
 
   final String name, image;
   final int price, priceStock;
-  final Function press;
+  // final Function press;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -99,7 +101,9 @@ class ProductItem extends StatelessWidget {
       padding: const EdgeInsets.all(defaultPadding / 3),
       width: size.width * 0.4,
       child: GestureDetector(
-        onTap: press(),
+        onTap: () {
+          Navigator.pushNamed(context, '/productdetail');
+        },
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,

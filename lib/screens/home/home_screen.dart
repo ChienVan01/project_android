@@ -16,11 +16,12 @@ class HomeScreen extends StatelessWidget {
         },
         child: Scaffold(
           appBar: PreferredSize(
-              preferredSize: const Size(double.infinity, 100),
-              child: SingleChildScrollView(
-                  keyboardDismissBehavior:
-                      ScrollViewKeyboardDismissBehavior.onDrag,
-                  child: appBar(context))),
+            preferredSize: const Size(double.infinity, 100),
+            child: SingleChildScrollView(
+              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+              child: headerHome(context),
+            ),
+          ),
           body: body(context),
         ));
   }
