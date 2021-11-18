@@ -19,6 +19,7 @@ Widget appBar(context) {
           elevation: 0,
           backgroundColor: Colors.white.withOpacity(0.25),
           title: const TextField(
+            style: TextStyle(color: Colors.white, fontSize: 18),
             decoration: InputDecoration(
                 hintText: 'Nhập từ khóa tìm kiếm',
                 hintStyle: TextStyle(color: Colors.white),

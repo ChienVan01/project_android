@@ -33,9 +33,9 @@ class DiscountSrceen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           leading: const IconButton(
-            onPressed: _test, 
-            icon: Icon(Icons.arrow_back_ios)  //phím quay lại screen trước
-            ) ,
+              onPressed: _test,
+              icon: Icon(Icons.arrow_back_ios) //phím quay lại screen trước
+              ),
           title: const Text(
             'Khuyến Mãi',
             style:
@@ -51,8 +51,9 @@ class DiscountSrceen extends StatelessWidget {
               color: backgroundColor, // Tab Bar color change
               child: const TabBar(
                 unselectedLabelColor: primaryTextColor, //màu tab k đc chọn
-                labelColor: primaryColor,               //màu tab được chọn
-                indicatorColor: primaryColor,           //màu con trỏ, ở đây là cái gạch chân đỏ
+                labelColor: primaryColor, //màu tab được chọn
+                indicatorColor:
+                    primaryColor, //màu con trỏ, ở đây là cái gạch chân đỏ
                 tabs: <Widget>[
                   Tab(
                     text: "Nổi bật",
@@ -76,10 +77,10 @@ class DiscountSrceen extends StatelessWidget {
                           titleText: 'Khuyến Mãi',
                           subTitleText: 'HSD: 31/12/2021',
                           onTap: _test,
-                          padding: const EdgeInsets.all(defaultPadding/2),
-                          margin: const EdgeInsets.only(top:7.0, bottom: defaultPadding/4),
-                          color: Colors.white
-                      );
+                          padding: const EdgeInsets.all(defaultPadding / 2),
+                          margin: const EdgeInsets.only(
+                              top: 7.0, bottom: defaultPadding / 4),
+                          color: Colors.white);
                     },
                   ),
                 ),
@@ -88,14 +89,15 @@ class DiscountSrceen extends StatelessWidget {
                     itemCount: 3,
                     itemBuilder: (context, index) {
                       return GFListTile(
-                          avatar: Image.asset('assets/images/logo_chu_s.png',
-                              width: 60, height: 60),
-                          titleText: 'Khuyến Mãi',
-                          subTitleText: 'HSD: 21/11/2021',
-                          onTap: _test,
-                          padding: const EdgeInsets.all(defaultPadding/2),
-                          margin: const EdgeInsets.only(top:7.0, bottom: defaultPadding/4),
-                          color: Colors.white,    //bg-color của 1 tile                     
+                        avatar: Image.asset('assets/images/logo_chu_s.png',
+                            width: 60, height: 60),
+                        titleText: 'Khuyến Mãi',
+                        subTitleText: 'HSD: 21/11/2021',
+                        onTap: _test,
+                        padding: const EdgeInsets.all(defaultPadding / 2),
+                        margin: const EdgeInsets.only(
+                            top: 7.0, bottom: defaultPadding / 4),
+                        color: Colors.white, //bg-color của 1 tile
                       );
                     },
                   ),

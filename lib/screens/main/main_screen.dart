@@ -1,3 +1,4 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:project_android/screens/discount/discount.dart';
 import 'package:project_android/screens/home/home_screen.dart';
@@ -13,13 +14,17 @@ class _MainScreenState extends State<MainScreen> {
   int pageIndex = 2;
   List<Widget> pageList = <Widget>[
     const Discount(),
-    const Text('Thông báo',
-        style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+    const Center(
+      child: Text('Thông báo',
+          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+    ),
     const HomeScreen(),
-    const Text('Giỏ hàng',
-        style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
-    const Text('Tài khoản',
-        style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+    const Center(
+        child: Text('Giỏ hàng',
+            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold))),
+    const Center(
+        child: Text('Tài khoản',
+            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold))),
   ];
 
   Widget footer() {
@@ -54,9 +59,18 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: PageTransitionSwitcher(
+        transitionBuilder: (child, primaryAnimation, secondaryAnimation) =>
+            FadeThroughTransition(
+          animation: primaryAnimation,
+          secondaryAnimation: secondaryAnimation,
+          child: child,
+        ),
         child: pageList[pageIndex],
       ),
+      // body: Center(
+      //   child: pageList[pageIndex],
+      // ),
       bottomNavigationBar: footer(),
     );
   }

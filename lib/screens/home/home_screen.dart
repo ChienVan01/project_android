@@ -7,11 +7,21 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-          preferredSize: const Size(double.infinity, 100),
-          child: appBar(context)),
-      body: body(),
-    );
+    return GestureDetector(
+        onTap: () {
+          FocusScopeNode curentFocus = FocusScope.of(context);
+          if (!curentFocus.hasPrimaryFocus) {
+            curentFocus.unfocus();
+          }
+        },
+        child: Scaffold(
+          appBar: PreferredSize(
+              preferredSize: const Size(double.infinity, 100),
+              child: SingleChildScrollView(
+                  keyboardDismissBehavior:
+                      ScrollViewKeyboardDismissBehavior.onDrag,
+                  child: appBar(context))),
+          body: body(context),
+        ));
   }
 }
