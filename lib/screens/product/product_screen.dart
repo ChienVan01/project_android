@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:project_android/screens/home/components/header.dart';
 import 'package:project_android/screens/product/components/body.dart';
 import 'package:project_android/screens/product/components/header.dart';
 
@@ -20,7 +19,7 @@ class Product extends StatelessWidget {
             child: headerProduct(context),
             preferredSize: const Size(double.infinity, 91),
           ),
-          body: const Body(),
+          body: const ListProduct(),
         ));
   }
 }

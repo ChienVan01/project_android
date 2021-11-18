@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:project_android/screens/account/account_screen.dart';
 import 'package:project_android/screens/discount/discount.dart';
 import 'package:project_android/screens/home/home_screen.dart';
+import 'package:project_android/screens/product/product_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -20,9 +21,7 @@ class _MainScreenState extends State<MainScreen> {
           style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
     ),
     const HomeScreen(),
-    const Center(
-        child: Text('Giỏ hàng',
-            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold))),
+    const Product(),
     const AccountsScreen(),
   ];
 
