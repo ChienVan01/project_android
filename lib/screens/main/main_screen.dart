@@ -1,7 +1,7 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:project_android/screens/account/account_screen.dart';
-import 'package:project_android/screens/discount/discount.dart';
+import 'package:project_android/screens/discount/discount_screen.dart';
 import 'package:project_android/screens/home/home_screen.dart';
 import 'package:project_android/screens/product/product_screen.dart';
 
