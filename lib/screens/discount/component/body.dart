@@ -12,8 +12,12 @@ Widget body(context) {
           labelColor: primaryColor, //màu tab được chọn
           indicatorColor: primaryColor, //màu con trỏ, ở đây là cái gạch chân đỏ
           tabs: <Widget>[
-            Tab(text: "Nổi bật",),
-            Tab(text: "Số lượng có hạn",),
+            Tab(
+              text: "Nổi bật",
+            ),
+            Tab(
+              text: "Số lượng có hạn",
+            ),
           ],
         ),
       ),
