@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:project_android/constants.dart';
 
 // Widget navBar() {
@@ -98,13 +99,18 @@ class _NavbarState extends State<Navbar> {
               shadowColor: MaterialStateProperty.all(Colors.transparent),
             ),
             child: Row(
-              children: const [
-                Text(
-                  'Bộ lọc',
-                  style: TextStyle(fontSize: 18, color: backgroundColor),
+              children: [
+                const Padding(
+                  padding: EdgeInsets.only(right: defaultPadding / 4),
+                  child: Text(
+                    'Bộ lọc',
+                    style: TextStyle(fontSize: 18, color: backgroundColor),
+                  ),
                 ),
-                Icon(Icons.filter_alt_outlined,
-                    color: backgroundColor, size: 23)
+                SvgPicture.asset(
+                  'assets/svg/filter.svg',
+                  color: Colors.white,
+                )
               ],
             ),
           )
