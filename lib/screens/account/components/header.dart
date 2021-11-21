@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:project_android/constants.dart';
 
-Widget appBar(context) {
-  return Scaffold(
-    
+Widget headerAccount(context) {
+  return Scaffold(  
     appBar: AppBar(
       elevation:0,
       actions: const <Widget>[
