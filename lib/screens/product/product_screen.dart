@@ -17,7 +17,7 @@ class Product extends StatelessWidget {
         child: Scaffold(
           appBar: PreferredSize(
             child: headerProduct(context),
-            preferredSize: const Size(double.infinity, 91),
+            preferredSize: const Size(double.infinity, 85),
           ),
           body: const ListProduct(),
         ));

@@ -32,14 +32,6 @@ Widget headerProduct(context) {
               border: InputBorder.none,
               fillColor: Colors.white38,
               filled: true,
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                borderSide: BorderSide(color: Colors.white38, width: 0.1),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                borderSide: BorderSide(color: Colors.white38, width: 0.1),
-              ),
             ),
           ),
           actions: <Widget>[

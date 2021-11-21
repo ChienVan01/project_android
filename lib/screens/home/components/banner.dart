@@ -4,36 +4,37 @@ import 'package:project_android/constants.dart';
 
 Widget banner() {
   return Container(
-      height: 170.0,
-      decoration: BoxDecoration(
-          color: primaryColor,
-          borderRadius: const BorderRadius.only(
-            bottomLeft: Radius.circular(7),
-            bottomRight: Radius.circular(7),
-          ),
-          boxShadow: [
-            BoxShadow(
-                offset: const Offset(0, 10),
-                blurRadius: 10,
-                color: primaryColor.withOpacity(0.3))
-          ]),
-      child: CarouselSlider(
-        items: [
-          img('assets/images/banner01.png'),
-          img('assets/images/banner02.png'),
-          img('assets/images/banner03.png'),
-        ],
-        options: CarouselOptions(
-            height: 150.0,
-            enlargeCenterPage: true,
-            autoPlay: true,
-            aspectRatio: 16 / 9,
-            autoPlayCurve: Curves.fastLinearToSlowEaseIn,
-            enableInfiniteScroll: true,
-            autoPlayAnimationDuration: const Duration(milliseconds: 800),
-            viewportFraction: 0.83,
-            scrollDirection: Axis.horizontal),
-      ));
+    height: 170.0,
+    decoration: BoxDecoration(
+        color: primaryColor,
+        borderRadius: const BorderRadius.only(
+          bottomLeft: Radius.circular(7),
+          bottomRight: Radius.circular(7),
+        ),
+        boxShadow: [
+          BoxShadow(
+              offset: const Offset(0, 10),
+              blurRadius: 10,
+              color: primaryColor.withOpacity(0.3))
+        ]),
+    child: CarouselSlider(
+      items: [
+        img('banner01.png'),
+        img('banner02.png'),
+        img('banner03.png'),
+      ],
+      options: CarouselOptions(
+          height: 150.0,
+          enlargeCenterPage: true,
+          autoPlay: true,
+          aspectRatio: 16 / 9,
+          autoPlayCurve: Curves.fastLinearToSlowEaseIn,
+          enableInfiniteScroll: true,
+          autoPlayAnimationDuration: const Duration(milliseconds: 800),
+          viewportFraction: 0.83,
+          scrollDirection: Axis.horizontal),
+    ),
+  );
 }
 
 Widget img(String link) {
@@ -43,7 +44,7 @@ Widget img(String link) {
     decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.0),
         image: DecorationImage(
-          image: AssetImage(link),
+          image: AssetImage('assets/images/$link'),
           fit: BoxFit.cover,
         )),
   );
