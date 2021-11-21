@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:project_android/components/search_screen.dart';
 import 'package:project_android/constants.dart';
 import 'package:project_android/screens/detailProduct/detail_product.dart';
+import 'package:project_android/screens/favorite/favorite_screen.dart';
+import 'package:project_android/screens/order/order_screen.dart';
 import 'package:project_android/screens/product/product_screen.dart';
 import 'screens/main/main_screen.dart';
 
@@ -32,8 +35,10 @@ class MyApp extends StatelessWidget {
         '/': (context) => const MainScreen(),
         '/product': (context) => const Product(),
         '/productdetail': (context) => const ProductDetail(),
+        '/order': (context) => const OrderScreen(),
+        '/search': (context) => const Search(),
+        '/favorite': (context) => const FavoriteScreen(),
       },
-      // home: const MainScreen(),
     );
   }
 }

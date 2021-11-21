@@ -1,8 +1,10 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:project_android/screens/account/account_screen.dart';
-import 'package:project_android/screens/discount/discount.dart';
+import 'package:project_android/screens/discount/discount_screen.dart';
 import 'package:project_android/screens/home/home_screen.dart';
+import 'package:project_android/screens/product/product_screen.dart';
+import 'package:project_android/screens/notification/notification_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -15,14 +17,9 @@ class _MainScreenState extends State<MainScreen> {
   int pageIndex = 2;
   List<Widget> pageList = <Widget>[
     const Discount(),
-    const Center(
-      child: Text('Thông báo',
-          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
-    ),
+    const NotificationSrceen(),
     const HomeScreen(),
-    const Center(
-        child: Text('Giỏ hàng',
-            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold))),
+    const Product(),
     const AccountsScreen(),
   ];
 
