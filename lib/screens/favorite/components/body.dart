@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
 import 'package:project_android/constants.dart';
 
 class Body extends StatelessWidget {
@@ -47,15 +48,23 @@ class Body extends StatelessWidget {
               child: Wrap(
                 spacing: 10,
                 runSpacing: 10,
-                children: const <Widget>[
-                  item(),
-                  item(),
-                  item(),
-                  item(),
-                  item(),
-                  item(),
-                  item(),
-                  item(),
+                children: <Widget>[
+                  _productItem(
+                      title: 'Laptop Dell Alienware..',
+                      image: 'product05.jpg',
+                      price: 62990000),
+                  _productItem(
+                      title: 'Laptop Dell Alienware..',
+                      image: 'product03.jpg',
+                      price: 62990000),
+                  _productItem(
+                      title: 'Laptop Dell Alienware..',
+                      image: 'product04.jpg',
+                      price: 62990000),
+                  _productItem(
+                      title: 'Laptop Dell Alienware..',
+                      image: 'product02.jpg',
+                      price: 62990000),
                 ],
               ),
             ),
@@ -66,34 +75,50 @@ class Body extends StatelessWidget {
   }
 }
 
-class item extends StatelessWidget {
-  const item({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 180.0,
-      height: 200,
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(8.0)),
-        color: colorWhite,
-      ),
-      child: Center(
-        child: Column(
-          children: <Widget>[
-             Image.asset(
-                  'assets/images/product/product02.jpg',
-                  width: 100,
-                  height: 100,
-                  fit: BoxFit.cover,
-                ),
-          ],
+Widget _productItem({required String title, image, price}) {
+  return Container(
+    width: 180.0,
+    height: 200,
+    decoration: const BoxDecoration(
+      borderRadius: BorderRadius.all(Radius.circular(8.0)),
+      color: colorWhite,
+    ),
+    child: Column(
+      children: <Widget>[
+        Image.asset(
+          'assets/images/product/product02.jpg',
+          width: 100,
+          height: 100,
+          fit: BoxFit.cover,
         ),
-      ),
-    );
-  }
+        const SizedBox(
+          height: 8,
+        ),
+        Align(
+          alignment: Alignment.topLeft,
+          child: Column(children: <Widget>[
+            Text(
+              title,
+              style: const TextStyle(fontWeight: FontWeight.bold) ,
+            ),
+            Text(
+              '${NumberFormat.decimalPattern().format(price)}',
+              style: const TextStyle(
+                  fontWeight: FontWeight.bold, color: primaryColor),
+            ),
+            Text(
+              '${NumberFormat.decimalPattern().format(price * 1.3)}',
+              style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.grey,
+                  fontSize: 13,
+                  decoration: TextDecoration.lineThrough),
+            ),
+          ]),
+        )
+      ],
+    ),
+  );
 }
 
 class TabWidget extends StatelessWidget {

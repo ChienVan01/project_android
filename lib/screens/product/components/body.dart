@@ -99,35 +99,33 @@ class ListProduct extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          Navbar(),
-          Expanded(
-            child: StaggeredGridView.countBuilder(
-              // physics: const BouncingScrollPhysics(),
-              crossAxisCount: 4,
-              itemCount: _product.length,
-              itemBuilder: (BuildContext context, int index) {
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.pushNamed(context, '/productdetail');
-                  },
-                  child: _productItem(
-                    title: _product[index].name,
-                    image: _product[index].image,
-                    price: _product[index].price,
-                  ),
-                );
-              },
-              staggeredTileBuilder: (int index) =>
-                  const StaggeredTile.count(2, 2.8),
-              mainAxisSpacing: 8,
-              crossAxisSpacing: 8,
-            ),
-          )
-        ],
-      ),
+    return Column(
+      children: [
+        Navbar(),
+        Expanded(
+          child: StaggeredGridView.countBuilder(
+            // physics: const BouncingScrollPhysics(),
+            crossAxisCount: 4,
+            itemCount: _product.length,
+            itemBuilder: (BuildContext context, int index) {
+              return GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, '/productdetail');
+                },
+                child: _productItem(
+                  title: _product[index].name,
+                  image: _product[index].image,
+                  price: _product[index].price,
+                ),
+              );
+            },
+            staggeredTileBuilder: (int index) =>
+                const StaggeredTile.count(2, 2.8),
+            mainAxisSpacing: 8,
+            crossAxisSpacing: 8,
+          ),
+        )
+      ],
     );
   }
 }
