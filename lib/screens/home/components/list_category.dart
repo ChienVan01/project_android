@@ -1,6 +1,60 @@
 import 'package:flutter/material.dart';
 import 'package:project_android/constants.dart';
 
+class Category {
+  String name;
+  Icon icon;
+  Category({required this.name, required this.icon});
+}
+
+List<Category> _listCategory = [
+  Category(name: 'Laptop', icon: const Icon(Icons.laptop)),
+  Category(name: 'Màn hình', icon: const Icon(Icons.monitor)),
+  Category(name: 'Bàn phím', icon: const Icon(Icons.keyboard)),
+  Category(name: 'Tai nghe', icon: const Icon(Icons.headphones)),
+  Category(name: 'Chuột', icon: const Icon(Icons.mouse)),
+  Category(name: 'Bàn phím', icon: const Icon(Icons.keyboard)),
+  Category(name: 'Màn hình', icon: const Icon(Icons.monitor)),
+  Category(name: 'PC', icon: const Icon(Icons.phonelink)),
+];
+
+final List<Widget> categoryItems = _listCategory
+    .map(
+      (item) => Container(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SizedBox(
+            width: 60,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 8.0),
+                  child: Container(
+                    height: 45,
+                    width: 40,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: const [
+                        BoxShadow(color: Colors.black, blurRadius: 0.5),
+                      ],
+                    ),
+                    child: IconButton(
+                        onPressed: () {
+                          // Navigator.pushNamed(context, '/product');
+                        },
+                        icon: item.icon),
+                  ),
+                ),
+                Text(item.name)
+              ],
+            ),
+          ),
+        ),
+      ),
+    )
+    .toList();
+
 Widget listCategory() {
   return Container(
       margin: const EdgeInsets.all(defaultPadding),
@@ -14,32 +68,16 @@ Widget listCategory() {
                 color: primaryTextColor,
                 fontWeight: FontWeight.bold),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
-              categoryItem(icon: Icon(Icons.laptop), text: 'Laptop'),
-              categoryItem(icon: Icon(Icons.monitor), text: 'Màn hình'),
-              categoryItem(icon: Icon(Icons.keyboard), text: 'Bàn phím'),
-              categoryItem(icon: Icon(Icons.headphones), text: 'Tai nghe'),
-              // categoryItem(const Icon(Icons.phonelink), 'PC'),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
-              categoryItem(icon: Icon(Icons.mouse), text: 'Chuột'),
-              categoryItem(icon: Icon(Icons.keyboard), text: 'Bàn phím'),
-              categoryItem(icon: Icon(Icons.monitor), text: 'Màn hình'),
-              categoryItem(icon: Icon(Icons.phonelink), text: 'PC'),
-              // categoryItem(const Icon(Icons.headphones), 'Tai nghe'),
-            ],
+          Wrap(
+            spacing: 15,
+            children: categoryItems,
           ),
         ],
       ));
 }
 
-class categoryItem extends StatelessWidget {
-  const categoryItem({Key? key, required this.icon, required this.text})
+class CategoryItem extends StatelessWidget {
+  const CategoryItem({Key? key, required this.icon, required this.text})
       : super(key: key);
 
   final Icon icon;

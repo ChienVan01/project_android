@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_android/screens/product/components/body.dart';
-import 'package:project_android/screens/product/components/header.dart';
+import 'package:project_android/screens/product/components/header_product.dart';
 
 class Product extends StatelessWidget {
   const Product({Key? key}) : super(key: key);
