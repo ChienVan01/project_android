@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:project_android/screens/account/components/body.dart';
-import 'package:project_android/screens/account/components/order/components/header.dart';
+import 'package:project_android/screens/order/components/body.dart';
+import 'package:project_android/screens/order/components/header.dart';
 
 class OrderScreen extends StatelessWidget {
   const OrderScreen({Key? key}) : super(key: key);

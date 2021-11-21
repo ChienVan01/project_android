@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_android/constants.dart';
-import 'package:project_android/screens/account/components/order/components/detail_order.dart';
+import 'package:project_android/screens/order/components/detail_order.dart';
 
 class InprocssOrderScreen extends StatelessWidget {
   const InprocssOrderScreen({Key? key}) : super(key: key);
