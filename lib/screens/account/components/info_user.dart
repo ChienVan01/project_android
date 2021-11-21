@@ -12,8 +12,8 @@ Widget infoUser() {
             padding: const EdgeInsets.only(right: defaultPadding / 2),
             child: CircleAvatar(
               radius: 40,
-              backgroundImage: new NetworkImage(
-                  "http://windows79.com/wp-content/uploads/2021/02/Thay-the-hinh-dai-dien-tai-khoan-nguoi-dung-mac.png"),
+              // backgroundImage: new NetworkImage(
+              //     "http://windows79.com/wp-content/uploads/2021/02/Thay-the-hinh-dai-dien-tai-khoan-nguoi-dung-mac.png"),
             ),
           ),
           Column(

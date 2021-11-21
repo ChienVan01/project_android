@@ -7,34 +7,34 @@ Widget directionalItem() {
     children: [
       Container(
         decoration:const BoxDecoration(color: Colors.white),
-        child: Column(
+        child:  Column(
           children: [
-           const Divider(
+            const Divider(
                 thickness: defaultPadding / 2,
                 height: defaultPadding / 2,
                 color: backgroundColor),
-            PageRoute(text:'Đơn Hàng', iconLeading:Icons.receipt_long_outlined,
+           const PageRoute(text:'Đơn Hàng', iconLeading:Icons.receipt_long_outlined,
                 iconTraling:Icons.navigate_next_outlined,press:'/order'),
            const Divider(thickness: 1, height: 1),
-            PageRoute(text:'Đã Thích', iconLeading:Icons.favorite_border_outlined,
-                  iconTraling:Icons.navigate_next_outlined,press:'/order'),
+           const PageRoute(text:'Đã Thích', iconLeading:Icons.favorite_border_outlined,
+                  iconTraling:Icons.navigate_next_outlined,press:'/favorite'),
            const Divider(thickness: 1, height: 1),
-            PageRoute(
+            const PageRoute(
                 text:'Mã Giảm Giá', iconLeading:Icons.receipt_outlined,  
-                iconTraling: Icons.navigate_next_outlined,press:'/order')
+                iconTraling: Icons.navigate_next_outlined,press:'/account/components/order')
           ],
         ),
       ),
       Container(
-         decoration:const BoxDecoration(color: Colors.white),
+        decoration:const BoxDecoration(color: Colors.white),
         child: Column(
           children: [
             const Divider(thickness:defaultPadding/2,height:defaultPadding/2,color:backgroundColor),
             PageRoute(text:'Đã Xem Gần Đây',iconLeading: Icons.schedule_outlined,
-                 iconTraling: Icons.navigate_next_outlined,press:'/order'),
+                 iconTraling: Icons.navigate_next_outlined,press:'/account/components/order'),
               const Divider(thickness: 1 ,height: 1),
             PageRoute(text:'Đánh Giá Của Tôi', iconLeading:Icons.star_border_outlined,
-                 iconTraling: Icons.navigate_next_outlined,press:'/order'), 
+                 iconTraling: Icons.navigate_next_outlined,press:'/account/components/order'), 
           ],     
         ),
       ),
@@ -44,10 +44,10 @@ Widget directionalItem() {
           children: [
             const Divider(thickness:defaultPadding/2,height:defaultPadding/2,color:backgroundColor),
             PageRoute(text:'Tài Khoản Và Bảo Mật',iconLeading: Icons.lock_outlined,
-                 iconTraling: Icons.navigate_next_outlined,press:'/order'),
+                 iconTraling: Icons.navigate_next_outlined,press:'/account/components/order'),
             const Divider(thickness: 1 ,height: 1),
              PageRoute(text:'Trung Tâm Hỗ Trợ', iconLeading:Icons.help_outline_outlined,
-                 iconTraling: Icons.navigate_next_outlined,press:'/order'), 
+                 iconTraling: Icons.navigate_next_outlined,press:'/account/components/order'), 
           ],     
         ),
       )

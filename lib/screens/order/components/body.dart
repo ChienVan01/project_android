@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:project_android/constants.dart';
-import 'package:project_android/screens/account/components/order/components/cancel_orderScreen.dart';
-import 'package:project_android/screens/account/components/order/components/delivered_orderScreen.dart';
-import 'package:project_android/screens/account/components/order/components/inprocess_orderScreen.dart';
-import 'package:project_android/screens/account/components/order/components/wait_orderScreen.dart';
+import 'package:project_android/screens/order/components/cancel_screen.dart';
+import 'package:project_android/screens/order/components/delivered_screen.dart';
+import 'package:project_android/screens/order/components/inprocess_screen.dart';
+import 'package:project_android/screens/order/components/wait_orderScreen.dart';
+
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
@@ -33,7 +34,6 @@ class Body extends StatelessWidget {
           InprocssOrderScreen(),
           DeliveredOrderScreen(),
           CancelledOrderScreen()
-         
         ]),
       ),
     ],

@@ -18,7 +18,7 @@ List<Category> _listCategory = [
   Category(name: 'PC', icon: const Icon(Icons.phonelink)),
 ];
 
-final List<Widget> categoryItems = _listCategory
+List<Widget> categoryItems(context) => _listCategory
     .map(
       (item) => Container(
         child: Padding(
@@ -41,7 +41,7 @@ final List<Widget> categoryItems = _listCategory
                     ),
                     child: IconButton(
                         onPressed: () {
-                          // Navigator.pushNamed(context, '/product');
+                          Navigator.pushNamed(context, '/product');
                         },
                         icon: item.icon),
                   ),
@@ -55,25 +55,30 @@ final List<Widget> categoryItems = _listCategory
     )
     .toList();
 
-Widget listCategory() {
-  return Container(
-      margin: const EdgeInsets.all(defaultPadding),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            'Danh mục',
-            style: TextStyle(
-                fontSize: 22,
-                color: primaryTextColor,
-                fontWeight: FontWeight.bold),
-          ),
-          Wrap(
-            spacing: 15,
-            children: categoryItems,
-          ),
-        ],
-      ));
+class ListCategory extends StatelessWidget {
+  const ListCategory({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        margin: const EdgeInsets.all(defaultPadding),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Danh mục',
+              style: TextStyle(
+                  fontSize: 22,
+                  color: primaryTextColor,
+                  fontWeight: FontWeight.bold),
+            ),
+            Wrap(
+              spacing: 15,
+              children: categoryItems(context),
+            ),
+          ],
+        ));
+  }
 }
 
 class CategoryItem extends StatelessWidget {

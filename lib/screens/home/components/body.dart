@@ -5,12 +5,12 @@ import 'package:project_android/screens/home/components/list_product.dart';
 
 Widget body(context) {
   return ListView(
-    children: <Widget>[
+    children: const <Widget>[
       BannerHome(),
-      listCategory(),
-      const ListProduct(title: 'Dành cho bạn'),
-      const ListProduct(title: 'Đề xuất'),
-      const ListProduct(title: 'Sản phẩm bán chạy'),
+      ListCategory(),
+      ListProduct(title: 'Dành cho bạn'),
+      ListProduct(title: 'Đề xuất'),
+      ListProduct(title: 'Sản phẩm bán chạy'),
     ],
   );
 }
