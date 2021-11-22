@@ -1,15 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:project_android/components/text_style.dart';
 import 'package:project_android/constants.dart';
-
-TextStyle style(double _fontSize, Color _color, FontWeight _fontWeight) {
-  return TextStyle(
-    fontSize: _fontSize,
-    color: _color,
-    fontWeight: _fontWeight,
-  );
-}
 
 class Respect extends StatelessWidget {
   const Respect({Key? key}) : super(key: key);
