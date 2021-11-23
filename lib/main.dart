@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:project_android/constants.dart';
+import 'package:project_android/screens/account_and_security/address/address_screen.dart';
+import 'package:project_android/screens/account_and_security/profile/profile_screen.dart';
+import 'package:project_android/screens/account_and_security/rules/rules_screen.dart';
+import 'package:project_android/screens/account_and_security/security_screen.dart';
+import 'package:project_android/screens/account_and_security/support/support_screen.dart';
 import 'package:project_android/screens/detailProduct/detail_product.dart';
 import 'package:project_android/screens/favorite/favorite_screen.dart';
 import 'package:project_android/screens/order/order_screen.dart';
@@ -36,6 +41,11 @@ class MyApp extends StatelessWidget {
         '/productdetail': (context) => const ProductDetail(),
         '/order': (context) => const OrderScreen(),
         '/favorite': (context) => const FavoriteScreen(),
+        '/account_and_security': (context) => const AccountAndSecurity(),
+        '/account_and_security/profile': (context) => const ProfileScreen(),
+        '/account_and_security/address': (context) => const AddressScreen(),
+        '/account_and_security/support': (context) => const SupportScreen(),
+        '/account_and_security/rules': (context) => const RulesScreen(),
       },
       // home: const MainScreen(),
     );
