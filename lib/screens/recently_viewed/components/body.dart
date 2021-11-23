@@ -1,22 +1,16 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:intl/intl.dart';
 import 'package:project_android/constants.dart';
-import 'package:project_android/screens/product/components/navbar.dart';
 import 'package:project_android/model/product.dart';
 
-class ListProduct extends StatelessWidget {
-  const ListProduct({
-    Key? key,
-  }) : super(key: key);
+class BodyRecently extends StatelessWidget {
+  const BodyRecently({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Navbar(),
         Expanded(
           child: StaggeredGridView.countBuilder(
             // physics: const BouncingScrollPhysics(),
@@ -42,6 +36,7 @@ class ListProduct extends StatelessWidget {
         )
       ],
     );
+    ;
   }
 }
 
@@ -83,7 +78,7 @@ Widget _productItem({required String title, image, price}) {
               const TextStyle(fontWeight: FontWeight.bold, color: primaryColor),
         ),
         Text(
-          NumberFormat.decimalPattern().format(price * 1.3),
+          NumberFormat.decimalPattern().format(price * 1.2),
           style: const TextStyle(
               fontWeight: FontWeight.bold,
               color: Colors.grey,

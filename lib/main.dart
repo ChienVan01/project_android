@@ -9,6 +9,7 @@ import 'package:project_android/screens/forget_password/step03/step03.dart';
 import 'package:project_android/screens/login/login_screen.dart';
 import 'package:project_android/screens/order/order_screen.dart';
 import 'package:project_android/screens/product/product_screen.dart';
+import 'package:project_android/screens/recently_viewed/recently_screen.dart';
 import 'package:project_android/screens/register/register_screen.dart';
 import 'screens/main/main_screen.dart';
 
@@ -42,6 +43,7 @@ class MyApp extends StatelessWidget {
         '/order': (context) => const OrderScreen(),
         '/search': (context) => const Search(),
         '/favorite': (context) => const FavoriteScreen(),
+        '/recently': (context) => const Recently(),
         '/login': (context) => const Login(),
         '/forgotpassword': (context) => const ForgotPassword(),
         '/register': (context) => const Register(),
