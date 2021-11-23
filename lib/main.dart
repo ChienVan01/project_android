@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
             Theme.of(context).textTheme.apply(bodyColor: primaryTextColor),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      initialRoute: '/register',
+      initialRoute: '/',
       routes: {
         '/': (context) => const MainScreen(),
         '/product': (context) => const Product(),
