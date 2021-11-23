@@ -9,6 +9,7 @@ import 'package:project_android/screens/forget_password/step03/step03.dart';
 import 'package:project_android/screens/login/login_screen.dart';
 import 'package:project_android/screens/order/order_screen.dart';
 import 'package:project_android/screens/product/product_screen.dart';
+import 'package:project_android/screens/register/register_screen.dart';
 import 'screens/main/main_screen.dart';
 
 void main() {
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
             Theme.of(context).textTheme.apply(bodyColor: primaryTextColor),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      initialRoute: '/',
+      initialRoute: '/register',
       routes: {
         '/': (context) => const MainScreen(),
         '/product': (context) => const Product(),
@@ -43,6 +44,7 @@ class MyApp extends StatelessWidget {
         '/favorite': (context) => const FavoriteScreen(),
         '/login': (context) => const Login(),
         '/forgotpassword': (context) => const ForgotPassword(),
+        '/register': (context) => const Register(),
         '/forgotpassword/step02': (context) => const ForgotPassStep2(),
         '/forgotpassword/step03': (context) => const ForgotPassStep3(),
       },

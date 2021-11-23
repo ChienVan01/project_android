@@ -40,11 +40,11 @@ class ForgotPassStep3 extends StatelessWidget {
                 hintStyle: style(20, Colors.grey, FontWeight.normal),
                 prefixIcon: const Icon(Icons.lock_outline, color: Colors.black),
                 enabledBorder: const OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(4)),
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
                   borderSide: BorderSide(color: primaryColor),
                 ),
                 border: const OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(4)),
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
                     borderSide: BorderSide(
                       width: 1,
                     )),
@@ -59,11 +59,11 @@ class ForgotPassStep3 extends StatelessWidget {
                 hintStyle: style(20, Colors.grey, FontWeight.normal),
                 prefixIcon: const Icon(Icons.lock_outline, color: Colors.black),
                 enabledBorder: const OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(4)),
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
                   borderSide: BorderSide(color: primaryColor),
                 ),
                 border: const OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(4)),
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
                     borderSide: BorderSide(
                       width: 1,
                     )),
