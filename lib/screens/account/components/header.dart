@@ -9,15 +9,15 @@ Widget headerAccount(context) {
         Icon(
           Icons.settings_outlined,
         ),
-        Padding(padding: const EdgeInsets.all(5)),
+        Padding(padding: EdgeInsets.all(5)),
         Icon(
           Icons.shopping_cart_outlined,
         ),
-        Padding(padding: const EdgeInsets.all(5)),
+        Padding(padding: EdgeInsets.all(5)),
         Icon(
           Icons.textsms_outlined,
         ),
-        Padding(padding: const EdgeInsets.all(defaultPadding / 2)),
+        Padding(padding: EdgeInsets.all(defaultPadding / 2)),
       ],
      
     ),
