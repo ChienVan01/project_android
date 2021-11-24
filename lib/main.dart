@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:project_android/components/search_screen.dart';
 import 'package:project_android/constants.dart';
+import 'package:project_android/screens/cart/cart_screen.dart';
 import 'package:project_android/screens/detailProduct/detail_product.dart';
 import 'package:project_android/screens/favorite/favorite_screen.dart';
 import 'package:project_android/screens/forget_password/step01/forget_password.dart';
 import 'package:project_android/screens/forget_password/step02/step02.dart';
 import 'package:project_android/screens/forget_password/step03/step03.dart';
+import 'package:project_android/screens/loading/loading_screen.dart';
 import 'package:project_android/screens/login/login_screen.dart';
 import 'package:project_android/screens/order/order_screen.dart';
 import 'package:project_android/screens/product/product_screen.dart';
@@ -35,9 +37,10 @@ class MyApp extends StatelessWidget {
             Theme.of(context).textTheme.apply(bodyColor: primaryTextColor),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      initialRoute: '/',
+      initialRoute: '/cart',
       routes: {
         '/': (context) => const MainScreen(),
+        '/loading': (context) => const Loading(),
         '/product': (context) => const Product(),
         '/productdetail': (context) => const ProductDetail(),
         '/order': (context) => const OrderScreen(),
@@ -47,6 +50,7 @@ class MyApp extends StatelessWidget {
         '/login': (context) => const Login(),
         '/forgotpassword': (context) => const ForgotPassword(),
         '/register': (context) => const Register(),
+        '/cart': (context) => const Cart(),
         '/forgotpassword/step02': (context) => const ForgotPassStep2(),
         '/forgotpassword/step03': (context) => const ForgotPassStep3(),
       },
