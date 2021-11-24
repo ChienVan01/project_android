@@ -16,7 +16,7 @@ class NotificationSrceen extends StatelessWidget {
             preferredSize: const Size(double.infinity, 50), child: header()),
         body: body(context),
         floatingActionButton: const FloatingActionButton(
-          onPressed: _test,
+          onPressed: (_test),
           child: Icon(Icons.delete_outline_rounded),
           backgroundColor: Colors.grey,
         ),
