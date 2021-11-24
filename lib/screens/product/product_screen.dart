@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_android/screens/product/components/body.dart';
-import 'package:project_android/screens/product/components/header.dart';
+import 'package:project_android/screens/product/components/header_product.dart';
 
 class Product extends StatelessWidget {
   const Product({Key? key}) : super(key: key);
@@ -17,7 +17,7 @@ class Product extends StatelessWidget {
         child: Scaffold(
           appBar: PreferredSize(
             child: headerProduct(context),
-            preferredSize: const Size(double.infinity, 91),
+            preferredSize: const Size(double.infinity, 85),
           ),
           body: const ListProduct(),
         ));
