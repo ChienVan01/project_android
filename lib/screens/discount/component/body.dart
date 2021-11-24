@@ -2,7 +2,7 @@ import 'package:project_android/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 
-Widget body(context) {
+Widget body(context) { 
   return Column(
     children: <Widget>[
       Container(

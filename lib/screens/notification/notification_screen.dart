@@ -2,15 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:project_android/screens/notification/component/body.dart';
 import 'package:project_android/screens/notification/component/header.dart';
 
-class Notification extends StatelessWidget {
-  const Notification({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-        home: NotificationSrceen(), debugShowCheckedModeBanner: false);
-  }
-}
-
 /// This is the stateless widget that the main application instantiates.
 class NotificationSrceen extends StatelessWidget {
   const NotificationSrceen({Key? key}) : super(key: key);

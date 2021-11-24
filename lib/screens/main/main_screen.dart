@@ -16,7 +16,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int pageIndex = 2;
   List<Widget> pageList = <Widget>[
-    const Discount(),
+    const DiscountScreen(),
     const NotificationSrceen(),
     const HomeScreen(),
     const Product(),

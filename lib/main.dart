@@ -21,7 +21,6 @@ class MyApp extends StatelessWidget {
         // primarySwatch: Color(0xffD90429),
         primaryColor: primaryColor,
         colorScheme: const ColorScheme.light().copyWith(primary: primaryColor),
-
         scaffoldBackgroundColor: backgroundColor,
         textTheme:
             Theme.of(context).textTheme.apply(bodyColor: primaryTextColor),
