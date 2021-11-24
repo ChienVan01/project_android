@@ -12,7 +12,7 @@ class SupportScreen extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: const Size(double.infinity, 50),
-          child: header("Hỗ Trợ",context)),
+          child: header("Hỗ Trợ",context,null)),
       body: const Body(),
     );
   }

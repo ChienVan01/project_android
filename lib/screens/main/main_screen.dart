@@ -65,9 +65,6 @@ class _MainScreenState extends State<MainScreen> {
         ),
         child: pageList[pageIndex],
       ),
-      // body: Center(
-      //   child: pageList[pageIndex],
-      // ),
       bottomNavigationBar: footer(),
     );
   }

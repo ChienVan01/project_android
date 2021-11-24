@@ -12,7 +12,7 @@ class AddressScreen extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: const Size(double.infinity, 50),
-          child: header("Thay đổi địa chỉ", context)),
+          child: header("Thay đổi địa chỉ", context,null)),
       body: const Body(),
     );
   }

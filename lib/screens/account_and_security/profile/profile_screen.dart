@@ -13,7 +13,7 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: const Size(double.infinity, 50),
-          child: header("Sửa hồ sơ",context)),
+          child: header("Sửa hồ sơ",context,null)),
       body: const Body(),
     );
   }

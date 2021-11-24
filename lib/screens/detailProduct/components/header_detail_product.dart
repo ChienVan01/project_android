@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_android/components/search_bar.dart';
 import 'package:project_android/constants.dart';
 
 class HeaderDetailProduct extends StatelessWidget {
@@ -13,17 +14,7 @@ class HeaderDetailProduct extends StatelessWidget {
             Navigator.pop(context);
           },
           icon: const Icon(Icons.navigate_before_outlined, size: 30)),
-      title: const TextField(
-        style: TextStyle(color: Colors.white, fontSize: 18),
-        decoration: InputDecoration(
-          hintText: 'Tìm kiếm',
-          prefixIcon: Icon(Icons.search),
-          hintStyle: TextStyle(color: Colors.white),
-          border: InputBorder.none,
-          fillColor: Colors.white38,
-          filled: true,
-        ),
-      ),
+      title: SearchBar(),
       actions: <Widget>[
         IconButton(
             icon: const Icon(Icons.shopping_cart_outlined), onPressed: () {}),

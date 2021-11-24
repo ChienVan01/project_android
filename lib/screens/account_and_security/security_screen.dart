@@ -12,7 +12,7 @@ class AccountAndSecurity extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: const Size(double.infinity, 50),
-          child: header("Tài khoản và bảo mật",context)),
+          child: header("Tài khoản và bảo mật",context,null)),
       body: const Body(),
     );
   }

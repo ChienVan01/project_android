@@ -12,7 +12,7 @@ class RulesScreen extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: const Size(double.infinity, 50),
-          child: header("Điều khoản",context)),
+          child: header("Điều khoản",context,null)),
       body: const Body(),
     );
   }

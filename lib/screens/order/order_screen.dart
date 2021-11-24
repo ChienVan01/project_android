@@ -7,13 +7,12 @@ class OrderScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   return DefaultTabController(
+    return const DefaultTabController(
       initialIndex: 0,
       length: 4,
-      child:   Scaffold(
+      child: Scaffold(
         appBar: PreferredSize(
-            preferredSize: const Size(double.infinity, 50), 
-            child: HeaderOrder()),
+            preferredSize: Size(double.infinity, 50), child: HeaderOrder()),
         body: Body(),
       ),
     );
