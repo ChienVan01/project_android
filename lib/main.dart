@@ -2,6 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:project_android/components/search_screen.dart';
 import 'package:project_android/constants.dart';
 import 'package:project_android/screens/cart/cart_screen.dart';
+import 'package:project_android/screens/account_and_security/address/address_screen.dart';
+import 'package:project_android/screens/account_and_security/profile/components/changePassword/change/change_password_screen.dart';
+import 'package:project_android/screens/account_and_security/profile/components/changePassword/confirm/confirm_password_screen.dart';
+import 'package:project_android/screens/account_and_security/profile/components/updateName/update_name_screen.dart';
+import 'package:project_android/screens/account_and_security/profile/profile_screen.dart';
+import 'package:project_android/screens/account_and_security/rules/rules_screen.dart';
+import 'package:project_android/screens/account_and_security/security_screen.dart';
+import 'package:project_android/screens/account_and_security/support/support_screen.dart';
 import 'package:project_android/screens/detailProduct/detail_product.dart';
 import 'package:project_android/screens/favorite/favorite_screen.dart';
 import 'package:project_android/screens/forget_password/step01/forget_password.dart';
@@ -47,12 +55,23 @@ class MyApp extends StatelessWidget {
         '/search': (context) => const Search(),
         '/favorite': (context) => const FavoriteScreen(),
         '/recently': (context) => const Recently(),
+        '/account_and_security': (context) => const AccountAndSecurity(),
+        '/account_and_security/profile': (context) => const ProfileScreen(),
+        '/account_and_security/address': (context) => const AddressScreen(),
+        '/account_and_security/support': (context) => const SupportScreen(),
+        '/account_and_security/rules': (context) => const RulesScreen(),
         '/login': (context) => const Login(),
         '/forgotpassword': (context) => const ForgotPassword(),
         '/register': (context) => const Register(),
         '/cart': (context) => const Cart(),
         '/forgotpassword/step02': (context) => const ForgotPassStep2(),
         '/forgotpassword/step03': (context) => const ForgotPassStep3(),
+        '/account_and_security/profile/components/updateName': (context) =>
+            const UpdateNameScreen(),
+        '/account_and_security/profile/components/changePassword/comfirm':
+            (context) => const ConfirmPasswordScreen(),
+        '/account_and_security/profile/components/changePassword/change':
+            (context) => const ChangePasswordScreen(),
       },
     );
   }
