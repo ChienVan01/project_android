@@ -7,7 +7,7 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return ListView(
       children: [
         SizedBox(
           width: 400,
@@ -33,21 +33,30 @@ class Body extends StatelessWidget {
                 child: Center(
                     child: Text("Nhấn để thay đổi",
                         style: style(16, colorWhite, FontWeight.normal))))),
-        const Item(leading: "Tên", title: "Trương Văn Chiến",press:'/account_and_security/profile/components/updateName'),
+        const Item(leading: "Tên", title: "Trương Văn Chiến",press:'/account_and_security/profile/components/updateName',trailing: Icon(
+                  Icons.navigate_next_outlined,
+                  color: primaryColor,
+                ),),
         const Divider(height: 1),
         const SizedBox(
           height: 20,
         ),
-        const Item(leading: "Ngày sinh", title: "Thiết lập ngay",press:'/account_and_security/profile/components/updateName'),
+        const Item(leading: "Ngày sinh", title: "Thiết lập ngay",press:'/account_and_security/profile/components/updateName',trailing: Icon(
+                  Icons.navigate_next_outlined,
+                  color: primaryColor,
+                ),),
         const Divider(height: 1),
-        const Item(leading: "Điện thoại", title: "*******419",press:'/account_and_security/profile/components/updateName'),
+        const Item(leading: "Điện thoại", title: "*******419",press:'/account_and_security/profile/components/updateName',trailing:Text("")),
         const Divider(height: 1),
-        const Item(leading: "Email", title: "Tr**********@gmail.com",press:'/account_and_security/profile/components/updateName'),
+        const Item(leading: "Email", title: "Tr**********@gmail.com",press:'/account_and_security/profile/components/updateName',trailing:Text("")),
         const Divider(height: 1),
         const SizedBox(
           height: 20,
         ),
-        const Item(leading: "Thay đổi mật khẩu", title: "",press:'/account_and_security/profile/components/changePassword/comfirm'),
+        const Item(leading: "Thay đổi mật khẩu", title: "",press:'/account_and_security/profile/components/changePassword/comfirm',trailing: Icon(
+                  Icons.navigate_next_outlined,
+                  color: primaryColor,
+                ),),
       ],
     );
   }
@@ -59,8 +68,10 @@ class Item extends StatelessWidget {
     required this.leading,
     required this.title,
     required this.press,
+    required this.trailing,
   }) : super(key: key);
   final String leading, title,press;
+  final Widget? trailing;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -80,10 +91,7 @@ class Item extends StatelessWidget {
                   style: style(16, primaryTextColor, FontWeight.normal),
                   textAlign: TextAlign.end,
                 ),
-                trailing: const Icon(
-                  Icons.navigate_next_outlined,
-                  color: primaryColor,
-                ),
+                trailing: trailing,
                 onTap:   () {Navigator.pushNamed(context,press);},
                 )));
   }

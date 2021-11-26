@@ -63,6 +63,7 @@ class MyApp extends StatelessWidget {
         '/account_and_security/profile/components/updateName': (context) => const UpdateNameScreen(),
         '/account_and_security/profile/components/changePassword/comfirm': (context) => const ConfirmPasswordScreen(),
         '/account_and_security/profile/components/changePassword/change': (context) => const ChangePasswordScreen(),
+        
       },
     );
   }

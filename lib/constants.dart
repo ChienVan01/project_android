@@ -5,3 +5,4 @@ const backgroundColor = Color(0xffEDF2F4);
 const primaryTextColor = Color(0xff2B2D42);
 const colorWhite = Color(0xffffffff);
 const double defaultPadding = 20.0;
+const colorBorder = Color(0xffC4C4C4);

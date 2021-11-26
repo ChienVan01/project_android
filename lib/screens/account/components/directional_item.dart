@@ -47,7 +47,7 @@ Widget directionalItem() {
                  iconTraling: Icons.navigate_next_outlined,press:'/account_and_security'),
              Divider(thickness: 1 ,height: 1),
              PageRoute(text:'Trung Tâm Hỗ Trợ', iconLeading:Icons.help_outline_outlined,
-                 iconTraling: Icons.navigate_next_outlined,press:'/account/components/order'), 
+                 iconTraling: Icons.navigate_next_outlined,press:'/account_and_security/support'), 
           ],     
         ),
       )

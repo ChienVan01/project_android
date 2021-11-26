@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:project_android/constants.dart';
 import 'package:project_android/screens/account_and_security/rules/components/body.dart';
-import 'package:project_android/screens/account_and_security/header.dart';
+import 'package:project_android/components/header.dart';
 
 
 
@@ -10,9 +11,14 @@ class RulesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-          preferredSize: const Size(double.infinity, 50),
-          child: header("Điều khoản",context,null)),
+      appBar: const PreferredSize(
+        child: Header(
+            title: 'Điều khoản',
+            backgroundColor: primaryColor,
+            textColor: colorWhite,
+            action: null),
+        preferredSize: Size(double.infinity, 55),
+      ),
       body: const Body(),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:project_android/screens/account_and_security/header.dart';
+import 'package:project_android/components/header.dart';
+import 'package:project_android/constants.dart';
 
 import 'package:project_android/screens/account_and_security/address/components/body.dart';
 
@@ -9,11 +10,16 @@ class AddressScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-          preferredSize: const Size(double.infinity, 50),
-          child: header("Thay đổi địa chỉ", context,null)),
-      body: const Body(),
+    return const Scaffold(
+      appBar:  PreferredSize(
+        child:  Header(
+            title: 'Thay đổi địa chỉ',
+            backgroundColor: primaryColor,
+            textColor: colorWhite,
+            action: null),
+        preferredSize: Size(double.infinity, 55),
+      ),
+      body:  Body(),
     );
   }
 }
