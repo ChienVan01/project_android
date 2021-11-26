@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:intl/intl.dart';
 import 'package:project_android/constants.dart';
+import 'package:project_android/screens/favorite/components/product_item.dart';
+import 'package:project_android/screens/favorite/components/tabbar.dart';
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
@@ -49,22 +50,31 @@ class Body extends StatelessWidget {
                 spacing: 10,
                 runSpacing: 10,
                 children: <Widget>[
-                  _productItem(
-                      title: 'Laptop Dell Alienware..',
+                  productItem(
+                      title: 'Laptop Dell Alienware 1..',
                       image: 'product05.jpg',
                       price: 62990000),
-                  _productItem(
-                      title: 'Laptop Dell Alienware..',
+                  productItem(
+                      title: 'Laptop Dell Alienware 2..',
                       image: 'product03.jpg',
                       price: 62990000),
-                  _productItem(
-                      title: 'Laptop Dell Alienware..',
+                  productItem(
+                      title: 'Laptop Dell Alienware 3..',
                       image: 'product04.jpg',
                       price: 62990000),
-                  _productItem(
-                      title: 'Laptop Dell Alienware..',
+                  productItem(
+                      title: 'Laptop Dell Alienware 4..',
                       image: 'product02.jpg',
                       price: 62990000),
+                  productItem(
+                      title: 'Laptop Dell Alienware 4..',
+                      image: 'product02.jpg',
+                      price: 62990000),
+                  productItem(
+                      title: 'Laptop Dell Alienware 4..',
+                      image: 'product02.jpg',
+                      price: 62990000),
+                      
                 ],
               ),
             ),
@@ -75,86 +85,3 @@ class Body extends StatelessWidget {
   }
 }
 
-Widget _productItem({required String title, image, price}) {
-  return Container(
-    width: 180.0,
-    height: 200,
-    decoration: const BoxDecoration(
-      borderRadius: BorderRadius.all(Radius.circular(8.0)),
-      color: colorWhite,
-    ),
-    child: Column(
-      children: <Widget>[
-        Image.asset(
-          'assets/images/product/product02.jpg',
-          width: 100,
-          height: 100,
-          fit: BoxFit.cover,
-        ),
-        const SizedBox(
-          height: 8,
-        ),
-        Align(
-          alignment: Alignment.topLeft,
-          child: Column(children: <Widget>[
-            Text(
-              title,
-              style: const TextStyle(fontWeight: FontWeight.bold) ,
-            ),
-            Text(
-              '${NumberFormat.decimalPattern().format(price)}',
-              style: const TextStyle(
-                  fontWeight: FontWeight.bold, color: primaryColor),
-            ),
-            Text(
-              '${NumberFormat.decimalPattern().format(price * 1.3)}',
-              style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.grey,
-                  fontSize: 13,
-                  decoration: TextDecoration.lineThrough),
-            ),
-          ]),
-        )
-      ],
-    ),
-  );
-}
-
-class TabWidget extends StatelessWidget {
-  const TabWidget(
-      {Key? key,
-      required this.text,
-      required this.icon,
-      required this.width,
-      required this.height})
-      : super(key: key);
-
-  final double width;
-  final double height;
-  final Widget text;
-  final Widget icon;
-  @override
-  Widget build(BuildContext context) {
-    return Column(children: <Widget>[
-      ElevatedButton(
-          style: ButtonStyle(
-              foregroundColor:
-                  MaterialStateProperty.all<Color>(primaryTextColor),
-              backgroundColor: MaterialStateProperty.all(backgroundColor),
-              shape: MaterialStateProperty.all(const RoundedRectangleBorder(
-                  side: BorderSide(color: primaryColor)))),
-          onPressed: () {},
-          child: SizedBox(
-            width: width,
-            height: height,
-            child: Row(
-              children: <Widget>[
-                text,
-                icon,
-              ],
-            ),
-          ))
-    ]);
-  }
-}
