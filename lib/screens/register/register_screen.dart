@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:project_android/components/header.dart';
-import 'package:project_android/components/text_style.dart';
 import 'package:project_android/constants.dart';
 import 'package:project_android/screens/register/components/body.dart';
 
@@ -21,7 +20,8 @@ class Register extends StatelessWidget {
             child: Header(
                 title: 'Đăng kí',
                 backgroundColor: backgroundColor,
-                textColor: primaryTextColor),
+                textColor: primaryTextColor,
+                action: null),
             preferredSize: Size(double.infinity, 55),
           ),
           body: BodyRegister(),

@@ -13,7 +13,8 @@ class ForgotPassword extends StatelessWidget {
         child: Header(
             title: 'Đặt lại mật khẩu',
             backgroundColor: backgroundColor,
-            textColor: primaryTextColor),
+            textColor: primaryTextColor,
+            action: null),
         preferredSize: Size(double.infinity, 55),
       ),
       body: Container(

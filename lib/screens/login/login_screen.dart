@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:project_android/components/header.dart';
-import 'package:project_android/components/text_style.dart';
 import 'package:project_android/constants.dart';
 import 'package:project_android/screens/login/components/body.dart';
 
@@ -21,7 +20,8 @@ class Login extends StatelessWidget {
             child: Header(
                 title: 'Đăng Nhập',
                 backgroundColor: backgroundColor,
-                textColor: primaryTextColor),
+                textColor: primaryTextColor,
+                action: null),
             preferredSize: Size(double.infinity, 55),
           ),
           body: BodyLogin(),
