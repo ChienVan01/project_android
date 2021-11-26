@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_android/components/header.dart';
 import 'package:project_android/components/text_style.dart';
 import 'package:project_android/constants.dart';
 
@@ -8,24 +9,13 @@ class ForgotPassword extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(Icons.navigate_before_outlined,
-              color: primaryTextColor, size: 30),
-        ),
-        title: Container(
-          width: 240,
-          child: Center(
-            child: Text(
-              'Đặt lại mật khẩu',
-              style: style(22, primaryTextColor, FontWeight.bold),
-            ),
-          ),
-        ),
-        backgroundColor: backgroundColor,
+      appBar: const PreferredSize(
+        child: Header(
+            title: 'Đặt lại mật khẩu',
+            backgroundColor: backgroundColor,
+            textColor: primaryTextColor,
+            action: null),
+        preferredSize: Size(double.infinity, 55),
       ),
       body: Container(
         padding: const EdgeInsets.only(
