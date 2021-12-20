@@ -39,7 +39,6 @@ class _MainScreenState extends State<MainScreen> {
     const HomeScreen(),
     const Cart(),
     const AccountsScreen(),
-    
   ];
 
   Widget footer() {

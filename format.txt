@@ -1,0 +1,3 @@
+var noSimbolInUSFormat = new NumberFormat.currency(locale: "en_US",
+      symbol: "");
+noSimbolInUSFormat.format(data)

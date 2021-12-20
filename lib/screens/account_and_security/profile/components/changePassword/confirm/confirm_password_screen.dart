@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:project_android/screens/account_and_security/header.dart';
+import 'package:project_android/components/header.dart';
+import 'package:project_android/constants.dart';
 import 'package:project_android/screens/account_and_security/profile/components/button_widget.dart';
 import 'package:project_android/screens/account_and_security/profile/components/textfield_widget.dart';
 
@@ -9,13 +10,18 @@ class ConfirmPasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: PreferredSize(
-            preferredSize: const Size(double.infinity, 50),
-            child: header("Xác nhận mật khẩu", context, null)),
+        appBar: const PreferredSize(
+        child: Header(
+            title: 'Xác nhận mật khẩu',
+            backgroundColor: primaryColor,
+            textColor: colorWhite,
+            action: null),
+        preferredSize: Size(double.infinity, 55),
+      ),
         body: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children:const <Widget>[
-              TextFieldWidget(text: "Nhập mật khẩu hiện tại"),
+              TextFieldWidget(text: "Nhập mật khẩu hiện tại",obscureText:true),
               ButtonWidget(txtBtn: "Tiếp tục",press:'/account_and_security/profile/components/changePassword/change'),
             ]));
   }

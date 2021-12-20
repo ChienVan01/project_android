@@ -73,7 +73,7 @@ Widget directionalItem() {
                 text: 'Trung Tâm Hỗ Trợ',
                 iconLeading: Icons.help_outline_outlined,
                 iconTraling: Icons.navigate_next_outlined,
-                press: '/account/components/order'),
+                press: '/account_and_security/support'),
           ],
         ),
       )

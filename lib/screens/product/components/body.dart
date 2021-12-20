@@ -1,47 +1,82 @@
+// ignore_for_file: unused_import
+
 import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:intl/intl.dart';
 import 'package:project_android/constants.dart';
+import 'package:project_android/screens/detailProduct/detail_product_screen.dart';
 import 'package:project_android/screens/product/components/navbar.dart';
 import 'package:project_android/model/product.dart';
+import 'package:project_android/screens/product/components/product_provider.dart';
+import 'package:provider/provider.dart';
 
-class ListProduct extends StatelessWidget {
+class ListProduct extends StatefulWidget {
   const ListProduct({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<ListProduct> createState() => _Liststate();
+}
+
+class _Liststate extends State<ListProduct> {
+  @override
+  void initState() {
+    super.initState();
+    final products = Provider.of<ProductProvider>(context, listen: false);
+    products.getProduct(context);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const Navbar(),
-        Expanded(
-          child: StaggeredGridView.countBuilder(
-            // physics: const BouncingScrollPhysics(),
-            crossAxisCount: 4,
-            itemCount: product.length,
-            itemBuilder: (BuildContext context, int index) {
-              return GestureDetector(
-                onTap: () {
-                  Navigator.pushNamed(context, '/productdetail');
-                },
-                child: _productItem(
-                  title: product[index].name,
-                  image: product[index].image,
-                  price: product[index].price,
-                ),
-              );
-            },
-            staggeredTileBuilder: (int index) =>
-                const StaggeredTile.count(2, 2.8),
-            mainAxisSpacing: 8,
-            crossAxisSpacing: 8,
-          ),
-        )
-      ],
-    );
+    return Consumer<ProductProvider>(builder: (context, state, child) {
+      return Column(
+        children: [
+          const Navbar(),
+          Expanded(
+            child: StaggeredGridView.countBuilder(
+              // physics: const BouncingScrollPhysics(),
+              crossAxisCount: 4,
+              itemCount: state.products.length,
+              itemBuilder: (BuildContext context, int index) {
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            ProductDetail(product: state.products[index]),
+                      ),
+                    );
+                  },
+                  child: state.loading == true
+                      ? Center(
+                          child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            CircularProgressIndicator(),
+                            SizedBox(height: defaultPadding),
+                            Text('Đang tải...')
+                          ],
+                        ))
+                      : _productItem(
+                          title: state.products[index].name,
+                          image: state.products[index].avatar,
+                          price: state.products[index].price,
+                        ),
+                );
+              },
+              staggeredTileBuilder: (int index) =>
+                  const StaggeredTile.count(2, 2.8),
+              mainAxisSpacing: 8,
+              crossAxisSpacing: 8,
+            ),
+          )
+        ],
+      );
+    });
   }
 }
 
@@ -60,12 +95,12 @@ Widget _productItem({required String title, image, price}) {
             Stack(
               children: [
                 Center(
-                  child: Image.asset(
-                    'assets/images/product/$image',
-                    width: 200,
-                    fit: BoxFit.cover,
-                  ),
-                ),
+                    // child: Image.asset(
+                    //   'assets/$image',
+                    //   width: 200,
+                    //   fit: BoxFit.cover,
+                    // ),
+                    child: Text(image)),
               ],
             ),
           ],
