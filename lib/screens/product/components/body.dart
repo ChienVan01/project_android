@@ -95,12 +95,12 @@ Widget _productItem({required String title, image, price}) {
             Stack(
               children: [
                 Center(
-                    // child: Image.asset(
-                    //   'assets/$image',
-                    //   width: 200,
-                    //   fit: BoxFit.cover,
-                    // ),
-                    child: Text(image)),
+                  child: Image.asset(
+                    'assets/images/product/$image',
+                    width: 200,
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ],
             ),
           ],

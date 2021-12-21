@@ -2,18 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:project_android/screens/discount/component/body.dart';
 import 'package:project_android/screens/discount/component/header.dart';
 
-class Discount extends StatelessWidget {
-  const Discount({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-        home: DiscountSrceen(), debugShowCheckedModeBanner: false);
-  }
-}
-
 /// This is the stateless widget that the main application instantiates.
-class DiscountSrceen extends StatelessWidget {
-  const DiscountSrceen({Key? key}) : super(key: key);
+class DiscountScreen extends StatelessWidget {
+  const DiscountScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

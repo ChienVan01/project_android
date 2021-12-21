@@ -53,8 +53,10 @@ class _NavbarState extends State<Navbar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding:
-          const EdgeInsets.only(left: defaultPadding, right: defaultPadding),
+      padding: const EdgeInsets.only(
+          left: defaultPadding,
+          right: defaultPadding,
+          bottom: defaultPadding / 2),
       // height: 30,
       color: primaryColor,
       child: Row(
@@ -93,11 +95,11 @@ class _NavbarState extends State<Navbar> {
               );
             }).toList(),
           ),
-          ElevatedButton(
-            onPressed: () {},
-            style: ButtonStyle(
-              shadowColor: MaterialStateProperty.all(Colors.transparent),
-            ),
+          InkWell(
+            onTap: () {},
+            // style: ButtonStyle(
+            //   shadowColor: MaterialStateProperty.all(Colors.transparent),
+            // ),
             child: Row(
               children: [
                 const Padding(

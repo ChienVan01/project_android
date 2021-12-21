@@ -29,6 +29,7 @@ import 'package:project_android/screens/register/register_screen.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 import 'screens/main/main_screen.dart';
+import 'package:project_android/screens/payment/payment_screen.dart';
 
 void main() {
   // Bloc.observer = SimpleBlocObserver();

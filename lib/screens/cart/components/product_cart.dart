@@ -70,8 +70,8 @@ class _ProductCartState extends State<ProductCart> {
             // },
           ),
         ),
-        // Image.asset('assets/images/product/${widget.cart.avatar}', width: 120),
-        SizedBox(width: 120, child: Text(widget.cart.avatar)),
+        Image.asset('assets/images/product/${widget.cart.avatar}', width: 120),
+        // SizedBox(width: 120, child: Text(widget.cart.avatar)),
         Flexible(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
