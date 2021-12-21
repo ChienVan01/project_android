@@ -87,7 +87,7 @@ class Respect extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          'Nhận xét:',
+                          'Nhận xét: ',
                           style: style(18, primaryTextColor, FontWeight.bold),
                         ),
                         Flexible(

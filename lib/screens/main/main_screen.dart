@@ -34,12 +34,11 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   List<Widget> pageList = <Widget>[
-    const Discount(),
+    const DiscountScreen(),
     const NotificationSrceen(),
     const HomeScreen(),
     const Cart(),
     const AccountsScreen(),
-    
   ];
 
   Widget footer() {

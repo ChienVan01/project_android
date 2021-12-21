@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:project_android/screens/product/components/body.dart';
 import 'package:project_android/screens/product/components/header_product.dart';
+import 'package:provider/provider.dart';
 
-class Product extends StatelessWidget {
-  const Product({Key? key}) : super(key: key);
+import 'components/product_provider.dart';
+
+class ProductScreen extends StatelessWidget {
+  const ProductScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

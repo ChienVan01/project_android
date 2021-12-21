@@ -1,31 +1,20 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:project_android/model/product.dart';
 import 'package:project_android/screens/detailProduct/components/header_detail_product.dart';
 
 final List<String> imgList = [
   'product01.jpg',
-  'product02.jpg',
-  'product03.jpg',
-  'product04.jpg',
-  'product05.jpg',
-  'product01.jpg'
+  // 'product02.jpg',
+  // 'product03.jpg',
+  // 'product04.jpg',
+  // 'product05.jpg',
+  // 'product01.jpg'
 ];
 
-final List<Widget> imageSliders = imgList
-    .map((item) => Container(
-          height: 250,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10.0),
-              image: DecorationImage(
-                image: AssetImage('assets/images/product/$item'),
-                fit: BoxFit.cover,
-              )),
-        ))
-    .toList();
-
 class ImgSlider extends StatefulWidget {
-  const ImgSlider({Key? key}) : super(key: key);
-
+  const ImgSlider({Key? key, required this.product}) : super(key: key);
+  final Product product;
   @override
   State<StatefulWidget> createState() {
     return _CarouselWithIndicatorState();
@@ -38,6 +27,19 @@ class _CarouselWithIndicatorState extends State<ImgSlider> {
 
   @override
   Widget build(BuildContext context) {
+    // imgList.add(widget.product.avatar);
+
+    final List<Widget> imageSliders = imgList
+        .map((item) => Container(
+              height: 200,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10.0),
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/product/$item'),
+                    fit: BoxFit.cover,
+                  )),
+            ))
+        .toList();
     return Container(
       height: 270,
       // width: 500,
@@ -46,10 +48,31 @@ class _CarouselWithIndicatorState extends State<ImgSlider> {
         children: [
           Expanded(
             child: CarouselSlider(
-              items: imageSliders,
+              items: [
+                Container(
+                  height: 250,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      image: DecorationImage(
+                        image: AssetImage(
+                            'assets/images/product/${widget.product.avatar}'),
+                        fit: BoxFit.cover,
+                      )),
+                ),
+                Container(
+                  height: 250,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      image: DecorationImage(
+                        image: AssetImage(
+                            'assets/images/product/${widget.product.avatar}'),
+                        fit: BoxFit.cover,
+                      )),
+                ),
+              ],
               carouselController: _controller,
               options: CarouselOptions(
-                  height: 260.0,
+                  height: 270.0,
                   enlargeCenterPage: true,
                   aspectRatio: 18 / 9,
                   autoPlayCurve: Curves.easeIn,

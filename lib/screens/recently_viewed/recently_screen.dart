@@ -28,7 +28,7 @@ class Recently extends StatelessWidget {
           ),
         ),
       ),
-      body: const BodyRecently(),
+      // body: const BodyRecently(),
     );
   }
 }
