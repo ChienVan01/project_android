@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:project_android/components/search_screen.dart';
 import 'package:project_android/constants.dart';
+import 'package:project_android/screens/address/address_screen.dart';
+import 'package:project_android/screens/chat/chat_screen.dart';
+import 'package:project_android/screens/choose_voucher/choose_voucher_screen.dart';
 import 'package:project_android/screens/detailProduct/detail_product.dart';
 import 'package:project_android/screens/favorite/favorite_screen.dart';
 import 'package:project_android/screens/forget_password/step01/forget_password.dart';
@@ -11,6 +14,7 @@ import 'package:project_android/screens/order/order_screen.dart';
 import 'package:project_android/screens/product/product_screen.dart';
 import 'package:project_android/screens/register/register_screen.dart';
 import 'screens/main/main_screen.dart';
+import 'package:project_android/screens/payment/payment_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -46,6 +50,10 @@ class MyApp extends StatelessWidget {
         '/register': (context) => const Register(),
         '/forgotpassword/step02': (context) => const ForgotPassStep2(),
         '/forgotpassword/step03': (context) => const ForgotPassStep3(),
+        '/chat': (context) => const ChatScreen(),
+        '/payment': (context) => const PaymentScreen(),
+        '/address': (context) => const AddressScreen(),
+        '/choosevoucher': (context) => const ChooseVoucherScreen(),
       },
     );
   }
