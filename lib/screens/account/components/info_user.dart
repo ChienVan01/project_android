@@ -8,8 +8,8 @@ Widget infoUser() {
       padding: const EdgeInsets.all(defaultPadding / 2),
       child: Row(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(right: defaultPadding / 2),
+          const Padding(
+            padding: EdgeInsets.only(right: defaultPadding / 2),
             child: CircleAvatar(
               radius: 40,
               // backgroundImage: new NetworkImage(

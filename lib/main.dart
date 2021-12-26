@@ -11,10 +11,11 @@ import 'package:project_android/screens/forget_password/step02/step02.dart';
 import 'package:project_android/screens/forget_password/step03/step03.dart';
 import 'package:project_android/screens/login/login_screen.dart';
 import 'package:project_android/screens/order/order_screen.dart';
+import 'package:project_android/screens/payment/payment.dart';
 import 'package:project_android/screens/product/product_screen.dart';
 import 'package:project_android/screens/register/register_screen.dart';
 import 'screens/main/main_screen.dart';
-import 'package:project_android/screens/payment/payment_screen.dart';
+import 'package:project_android/screens/choose_payment/choose_payment_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -51,9 +52,10 @@ class MyApp extends StatelessWidget {
         '/forgotpassword/step02': (context) => const ForgotPassStep2(),
         '/forgotpassword/step03': (context) => const ForgotPassStep3(),
         '/chat': (context) => const ChatScreen(),
-        '/payment': (context) => const PaymentScreen(),
+        '/choosepayment': (context) => const ChoosePaymentScreen(),
         '/address': (context) => const AddressScreen(),
         '/choosevoucher': (context) => const ChooseVoucherScreen(),
+        '/payment': (context) => const PaymentScreen(),
       },
     );
   }

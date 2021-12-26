@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:project_android/screens/payment/component/model.dart';
+import 'package:project_android/screens/choose_payment/component/model.dart';
 
-class PaymentScreen extends StatefulWidget {
-  const PaymentScreen({Key? key}) : super(key: key);
+class ChoosePaymentScreen extends StatefulWidget {
+  const ChoosePaymentScreen({Key? key}) : super(key: key);
   @override
   _PaymentScreen createState() => _PaymentScreen();
 }
 
-class _PaymentScreen extends State<PaymentScreen> {
+class _PaymentScreen extends State<ChoosePaymentScreen> {
   bool isChecked = false;
   @override
   void initState() {
