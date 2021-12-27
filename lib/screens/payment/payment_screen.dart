@@ -14,9 +14,9 @@ class PaymentScreen extends StatefulWidget {
 class _PaymentScreenState extends State<PaymentScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       appBar: PreferredSize(
-          preferredSize: Size(double.maxFinite, 50), child: header()),
+          preferredSize: Size(double.maxFinite, 50), child: Header()),
       body: BodyPayment(),
       bottomNavigationBar: BottomNav(),
     );

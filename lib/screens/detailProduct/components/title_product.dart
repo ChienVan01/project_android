@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:intl/intl.dart';
 import 'package:project_android/constants.dart';
+import 'package:project_android/model/product.dart';
 
 class TitleProduct extends StatelessWidget {
-  const TitleProduct({Key? key}) : super(key: key);
+  const TitleProduct({Key? key, required this.product}) : super(key: key);
+
+  final Product product;
 
   @override
   Widget build(BuildContext context) {
@@ -15,30 +19,31 @@ class TitleProduct extends StatelessWidget {
           color: Colors.white,
           child: Column(
             children: <Widget>[
-              const Text(
-                'Laptop Dell Alienware M15 R6 (P109F001ABL) P109F001 ( 15.6" Quad HD (2K)/ 240Hz/Intel Core i7-11800H/32GB/1TB SSD/NVIDIA GeForce RTX 3060/Windows 10 Home 64-bit/2.7kg)',
-                style: TextStyle(fontSize: 22, color: primaryTextColor),
+              Text(
+                product.name,
+                style: const TextStyle(fontSize: 22, color: primaryTextColor),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
-                    children: const <Widget>[
-                      Padding(
+                    children: <Widget>[
+                      const Padding(
                         padding: EdgeInsets.only(right: defaultPadding / 4),
                         child: Text('Thương hiệu'),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(right: defaultPadding / 4),
+                        padding:
+                            const EdgeInsets.only(right: defaultPadding / 4),
                         child: Text(
-                          'DELL',
+                          product.origin,
                           style: TextStyle(color: primaryColor),
                         ),
                       ),
-                      Text(
-                        '| SKU: 200700392',
-                        style: TextStyle(color: Color(0xFF8D99AE)),
-                      )
+                      // Text(
+                      //   '| SKU: 200700392',
+                      //   style: TextStyle(color: Color(0xFF8D99AE)),
+                      // )
                     ],
                   ),
                 ],
@@ -48,12 +53,15 @@ class TitleProduct extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
-                    children: const <Widget>[
+                    children: <Widget>[
                       Padding(
-                        padding: EdgeInsets.only(right: defaultPadding / 4),
+                        padding:
+                            const EdgeInsets.only(right: defaultPadding / 4),
                         child: Text(
-                          '62.990.000đ',
-                          style: TextStyle(
+                          NumberFormat.decimalPattern()
+                              .format(product.price)
+                              .toString(),
+                          style: const TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                             color: primaryColor,
@@ -61,8 +69,10 @@ class TitleProduct extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '64.990.000đ',
-                        style: TextStyle(
+                        NumberFormat.decimalPattern()
+                            .format(product.price)
+                            .toString(),
+                        style: const TextStyle(
                             color: Colors.grey,
                             decoration: TextDecoration.lineThrough),
                       ),
@@ -91,15 +101,15 @@ class TitleProduct extends StatelessWidget {
           ),
         ),
         Container(
-          margin: EdgeInsets.only(top: defaultPadding / 2),
-          padding: EdgeInsets.all(defaultPadding / 2),
+          margin: const EdgeInsets.only(top: defaultPadding / 2),
+          padding: const EdgeInsets.all(defaultPadding / 2),
           color: Colors.white,
           child: Column(
             children: [
               const Text('Chọn thêm 1 trong những khuyến mãi sau',
                   style: TextStyle(fontSize: 18)),
               Container(
-                margin: EdgeInsets.all(defaultPadding),
+                margin: const EdgeInsets.all(defaultPadding),
                 decoration: BoxDecoration(
                   color: backgroundColor,
                   border: Border.all(

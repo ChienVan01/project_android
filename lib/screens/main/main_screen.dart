@@ -1,6 +1,9 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
+import 'package:project_android/components/text_style.dart';
+import 'package:project_android/constants.dart';
 import 'package:project_android/screens/account/account_screen.dart';
+import 'package:project_android/screens/cart/cart_screen.dart';
 import 'package:project_android/screens/discount/discount_screen.dart';
 import 'package:project_android/screens/home/home_screen.dart';
 import 'package:project_android/screens/product/product_screen.dart';
@@ -15,11 +18,26 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int pageIndex = 2;
+
+  bool isLoading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    loading();
+  }
+
+  Future loading() async {
+    setState(() => isLoading = true);
+    await Future.delayed(const Duration(seconds: 3), () {});
+    setState(() => isLoading = false);
+  }
+
   List<Widget> pageList = <Widget>[
     const DiscountScreen(),
     const NotificationSrceen(),
     const HomeScreen(),
-    const Product(),
+    const Cart(),
     const AccountsScreen(),
   ];
 
@@ -54,17 +72,43 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: PageTransitionSwitcher(
-        transitionBuilder: (child, primaryAnimation, secondaryAnimation) =>
-            FadeThroughTransition(
-          animation: primaryAnimation,
-          secondaryAnimation: secondaryAnimation,
-          child: child,
-        ),
-        child: pageList[pageIndex],
-      ),
-      bottomNavigationBar: footer(),
-    );
+    return isLoading
+        ? Scaffold(
+            body: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/images/logo_chu_s.png',
+                    width: 150,
+                  ),
+                  const SizedBox(height: defaultPadding),
+                  const Padding(
+                    padding: EdgeInsets.all(defaultPadding),
+                    child: CircularProgressIndicator(
+                      backgroundColor: Colors.grey,
+                      strokeWidth: 6,
+                    ),
+                  ),
+                  const SizedBox(height: defaultPadding / 2),
+                  Text('Đang tải...',
+                      style: style(23, primaryTextColor, FontWeight.bold))
+                ],
+              ),
+            ),
+          )
+        : Scaffold(
+            body: PageTransitionSwitcher(
+              transitionBuilder:
+                  (child, primaryAnimation, secondaryAnimation) =>
+                      FadeThroughTransition(
+                animation: primaryAnimation,
+                secondaryAnimation: secondaryAnimation,
+                child: child,
+              ),
+              child: pageList[pageIndex],
+            ),
+            bottomNavigationBar: footer(),
+          );
   }
 }
