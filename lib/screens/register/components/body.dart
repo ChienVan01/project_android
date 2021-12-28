@@ -3,10 +3,19 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:project_android/components/text_style.dart';
 import 'package:project_android/constants.dart';
 
-class BodyRegister extends StatelessWidget {
-  const BodyRegister({Key? key}) : super(key: key);
+class BodyRegister extends StatefulWidget {
+  BodyRegister({Key? key}) : super(key: key);
 
   @override
+  State<BodyRegister> createState() => _BodyRegisterState();
+}
+
+class _BodyRegisterState extends State<BodyRegister> {
+  @override
+  var nameController = TextEditingController();
+  var emailController = TextEditingController();
+  var passwordController = TextEditingController();
+  var repasswordController = TextEditingController();
   Widget build(BuildContext context) {
     return ListView(children: [
       Padding(
@@ -21,7 +30,7 @@ class BodyRegister extends StatelessWidget {
             ),
             TextField(
               decoration: InputDecoration(
-                hintText: 'Tên đăng nhập',
+                hintText: 'Email đăng nhập',
                 hintStyle: style(18, Colors.grey, FontWeight.normal),
                 prefixIcon:
                     const Icon(Icons.person_outline, color: Colors.black),
@@ -83,6 +92,7 @@ class BodyRegister extends StatelessWidget {
             ),
             const SizedBox(height: defaultPadding),
             TextField(
+              controller: repasswordController,
               decoration: InputDecoration(
                 prefixIcon:
                     const Icon(Icons.lock_outlined, color: Colors.black),

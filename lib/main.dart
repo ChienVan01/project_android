@@ -28,9 +28,10 @@ import 'package:project_android/screens/recently_viewed/recently_screen.dart';
 import 'package:project_android/screens/register/register_screen.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'screens/main/main_screen.dart';
 
-void main() {
+void main() async {
   // Bloc.observer = SimpleBlocObserver();
   // final ProductRepository productRepository =
   //     ProductRepository(httpClient: http.Client());
@@ -42,6 +43,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return MultiProvider(
         providers: [
           ChangeNotifierProvider<ProductProvider>(

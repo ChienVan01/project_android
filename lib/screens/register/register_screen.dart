@@ -15,9 +15,9 @@ class Register extends StatelessWidget {
             curentFocus.unfocus();
           }
         },
-        child: const Scaffold(
+        child: Scaffold(
           appBar: PreferredSize(
-            child: Header(
+            child:  Header(
                 title: 'Đăng kí',
                 backgroundColor: backgroundColor,
                 textColor: primaryTextColor,

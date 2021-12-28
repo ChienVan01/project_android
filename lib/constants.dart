@@ -9,4 +9,5 @@ const colorBorder = Color(0xffC4C4C4);
 
 const BaseUrl = 'http://10.0.2.2:8000/api';
 
-const ProductUrl = BaseUrl + '/product';
+const ProductUrl = BaseUrl + '/products';
+const LoginUrl = BaseUrl + '/login';
