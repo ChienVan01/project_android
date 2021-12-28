@@ -58,9 +58,12 @@ class _MainScreenState extends State<MainScreen> {
           BottomNavigationBarItem(
               icon: Icon(Icons.notifications_outlined), label: 'Thông báo'),
           BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home_outlined,
-                size: 35.0,
+              icon: SizedBox(
+                height: 30,
+                child: Icon(
+                  Icons.home_outlined,
+                  size: 45.0,
+                ),
               ),
               label: ''),
           BottomNavigationBarItem(

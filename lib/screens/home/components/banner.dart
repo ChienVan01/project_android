@@ -78,12 +78,11 @@ class _BannerHomeState extends State<BannerHome> {
   Widget build(BuildContext context) {
     return Container(
       height: 170.0,
-      decoration: BoxDecoration(
-          color: primaryColor,
-          borderRadius: const BorderRadius.only(
-            bottomLeft: Radius.circular(7),
-            bottomRight: Radius.circular(7),
-          ),
+      decoration: BoxDecoration(color: primaryColor,
+          // borderRadius: const BorderRadius.only(
+          //   bottomLeft: Radius.circular(7),
+          //   bottomRight: Radius.circular(7),
+          // ),
           boxShadow: [
             BoxShadow(
                 offset: const Offset(0, 10),

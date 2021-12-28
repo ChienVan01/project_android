@@ -37,7 +37,7 @@ class TitleProduct extends StatelessWidget {
                             const EdgeInsets.only(right: defaultPadding / 4),
                         child: Text(
                           product.origin,
-                          style: TextStyle(color: primaryColor),
+                          style: const TextStyle(color: primaryColor),
                         ),
                       ),
                       // Text(

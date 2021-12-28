@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:flutter/material.dart';
 
 const primaryColor = Color(0xffD90429);
@@ -10,3 +12,4 @@ const colorBorder = Color(0xffC4C4C4);
 const BaseUrl = 'http://10.0.2.2:8000/api';
 
 const ProductUrl = BaseUrl + '/product';
+const ProductTypeUrl = BaseUrl + '/product_type';

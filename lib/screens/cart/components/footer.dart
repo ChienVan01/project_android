@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:project_android/components/text_style.dart';
 import 'package:project_android/constants.dart';
-import 'package:project_android/model/product.dart';
 import 'package:project_android/screens/cart/components/cart_provider.dart';
-import 'package:project_android/screens/cart/components/product_cart.dart';
 import 'package:provider/provider.dart';
 
 class FooterCart extends StatelessWidget {
@@ -29,7 +27,7 @@ class FooterCart extends StatelessWidget {
                                 .format(value.getTotalPrice())
                                 .toString() +
                             'đ',
-                        style: style(20, primaryColor, FontWeight.bold)),
+                        style: style(20, primaryColor, FontWeight.bold))
                   ]),
                 ),
                 TextButton(

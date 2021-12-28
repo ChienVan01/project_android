@@ -3,10 +3,6 @@ import 'package:flutter/material.dart';
 
 Widget header() {
   return AppBar(
-    leading: const IconButton(
-        onPressed: _test,
-        icon: Icon(Icons.arrow_back_ios) //phím quay lại screen trước
-        ),
     title: const Text(
       'Thông Báo',
       style: TextStyle(color: backgroundColor, fontWeight: FontWeight.bold),

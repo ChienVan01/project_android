@@ -39,6 +39,13 @@ class infoUser extends StatelessWidget {
                   onTap: () {
                     Navigator.pushNamed(context, '/login');
                   },
+                ),
+                InkWell(
+                  child: const Text('Đăng kí',
+                      style: TextStyle(color: Colors.white, fontSize: 18)),
+                  onTap: () {
+                    Navigator.pushNamed(context, '/register');
+                  },
                 )
               ],
             ),

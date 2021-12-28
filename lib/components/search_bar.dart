@@ -10,8 +10,8 @@ class SearchBar extends StatelessWidget {
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(Colors.white38),
         shadowColor: MaterialStateProperty.all(primaryColor),
-        padding:
-            MaterialStateProperty.all(EdgeInsets.only(top: 15, bottom: 15)),
+        padding: MaterialStateProperty.all(
+            const EdgeInsets.only(top: 15, bottom: 15)),
         elevation: MaterialStateProperty.all(0),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
@@ -24,9 +24,15 @@ class SearchBar extends StatelessWidget {
       onPressed: () {
         Navigator.pushNamed(context, '/search');
       },
-      child: const Padding(
-        padding: EdgeInsets.only(left: defaultPadding / 2),
-        child: Text('Tìm kiếm', style: TextStyle(fontSize: 18)),
+      child: Padding(
+        padding: const EdgeInsets.only(left: defaultPadding / 2),
+        child: Row(
+          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: const [
+            Icon(Icons.search, color: backgroundColor, size: 25),
+            Text('Tìm kiếm', style: TextStyle(fontSize: 18)),
+          ],
+        ),
       ),
     );
   }

@@ -10,7 +10,7 @@ Future<List<Product>> getAllProduct(context) async {
   List<Product> result = [];
   try {
     final response = await http.get(
-      Uri.parse(ProductUrl),
+      Uri.parse(BaseUrl + '/product'),
       headers: {
         HttpHeaders.contentTypeHeader: "application/json",
       },
@@ -26,11 +26,34 @@ Future<List<Product>> getAllProduct(context) async {
   return result;
 }
 
-Future<Product> getDetailProduct(context, id) async {
-  Product result = Product as Product;
+Future<List<Product>> search(String query) async {
+  List<Product> result = [];
+  try {
+    final response = await http.get(Uri.parse(BaseUrl + '/product'));
+    if (response.statusCode == 200) {
+      final item = json.decode(response.body);
+
+      result = (item as List).map((p) => Product.fromJson(p)).where((e) {
+        final titleLower = e.name.toLowerCase();
+        // final authorLower = book.author.toLowerCase();
+        final searchLower = query.toLowerCase();
+
+        return titleLower.contains(searchLower);
+      }).toList();
+    }
+  } catch (e) {
+    rethrow;
+  }
+  return result;
+}
+
+Future<List<Product>> getAllProductbyProductType(context, String id) async {
+  List<Product> result = [];
   try {
     final response = await http.get(
-      Uri.parse(ProductUrl + id),
+//http://10.0.2.2:8000/api/product_type/{id}
+
+      Uri.parse(ProductTypeUrl + '/' + id),
       headers: {
         HttpHeaders.contentTypeHeader: "application/json",
       },
@@ -38,7 +61,7 @@ Future<Product> getDetailProduct(context, id) async {
     if (response.statusCode == 200) {
       final item = json.decode(response.body);
 
-      result = item.map((p) => Product.fromJson(p));
+      result = (item as List).map((p) => Product.fromJson(p)).toList();
     }
   } catch (e) {
     rethrow;

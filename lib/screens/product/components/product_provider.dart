@@ -12,4 +12,11 @@ class ProductProvider extends ChangeNotifier {
     loading = false;
     notifyListeners();
   }
+
+  getProductbyProductType(context, id) async {
+    loading = true;
+    products = await getAllProductbyProductType(context, id);
+    loading = false;
+    notifyListeners();
+  }
 }

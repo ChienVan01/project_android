@@ -1,6 +1,7 @@
 // ignore_for_file: unused_import
 
 import 'package:flutter/material.dart';
+import 'package:project_android/components/filter_list_product.dart';
 import 'package:project_android/components/search_screen.dart';
 import 'package:project_android/constants.dart';
 import 'package:project_android/screens/cart/cart_screen.dart';
@@ -14,11 +15,13 @@ import 'package:project_android/screens/account_and_security/security_screen.dar
 import 'package:project_android/screens/account_and_security/support/support_screen.dart';
 import 'package:project_android/screens/cart/components/cart_provider.dart';
 import 'package:project_android/screens/cart/components/product_cart.dart';
+import 'package:project_android/screens/chat/chat_screen.dart';
 import 'package:project_android/screens/detailProduct/detail_product_screen.dart';
 import 'package:project_android/screens/favorite/favorite_screen.dart';
 import 'package:project_android/screens/forget_password/step01/forget_password.dart';
 import 'package:project_android/screens/forget_password/step02/step02.dart';
 import 'package:project_android/screens/forget_password/step03/step03.dart';
+import 'package:project_android/screens/home/components/product_type_provider.dart';
 import 'package:project_android/screens/loading/loading_screen.dart';
 import 'package:project_android/screens/login/login_screen.dart';
 import 'package:project_android/screens/order/order_screen.dart';
@@ -48,7 +51,7 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider<ProductProvider>(
               create: (_) => ProductProvider()),
           ChangeNotifierProvider(create: (_) => CartProvider()),
-          ChangeNotifierProvider(create: (_) => CartProvider()),
+          ChangeNotifierProvider(create: (_) => ProductTypeProvider()),
         ],
         child: MaterialApp(
           title: 'Shop Gear',
@@ -68,10 +71,10 @@ class MyApp extends StatelessWidget {
           routes: {
             '/': (context) => const MainScreen(),
             '/loading': (context) => const Loading(),
-            '/product': (context) => const ProductScreen(),
+            // '/product': (context) => const ProductScreen(id: null),
             // '/productdetail': (context) => const ProductDetail(),
             '/order': (context) => const OrderScreen(),
-            '/search': (context) => const Search(),
+            '/search': (context) => const FilterListProduct(),
             '/favorite': (context) => const FavoriteScreen(),
             '/recently': (context) => const Recently(),
             '/account_and_security': (context) => const AccountAndSecurity(),
@@ -91,6 +94,7 @@ class MyApp extends StatelessWidget {
                 (context) => const ConfirmPasswordScreen(),
             '/account_and_security/profile/components/changePassword/change':
                 (context) => const ChangePasswordScreen(),
+            '/chat': (context) => const ChatScreen(),
           },
         ));
   }

@@ -12,7 +12,7 @@ Widget headerProduct(context) {
       // Container(),
       Positioned(
         // left: 10,
-        top: defaultPadding * 4,
+        top: defaultPadding * 2,
         left: -defaultPadding,
         right: defaultPadding,
         child: AppBar(
@@ -25,13 +25,7 @@ Widget headerProduct(context) {
           primary: false,
           elevation: 0,
           // backgroundColor: Colors.white.withOpacity(0.25),
-          title: SearchBar(),
-          actions: <Widget>[
-            IconButton(
-              icon: const Icon(Icons.search, color: backgroundColor, size: 33),
-              onPressed: () {},
-            ),
-          ],
+          title: const SearchBar(),
         ),
       ),
     ],
