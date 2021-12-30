@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:project_android/components/filter_list_product.dart';
 import 'package:project_android/components/search_screen.dart';
 import 'package:project_android/constants.dart';
+import 'package:project_android/screens/address/address_screen.dart';
 import 'package:project_android/screens/cart/cart_screen.dart';
 import 'package:project_android/screens/account_and_security/address/address_screen.dart';
 import 'package:project_android/screens/account_and_security/profile/components/changePassword/change/change_password_screen.dart';
@@ -15,7 +16,7 @@ import 'package:project_android/screens/account_and_security/security_screen.dar
 import 'package:project_android/screens/account_and_security/support/support_screen.dart';
 import 'package:project_android/screens/cart/components/cart_provider.dart';
 import 'package:project_android/screens/cart/components/product_cart.dart';
-import 'package:project_android/screens/chat/chat_screen.dart';
+import 'package:project_android/screens/choose_voucher/choose_voucher_screen.dart';
 import 'package:project_android/screens/detailProduct/detail_product_screen.dart';
 import 'package:project_android/screens/favorite/favorite_screen.dart';
 import 'package:project_android/screens/forget_password/step01/forget_password.dart';
@@ -25,6 +26,7 @@ import 'package:project_android/screens/home/components/product_type_provider.da
 import 'package:project_android/screens/loading/loading_screen.dart';
 import 'package:project_android/screens/login/login_screen.dart';
 import 'package:project_android/screens/order/order_screen.dart';
+import 'package:project_android/screens/payment/payment_screen.dart';
 import 'package:project_android/screens/product/components/product_provider.dart';
 import 'package:project_android/screens/product/product_screen.dart';
 import 'package:project_android/screens/recently_viewed/recently_screen.dart';
@@ -33,7 +35,7 @@ import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'screens/main/main_screen.dart';
-import 'package:project_android/screens/payment/payment_screen.dart';
+import 'package:project_android/screens/choose_payment/choose_payment_screen.dart';
 
 void main() async {
   // Bloc.observer = SimpleBlocObserver();
@@ -87,7 +89,7 @@ class MyApp extends StatelessWidget {
             '/login': (context) => const Login(),
             '/forgotpassword': (context) => const ForgotPassword(),
             '/register': (context) => const Register(),
-            '/cart': (context) => const Cart(),
+            '/cart': (context) => const CartScreen(),
             '/forgotpassword/step02': (context) => const ForgotPassStep2(),
             '/forgotpassword/step03': (context) => const ForgotPassStep3(),
             '/account_and_security/profile/components/updateName': (context) =>
@@ -96,7 +98,10 @@ class MyApp extends StatelessWidget {
                 (context) => const ConfirmPasswordScreen(),
             '/account_and_security/profile/components/changePassword/change':
                 (context) => const ChangePasswordScreen(),
-            '/chat': (context) => const ChatScreen(),
+            '/choosevoucher': (context) => const ChooseVoucherScreen(),
+            '/choosepayment': (context) => const ChoosePaymentScreen(),
+            '/payment': (context) => const PaymentScreen(),
+            '/address': (context) => const ChooseAddressScreen()
           },
         ));
   }

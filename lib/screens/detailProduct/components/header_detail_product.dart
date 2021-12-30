@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:project_android/components/search_bar.dart';
 import 'package:project_android/constants.dart';
+import 'package:project_android/model/product.dart';
+import 'package:project_android/screens/cart/cart_screen.dart';
 import 'package:project_android/screens/cart/components/cart_provider.dart';
 import 'package:provider/provider.dart';
 
 class HeaderDetailProduct extends StatelessWidget {
-  const HeaderDetailProduct({Key? key}) : super(key: key);
-
+  const HeaderDetailProduct({Key? key, this.product}) : super(key: key);
+  final Product? product;
   @override
   Widget build(BuildContext context) {
+    final cart = Provider.of<CartProvider>(context);
+    final double total = cart.getTotalPrice();
     return AppBar(
       toolbarHeight: 70,
       leading: IconButton(
@@ -22,7 +26,12 @@ class HeaderDetailProduct extends StatelessWidget {
           children: [
             IconButton(
                 icon: const Icon(Icons.shopping_cart_outlined),
-                onPressed: () => Navigator.pushNamed(context, '/cart')),
+                onPressed: () => Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      // double total = cart.getTotalPrice();
+                      cart.removeTotalPrice(total);
+                      return CartScreen(product: product);
+                    }))),
           ],
         ),
         Padding(

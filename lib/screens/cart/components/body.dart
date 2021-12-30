@@ -50,8 +50,10 @@ class _BodyCartState extends State<BodyCart> {
                             cart.removerCounter();
                             // cart.removeTotalPrice(double.parse(
                             //     snapshot.data![index].price.toString()));
-                            cart.checked(
-                                false, snapshot.data![index].price.toDouble());
+                            if (cart.check == true) {
+                              cart.checked(false,
+                                  snapshot.data![index].price.toDouble());
+                            }
                             snapshot.data!.removeAt(index);
                           });
                         },

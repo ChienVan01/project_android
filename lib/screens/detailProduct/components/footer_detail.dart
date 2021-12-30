@@ -129,7 +129,9 @@ class FooterDetail extends StatelessWidget {
               ),
             ),
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, '/payment');
+          },
         ),
       ],
     );

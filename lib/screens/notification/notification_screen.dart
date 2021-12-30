@@ -13,7 +13,8 @@ class NotificationSrceen extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: PreferredSize(
-            preferredSize: const Size(double.infinity, 50), child: header()),
+            preferredSize: const Size(double.infinity, 50),
+            child: header(context)),
         body: body(context),
         floatingActionButton: const FloatingActionButton(
           onPressed: (_test),
