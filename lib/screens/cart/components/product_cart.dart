@@ -1,6 +1,8 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:project_android/DB/db_config.dart';
+import 'package:project_android/DB/cart_db_config.dart';
 import 'package:project_android/components/text_style.dart';
 import 'package:project_android/constants.dart';
 import 'package:project_android/model/cart.dart';
@@ -24,18 +26,6 @@ class _ProductCartState extends State<ProductCart> {
   @override
   Widget build(BuildContext context) {
     final cartProvider = Provider.of<CartProvider>(context);
-    // Color getColor(Set<MaterialState> states) {
-    //   const Set<MaterialState> interactiveStates = <MaterialState>{
-    //     MaterialState.pressed,
-    //     MaterialState.hovered,
-    //     MaterialState.focused,
-    //   };
-    //   if (states.any(interactiveStates.contains)) {
-    //     return Colors.red;
-    //   }
-    //   return Colors.grey;
-    // }
-
     return Container(
       color: Colors.white,
       padding: const EdgeInsets.all(defaultPadding / 4),
@@ -49,29 +39,24 @@ class _ProductCartState extends State<ProductCart> {
             fillColor: MaterialStateProperty.all(Colors.grey),
             value: isChecked,
             splashRadius: 40,
-            onChanged: (bool? value) => {
-              (bool? value) {
-                setState(() {
-                  isChecked = value!;
-                });
-              },
+            onChanged: (bool? value) {
+              setState(() {
+                isChecked = value!;
+              });
+
+              cartProvider.checked(value, widget.cart.price.toDouble());
             },
-            // (bool? value) {
-            //   setState(() {
-            //     isChecked = value!;
-            //     if (isChecked) {
-            //       totalPrice += (widget.cart.product.price *
-            //           widget.cart.numOfItem);
-            //     } else {
-            //       totalPrice -= (widget.cart.product.price *
-            //           widget.cart.numOfItem);
-            //     }
-            //   });
+            //  (bool? value) => {
+            //   (bool? value) {
+            //     setState(() {
+            //       isChecked = value!;
+            //     });
+            //   },
             // },
           ),
         ),
-        // Image.asset('assets/images/product/${widget.cart.avatar}', width: 120),
-        SizedBox(width: 120, child: Text(widget.cart.avatar)),
+        Image.asset('assets/images/product/${widget.cart.avatar}', width: 120),
+        // SizedBox(width: 120, child: Text(widget.cart.avatar)),
         Flexible(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -79,10 +64,6 @@ class _ProductCartState extends State<ProductCart> {
               Text(
                 widget.cart.name,
                 style: style(16, primaryTextColor, FontWeight.bold),
-              ),
-              Text(
-                'SKU: 1810470',
-                style: style(14, Colors.black45, FontWeight.normal),
               ),
               Text(
                 NumberFormat.decimalPattern().format(widget.cart.price) + 'đ',
@@ -97,137 +78,53 @@ class _ProductCartState extends State<ProductCart> {
                     color: primaryTextColor,
                     decoration: TextDecoration.lineThrough),
               ),
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    if (widget.cart.quantity == 1)
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            left: defaultPadding, right: defaultPadding),
-                        child: Text(
-                          '-',
-                          style:
-                              style(18, Colors.grey.shade300, FontWeight.bold),
-                        ),
-                      )
-                    else
-                      ElevatedButton(
-                        onPressed: () {
-                          int quantity = widget.cart.quantity;
-                          int price = widget.cart.initialPrice;
-                          quantity--;
-                          int? newPrice = price * quantity;
-                          if (quantity > 0) {
-                            dbConfig!
-                                .updateQuantity(Cart(
-                                    id: widget.cart.id,
-                                    productId: widget.cart.id,
-                                    name: widget.cart.name,
-                                    origin: widget.cart.origin,
-                                    productTypeId: widget.cart.productTypeId,
-                                    price: newPrice,
-                                    initialPrice: widget.cart.initialPrice,
-                                    quantity: quantity,
-                                    avatar: widget.cart.avatar,
-                                    status: 1))
-                                .then((value) {
-                              newPrice = 0;
-                              quantity = 0;
-                              cartProvider.removeTotalPrice(double.parse(
-                                  widget.cart.initialPrice.toString()));
-                            }).onError((error, stackTrace) {
-                              print(error.toString());
-                            });
-                          }
-                        },
-                        child: Text(
-                          '-',
-                          style: style(18, primaryTextColor, FontWeight.bold),
-                        ),
-                        style: ButtonStyle(
-                          padding: MaterialStateProperty.all(
-                            const EdgeInsets.all(0),
-                          ),
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.white),
-                          elevation: MaterialStateProperty.all(0),
-                          minimumSize:
-                              MaterialStateProperty.all(const Size(30, 15)),
-                        ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  if (widget.cart.quantity == 1)
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          left: defaultPadding, right: defaultPadding),
+                      child: Text(
+                        '-',
+                        style: style(18, Colors.grey.shade300, FontWeight.bold),
                       ),
-                    Container(
-                      padding: const EdgeInsets.all(0),
-                      width: 40,
-                      height: 23,
-                      decoration: const BoxDecoration(
-                          // border: Border.all(color: Colors.grey, width: 2),
-                          color: Colors.white),
-                      child: Center(
-                        child: Text(
-                          (widget.cart.quantity).toString(),
-                          style: style(16, primaryTextColor, FontWeight.bold),
-                        ),
-                      ),
-                    ),
+                    )
+                  else
                     ElevatedButton(
                       onPressed: () {
                         int quantity = widget.cart.quantity;
                         int price = widget.cart.initialPrice;
-                        quantity++;
+                        quantity--;
                         int? newPrice = price * quantity;
-
-                        dbConfig!
-                            .updateQuantity(Cart(
-                                id: widget.cart.id,
-                                productId: widget.cart.id,
-                                name: widget.cart.name,
-                                origin: widget.cart.origin,
-                                productTypeId: widget.cart.productTypeId,
-                                price: newPrice,
-                                initialPrice: widget.cart.initialPrice,
-                                quantity: quantity,
-                                avatar: widget.cart.avatar,
-                                status: 1))
-                            .then((value) {
-                          newPrice = 0;
-                          quantity = 0;
-                          cartProvider.addTotalPrice(double.parse(
-                              (widget.cart.initialPrice).toString()));
-                        }).onError((error, stackTrace) {
-                          print(error.toString());
-                        });
-
-                        // int quantity = widget.cart.quantity;
-                        // int price = widget.cart.price;
-                        // quantity++;
-                        // int? newPrice = price * quantity;
-                        // dbConfig!
-                        //     .updateQuantity(Cart(
-                        //         id: widget.cart.id,
-                        //         productId: widget.cart.id,
-                        //         name: widget.cart.name,
-                        //         origin: widget.cart.origin,
-                        //         productTypeId: widget.cart.productTypeId,
-                        //         price: newPrice,
-                        //         initialPrice: widget.cart.initialPrice,
-                        //         quantity: quantity,
-                        //         avatar: widget.cart.avatar,
-                        //         status: 1))
-                        //     .then((value) {
-                        //   newPrice = 0;
-                        //   quantity = 0;
-                        //   cartProvider.addTotalPrice(
-                        //       double.parse(widget.cart.price.toString()));
-                        // }).onError((error, stackTrace) {
-                        //   print(error.toString());
-                        // });
+                        if (quantity > 0) {
+                          dbConfig!
+                              .updateQuantity(Cart(
+                                  id: widget.cart.id,
+                                  productId: widget.cart.id,
+                                  name: widget.cart.name,
+                                  origin: widget.cart.origin,
+                                  productTypeId: widget.cart.productTypeId,
+                                  price: newPrice,
+                                  initialPrice: widget.cart.initialPrice,
+                                  quantity: quantity,
+                                  avatar: widget.cart.avatar,
+                                  status: 1))
+                              .then((value) {
+                            newPrice = 0;
+                            quantity = 0;
+                            // cartProvider.removeTotalPrice(double.parse(
+                            //     widget.cart.initialPrice.toString()));
+                          }).onError((error, stackTrace) {
+                            print(error.toString());
+                          });
+                        }
                       },
                       child: Text(
-                        '+',
-                        style: style(18, primaryTextColor, FontWeight.normal),
+                        '-',
+                        style: style(18, primaryTextColor, FontWeight.bold),
                       ),
                       style: ButtonStyle(
                         padding: MaterialStateProperty.all(
@@ -240,8 +137,63 @@ class _ProductCartState extends State<ProductCart> {
                             MaterialStateProperty.all(const Size(30, 15)),
                       ),
                     ),
-                  ],
-                ),
+                  Container(
+                    padding: const EdgeInsets.all(0),
+                    width: 40,
+                    height: 23,
+                    decoration: const BoxDecoration(
+                        // border: Border.all(color: Colors.grey, width: 2),
+                        color: Colors.white),
+                    child: Center(
+                      child: Text(
+                        (widget.cart.quantity).toString(),
+                        style: style(16, primaryTextColor, FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      int quantity = widget.cart.quantity;
+                      int price = widget.cart.initialPrice;
+                      quantity++;
+                      int? newPrice = price * quantity;
+
+                      dbConfig!
+                          .updateQuantity(Cart(
+                              id: widget.cart.id,
+                              productId: widget.cart.id,
+                              name: widget.cart.name,
+                              origin: widget.cart.origin,
+                              productTypeId: widget.cart.productTypeId,
+                              price: newPrice,
+                              initialPrice: widget.cart.initialPrice,
+                              quantity: quantity,
+                              avatar: widget.cart.avatar,
+                              status: 1))
+                          .then((value) {
+                        newPrice = 0;
+                        quantity = 0;
+                        // cartProvider.addTotalPrice(double.parse(
+                        //     (widget.cart.initialPrice).toString()));
+                      }).onError((error, stackTrace) {
+                        print(error.toString());
+                      });
+                    },
+                    child: Text(
+                      '+',
+                      style: style(18, primaryTextColor, FontWeight.normal),
+                    ),
+                    style: ButtonStyle(
+                      padding: MaterialStateProperty.all(
+                        const EdgeInsets.all(0),
+                      ),
+                      backgroundColor: MaterialStateProperty.all(Colors.white),
+                      elevation: MaterialStateProperty.all(0),
+                      minimumSize:
+                          MaterialStateProperty.all(const Size(30, 15)),
+                    ),
+                  ),
+                ],
               )
             ],
           ),
@@ -250,8 +202,7 @@ class _ProductCartState extends State<ProductCart> {
     );
   }
 }
-             
-
+          
 //   Container cartItem() {
 //     return Container(
 //         color: Colors.white,

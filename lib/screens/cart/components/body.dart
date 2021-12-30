@@ -1,7 +1,7 @@
 // ignore_for_file: unused_import
 
 import 'package:flutter/material.dart';
-import 'package:project_android/DB/db_config.dart';
+import 'package:project_android/DB/cart_db_config.dart';
 import 'package:project_android/constants.dart';
 import 'package:project_android/model/cart.dart';
 import 'package:project_android/screens/cart/components/cart_provider.dart';
@@ -42,15 +42,17 @@ class _BodyCartState extends State<BodyCart> {
                     itemCount: snapshot.data!.length,
                     itemBuilder: (context, index) {
                       return Dismissible(
-                        key: Key('2'),
+                        key: Key(snapshot.data![index].id.toString()),
                         direction: DismissDirection.endToStart,
                         onDismissed: (direction) {
                           setState(() {
-                            // snapshot.data!.removeAt(index);
                             dbHelper!.delete(snapshot.data![index].id);
                             cart.removerCounter();
-                            cart.removeTotalPrice(double.parse(
-                                snapshot.data![index].price.toString()));
+                            // cart.removeTotalPrice(double.parse(
+                            //     snapshot.data![index].price.toString()));
+                            cart.checked(
+                                false, snapshot.data![index].price.toDouble());
+                            snapshot.data!.removeAt(index);
                           });
                         },
                         background: Container(

@@ -16,7 +16,7 @@ class BodyProduct extends StatelessWidget {
       color: backgroundColor,
       child: ListView(
         children: [
-          const ImgSlider(),
+          ImgSlider(product: product),
           TitleProduct(product: product),
           const Specifications(),
           const Respect(),
