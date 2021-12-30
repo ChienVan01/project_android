@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:project_android/DB/cart_db_config.dart';
+import 'package:project_android/DB/db_config.dart';
 import 'package:project_android/components/text_style.dart';
 import 'package:project_android/constants.dart';
 import 'package:project_android/model/cart.dart';
@@ -115,8 +115,8 @@ class _ProductCartState extends State<ProductCart> {
                               .then((value) {
                             newPrice = 0;
                             quantity = 0;
-                            // cartProvider.removeTotalPrice(double.parse(
-                            //     widget.cart.initialPrice.toString()));
+                            cartProvider.removeTotalPrice(double.parse(
+                                widget.cart.initialPrice.toString()));
                           }).onError((error, stackTrace) {
                             print(error.toString());
                           });
@@ -173,8 +173,8 @@ class _ProductCartState extends State<ProductCart> {
                           .then((value) {
                         newPrice = 0;
                         quantity = 0;
-                        // cartProvider.addTotalPrice(double.parse(
-                        //     (widget.cart.initialPrice).toString()));
+                        cartProvider.addTotalPrice(double.parse(
+                            (widget.cart.initialPrice).toString()));
                       }).onError((error, stackTrace) {
                         print(error.toString());
                       });

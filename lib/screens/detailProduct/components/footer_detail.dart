@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project_android/DB/cart_db_config.dart';
+import 'package:project_android/DB/db_config.dart';
 import 'package:project_android/constants.dart';
 import 'package:project_android/model/cart.dart';
 import 'package:project_android/model/product.dart';
@@ -129,7 +129,9 @@ class FooterDetail extends StatelessWidget {
               ),
             ),
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, '/payment');
+          },
         ),
       ],
     );

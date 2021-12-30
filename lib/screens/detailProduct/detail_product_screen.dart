@@ -27,9 +27,7 @@ class ProductDetail extends StatelessWidget {
             preferredSize: Size(double.maxFinite, 70),
             child: HeaderDetailProduct()),
         body: BodyProduct(product: product),
-        bottomNavigationBar: FooterDetail(
-          product: product,
-        ),
+        bottomNavigationBar: FooterDetail(product: product),
       ),
     );
   }

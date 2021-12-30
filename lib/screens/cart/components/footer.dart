@@ -43,9 +43,12 @@ class FooterCart extends StatelessWidget {
                       ),
                     ),
                   ),
-                  child: Text(
-                    'Mua hàng',
-                    style: style(20, backgroundColor, FontWeight.bold),
+                  child: InkWell(
+                    onTap: () => Navigator.pushNamed(context, '/payment'),
+                    child: Text(
+                      'Mua hàng',
+                      style: style(20, backgroundColor, FontWeight.bold),
+                    ),
                   ),
                 ),
               ],

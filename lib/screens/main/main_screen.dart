@@ -4,10 +4,12 @@ import 'package:project_android/components/text_style.dart';
 import 'package:project_android/constants.dart';
 import 'package:project_android/screens/account/account_screen.dart';
 import 'package:project_android/screens/cart/cart_screen.dart';
+import 'package:project_android/screens/cart/components/cart_provider.dart';
 import 'package:project_android/screens/discount/discount_screen.dart';
 import 'package:project_android/screens/home/home_screen.dart';
 import 'package:project_android/screens/product/product_screen.dart';
 import 'package:project_android/screens/notification/notification_screen.dart';
+import 'package:provider/provider.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -37,11 +39,13 @@ class _MainScreenState extends State<MainScreen> {
     const DiscountScreen(),
     const NotificationSrceen(),
     const HomeScreen(),
-    const Cart(),
+    const CartScreen(),
     const AccountsScreen(),
   ];
 
   Widget footer() {
+    final cart = Provider.of<CartProvider>(context);
+    final double total = cart.getTotalPrice();
     return BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.white,
@@ -49,6 +53,8 @@ class _MainScreenState extends State<MainScreen> {
         onTap: (value) {
           setState(() {
             pageIndex = value;
+
+            cart.removeTotalPrice(total);
           });
         },
         currentIndex: pageIndex,

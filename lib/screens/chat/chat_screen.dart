@@ -14,8 +14,8 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatPageState extends State<ChatScreen> {
   List<types.Message> _messages = [];
-  final _user = const types.User(id: '06c33e8b-e835-4736-80f4-63f44b66666c');
-  final _bot = const types.User(id: '03d63e8b-e535-4536-81f4-63f44b61466c');
+  final _user = const types.User(id: 'U000001');
+  final _bot = const types.User(id: 'BOT000001');
 
   @override
   void initState() {
