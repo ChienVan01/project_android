@@ -5,6 +5,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:project_android/components/search_screen.dart';
 import 'package:project_android/model/product.dart';
+import 'package:project_android/screens/detailProduct/detail_product_screen.dart';
 import 'package:project_android/screens/product/components/product_provider.dart';
 import 'package:project_android/services/product_service.dart';
 import 'package:provider/provider.dart';
@@ -19,6 +20,7 @@ class FilterListProduct extends StatefulWidget {
 class _FilterListProductState extends State<FilterListProduct> {
   // List<Product> products = [];
   List<Product> products = [];
+  List<Product> productStock = [];
 
   String query = '';
   Timer? debouncer;
@@ -26,7 +28,7 @@ class _FilterListProductState extends State<FilterListProduct> {
   void initState() {
     super.initState();
     final productP = Provider.of<ProductProvider>(context, listen: false);
-    products = productP.products;
+    productStock = productP.products;
     // init();
   }
 
@@ -77,7 +79,7 @@ class _FilterListProductState extends State<FilterListProduct> {
 
   Future searchBook(String query) async => debounce(() async {
         // final products = Provider.of<ProductProvider>(context);
-        products = products.where((e) {
+        products = productStock.where((e) {
           final nameLower = e.name.toLowerCase();
           final originLower = e.origin.toLowerCase();
           final searchLower = query.toLowerCase();
@@ -93,14 +95,20 @@ class _FilterListProductState extends State<FilterListProduct> {
           this.products = products;
         });
       });
-  Widget buildSearchProduct(Product product) => ListTile(
-        leading: SizedBox(
-          width: 50,
-          child: Image.network(
-            'http://10.0.2.2/upload/product/${product.avatar}',
-            fit: BoxFit.cover,
+  Widget buildSearchProduct(Product product) => InkWell(
+        onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ProductDetail(product: product))),
+        child: ListTile(
+          leading: SizedBox(
+            width: 50,
+            child: Image.network(
+              'http://10.0.2.2/upload/product/${product.avatar}',
+              fit: BoxFit.cover,
+            ),
           ),
+          title: Text(product.name),
         ),
-        title: Text(product.name),
       );
 }

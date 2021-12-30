@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:project_android/DB/db_config.dart';
+import 'package:project_android/DB/cart_db_config.dart';
 import 'package:project_android/model/cart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

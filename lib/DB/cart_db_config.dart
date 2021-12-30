@@ -34,7 +34,7 @@ class DBConfig {
   Future<Cart> insert(Cart cart) async {
     print(cart.toJson());
     var dbClient = await db;
-    await dbClient!.insert('cart', cart.toJson());
+    await dbClient?.insert('cart', cart.toJson());
     return cart;
   }
 
