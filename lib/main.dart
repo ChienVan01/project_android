@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:project_android/components/filter_list_product.dart';
 import 'package:project_android/components/search_screen.dart';
 import 'package:project_android/constants.dart';
+import 'package:project_android/screens/account/account_screen.dart';
 import 'package:project_android/screens/address/address_screen.dart';
 import 'package:project_android/screens/cart/cart_screen.dart';
 import 'package:project_android/screens/account_and_security/address/address_screen.dart';
@@ -81,6 +82,7 @@ class MyApp extends StatelessWidget {
             '/search': (context) => const FilterListProduct(),
             '/favorite': (context) => const FavoriteScreen(),
             '/recently': (context) => const Recently(),
+            '/account': (context) => const AccountsScreen(),
             '/account_and_security': (context) => const AccountAndSecurity(),
             '/account_and_security/profile': (context) => const ProfileScreen(),
             '/account_and_security/address': (context) => const AddressScreen(),

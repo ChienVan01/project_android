@@ -9,8 +9,8 @@ class Product {
   int quantity;
   String avatar;
   int status;
-  Null createdAt;
-  Null updatedAt;
+  String? createdAt;
+  String? updatedAt;
 
   Product({
     required this.id,

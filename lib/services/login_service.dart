@@ -24,21 +24,26 @@ Future<Profile> login(String email,String password,context) async {
         // print ("response body ${response.body}");
 
         result = Profile.fromJson(json.decode(response.body));
-        // print ("result $result");
         // print(result.user!.name);
          ScaffoldMessenger.of(context)
           .showSnackBar(const SnackBar(content: Text("Login Successfully")));
         Navigator.pushNamed(context, "/");
         
       } else {
-        //  ScaffoldMessenger.of(context)
-        //   .showSnackBar(SnackBar(content: Text("Fail to load Data")));
           showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            title: Text("Đăng nhập thất bại "),
-            content: Text("Vui lòng nhập lại tài khoản hoặc mật khẩu"),
-            
+            title:const Text("Đăng nhập thất bại "),
+            content:const Text("Vui lòng nhập lại tài khoản hoặc mật khẩu"),
+            actions: <Widget>[
+            // usually buttons at the bottom of the dialog
+            TextButton(
+              child: const Text("OK"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
           ));
       }
       
