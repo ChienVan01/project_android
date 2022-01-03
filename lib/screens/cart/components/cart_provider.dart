@@ -17,8 +17,8 @@ class CartProvider with ChangeNotifier {
   late Future<List<Cart>> cart;
   // Future<List<Cart>> get cart => _cart;
 
-  Future<List<Cart>> getData() async {
-    cart = db.getCartList();
+  Future<List<Cart>> getData(int id) async {
+    cart = db.getCartList(id, 'cart');
     return cart;
   }
 

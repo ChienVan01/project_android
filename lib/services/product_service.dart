@@ -10,7 +10,7 @@ Future<List<Product>> getAllProduct(context) async {
   List<Product> result = [];
   try {
     final response = await http.get(
-      Uri.parse(BaseUrl + '/product'),
+      Uri.parse(BaseUrl + '/products'),
       headers: {
         HttpHeaders.contentTypeHeader: "application/json",
       },
@@ -29,7 +29,7 @@ Future<List<Product>> getAllProduct(context) async {
 Future<List<Product>> search(String query) async {
   List<Product> result = [];
   try {
-    final response = await http.get(Uri.parse(BaseUrl + '/product'));
+    final response = await http.get(Uri.parse(BaseUrl + '/products'));
     if (response.statusCode == 200) {
       final item = json.decode(response.body);
 

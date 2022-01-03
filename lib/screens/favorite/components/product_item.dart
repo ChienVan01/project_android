@@ -1,90 +1,121 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:project_android/DB/db_config.dart';
 import 'package:project_android/constants.dart';
+import 'package:project_android/screens/favorite/components/favorite_provider.dart';
+import 'package:provider/provider.dart';
 
+class productItem extends StatefulWidget {
+  const productItem(
+      {Key? key,
+      required this.id,
+      required this.title,
+      required this.image,
+      required this.price})
+      : super(key: key);
+  final int id, price;
+  final String title, image;
 
+  @override
+  State<productItem> createState() => _productItemState();
+}
 
-Widget productItem({required String title, image, price}) {
-  return Container(
-    width: 180.0,
-    decoration: const BoxDecoration(
-      borderRadius: BorderRadius.all(Radius.circular(8.0)),
-      color: colorWhite,
-    ),
-    child: Column(
-      children: <Widget>[
-        Image.asset(
-          'assets/images/product/$image',
-          width: 100,
-          height: 100,
-          fit: BoxFit.cover,
-        ),
-        const SizedBox(
-          height: 8,
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: defaultPadding / 2),
-          child: Align(
-            alignment: Alignment.topLeft,
-            child: Column(children: <Widget>[
-              Text(
-                title,
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-            ]),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: defaultPadding / 2),
-          child: Align(
-              alignment: Alignment.topLeft,
-              child: Column(children: [
-                Text(
-                  NumberFormat.decimalPattern().format(price),
-                  style: const TextStyle(
-                      fontWeight: FontWeight.bold, color: primaryColor),
-                ),
-                Text(
-                  NumberFormat.decimalPattern().format(price * 1.3),
-                  style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.grey,
-                      fontSize: 13,
-                      decoration: TextDecoration.lineThrough),
-                ),
-              ])),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(bottom: defaultPadding / 2),
-          child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+class _productItemState extends State<productItem> {
+  DBConfig dbConfig = DBConfig();
+  @override
+  Widget build(BuildContext context) {
+    bool ischeck = false;
+    final wishList = Provider.of<FavoriteProvider>(context);
+    return ischeck == false
+        ? Container(
+            width: 180.0,
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(8.0)),
+              color: colorWhite,
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                
-                const Icon(
-                  Icons.favorite_outlined,
-                  color: primaryColor,
+                Image.asset(
+                  'assets/images/product/${widget.image}',
+                  width: 100,
+                  height: 100,
+                  fit: BoxFit.cover,
                 ),
-                ElevatedButton(
-                 
-                    onPressed: () {},
-                    style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(colorWhite),
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(3),
-                                    side: const BorderSide(color: primaryColor),
-                                    
-                                ))),
-                                    
-                    child: const Text("Tìm sản phảm",
-                        style: TextStyle(color: primaryColor)))
-              ]),
-        )
-      ],
-    ),
-  );
+                const SizedBox(height: 8),
+                Padding(
+                  padding: const EdgeInsets.only(left: defaultPadding / 2),
+                  child: Align(
+                    alignment: Alignment.topLeft,
+                    child: Column(children: <Widget>[
+                      Text(
+                        widget.title,
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      // const SizedBox(height: 8),
+                    ]),
+                  ),
+                ),
+                // Padding(
+                //   padding: const EdgeInsets.only(left: defaultPadding / 2),
+                //   child: Align(
+                //       alignment: Alignment.topLeft,
+                //       child: Column(children: [
+                //         Text(
+                //           NumberFormat.decimalPattern().format(price),
+                //           style: const TextStyle(
+                //               fontWeight: FontWeight.bold, color: primaryColor),
+                //         ),
+                //         Text(
+                //           NumberFormat.decimalPattern().format(price * 1.3.toInt()),
+                //           style: const TextStyle(
+                //               fontWeight: FontWeight.bold,
+                //               color: Colors.grey,
+                //               fontSize: 13,
+                //               decoration: TextDecoration.lineThrough),
+                //         ),
+                //       ])),
+                // ),
+                Padding(
+                  padding: const EdgeInsets.all(defaultPadding / 2),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(children: [
+                        Text(
+                          NumberFormat.decimalPattern().format(widget.price),
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold, color: primaryColor),
+                        ),
+                        Text(
+                          NumberFormat.decimalPattern()
+                              .format(widget.price * 1.3.toInt()),
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey,
+                              fontSize: 13,
+                              decoration: TextDecoration.lineThrough),
+                        ),
+                      ]),
+                      InkWell(
+                        onTap: () {
+                          dbConfig.deleteWish(widget.id, 'wishlist');
+                          // setState(() {
+                          //   ischeck = true;
+                          //   print(ischeck);
+                          // });
+                        },
+                        child: const Icon(
+                          Icons.favorite_outlined,
+                          color: primaryColor,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          )
+        : Container();
+  }
 }

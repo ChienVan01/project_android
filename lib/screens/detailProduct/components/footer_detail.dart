@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:project_android/DB/db_config.dart';
 import 'package:project_android/constants.dart';
@@ -5,6 +7,7 @@ import 'package:project_android/model/cart.dart';
 import 'package:project_android/model/product.dart';
 import 'package:project_android/screens/cart/components/cart_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:uuid/uuid.dart';
 
 class FooterDetail extends StatelessWidget {
   const FooterDetail({Key? key, required this.product}) : super(key: key);
@@ -45,17 +48,20 @@ class FooterDetail extends StatelessWidget {
                 print(product.origin);
                 int quantity = 1;
                 dbConfig
-                    .insert(Cart(
-                        id: product.id,
-                        productId: product.id,
-                        name: product.name,
-                        origin: product.origin,
-                        productTypeId: product.productTypeId,
-                        price: product.price,
-                        initialPrice: product.price,
-                        quantity: quantity,
-                        avatar: product.avatar,
-                        status: 1))
+                    .insert(
+                        Cart(
+                            id: product.id.toString() + '2',
+                            productId: product.id,
+                            userId: 2,
+                            name: product.name,
+                            origin: product.origin,
+                            productTypeId: product.productTypeId,
+                            price: product.price,
+                            initialPrice: product.price,
+                            quantity: quantity,
+                            avatar: product.avatar,
+                            status: 1),
+                        'cart')
                     .then((value) {
                   // cart.addTotalPrice(double.parse(product.price.toString()));
                   // cart.addCounter();

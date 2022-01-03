@@ -18,6 +18,7 @@ import 'package:project_android/screens/cart/components/cart_provider.dart';
 import 'package:project_android/screens/cart/components/product_cart.dart';
 import 'package:project_android/screens/choose_voucher/choose_voucher_screen.dart';
 import 'package:project_android/screens/detailProduct/detail_product_screen.dart';
+import 'package:project_android/screens/favorite/components/favorite_provider.dart';
 import 'package:project_android/screens/favorite/favorite_screen.dart';
 import 'package:project_android/screens/forget_password/step01/forget_password.dart';
 import 'package:project_android/screens/forget_password/step02/step02.dart';
@@ -54,6 +55,7 @@ class MyApp extends StatelessWidget {
               create: (_) => ProductProvider()),
           ChangeNotifierProvider(create: (_) => CartProvider()),
           ChangeNotifierProvider(create: (_) => ProductTypeProvider()),
+          ChangeNotifierProvider(create: (_) => FavoriteProvider()),
         ],
         child: MaterialApp(
           title: 'Shop Gear',
