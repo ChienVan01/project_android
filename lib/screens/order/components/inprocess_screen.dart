@@ -12,8 +12,8 @@ class InprocssOrderScreen extends StatelessWidget {
       padding: const EdgeInsets.only(top: defaultPadding / 2),
       child: ListView(
         children: [
-          detailOrderWidget("product02.jpg", "Laptop Gaming Lenovo", 1,
-              "19.900.000đ", "Đang Giao Hàng", "Xem"),
+          detailOrderWidget(context, "product02.jpg", "Laptop Gaming Lenovo", 1,
+              "19.900.000đ", "Đang Giao Hàng", "Xem", ''),
         ],
       ),
     );

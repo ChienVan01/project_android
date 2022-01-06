@@ -51,7 +51,7 @@ Widget directionalItem() {
                 text: 'Đánh Giá Của Tôi',
                 iconLeading: Icons.star_border_outlined,
                 iconTraling: Icons.navigate_next_outlined,
-                press: '/account/components/order'),
+                press: '/rating'),
           ],
         ),
       ),

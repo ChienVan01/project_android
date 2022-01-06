@@ -27,6 +27,7 @@ import 'package:project_android/screens/order/order_screen.dart';
 import 'package:project_android/screens/payment/payment_screen.dart';
 import 'package:project_android/screens/product/components/product_provider.dart';
 import 'package:project_android/screens/product/product_screen.dart';
+import 'package:project_android/screens/rating/rating_screen.dart';
 import 'package:project_android/screens/recently_viewed/recently_screen.dart';
 import 'package:project_android/screens/register/register_screen.dart';
 import 'package:http/http.dart' as http;
@@ -97,7 +98,8 @@ class MyApp extends StatelessWidget {
             '/choosevoucher': (context) => const ChooseVoucherScreen(),
             '/choosepayment': (context) => const ChoosePaymentScreen(),
             '/payment': (context) => const PaymentScreen(),
-            '/address': (context) => const ChooseAddressScreen()
+            '/address': (context) => const ChooseAddressScreen(),
+            '/rating': (context)=> const RatingScreen()
           },
         ));
   }

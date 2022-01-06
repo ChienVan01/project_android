@@ -13,8 +13,16 @@ class DeliveredOrderScreen extends StatelessWidget {
       padding: const EdgeInsets.only(top: defaultPadding / 2),
       child: ListView(
         children: [
-          detailOrderWidget("product01.jpg", "Chuột Gaming Logitec G502 (Đen)",
-              1, "19.900.000đ", "Giao hàng thành công", "Đánh Giá"),
+          detailOrderWidget(
+              context,
+              "product01.jpg",
+              "Chuột Gaming Logitec G502 (Đen)",
+              1,
+              "19.900.000đ",
+              "Giao hàng thành công",
+              "Đánh Giá",
+              '/rating' //Navigator.pushNamed(context, "/rating")
+              ),
         ],
       ),
     );

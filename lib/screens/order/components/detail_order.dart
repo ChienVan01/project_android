@@ -3,9 +3,11 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:project_android/constants.dart';
 
-Widget detailOrderWidget(String img,String productName,int qty,String unitPrice,String status, String txtButton) {
+Widget detailOrderWidget(context, String img, String productName, int qty,
+    String unitPrice, String status, String txtButton, String press) {
   return Container(
-    padding: const EdgeInsets.fromLTRB(defaultPadding,defaultPadding/2,defaultPadding,defaultPadding/2),
+    padding: const EdgeInsets.fromLTRB(
+        defaultPadding, defaultPadding / 2, defaultPadding, defaultPadding / 2),
     margin: const EdgeInsets.only(bottom: defaultPadding / 2),
     color: Colors.white,
     child: Column(
@@ -37,11 +39,11 @@ Widget detailOrderWidget(String img,String productName,int qty,String unitPrice,
                               fontWeight: FontWeight.bold,
                               color: Colors.black,
                             )),
-                      const  SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         Text(
                           "Số lượng : $qty",
                         ),
-                       const SizedBox(height: 20),
+                        const SizedBox(height: 20),
                         Text(unitPrice,
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
@@ -54,7 +56,7 @@ Widget detailOrderWidget(String img,String productName,int qty,String unitPrice,
             )
           ],
         ),
-       const Divider(
+        const Divider(
           height: 30,
           color: Colors.black,
         ),
@@ -88,8 +90,8 @@ Widget detailOrderWidget(String img,String productName,int qty,String unitPrice,
         ),
         Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Row(children: [
-           const Padding(
-              padding:  EdgeInsets.only(right: defaultPadding / 2),
+            const Padding(
+              padding: EdgeInsets.only(right: defaultPadding / 2),
               child: Icon(
                 Icons.local_shipping_outlined,
               ),
@@ -113,7 +115,9 @@ Widget detailOrderWidget(String img,String productName,int qty,String unitPrice,
             Align(
               alignment: Alignment.topRight,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  press == '' ? '' : Navigator.pushNamed(context, press);
+                },
                 child: Text(txtButton),
               ),
             )
