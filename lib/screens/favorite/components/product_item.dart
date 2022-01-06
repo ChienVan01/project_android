@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:project_android/DB/db_config.dart';
@@ -5,8 +7,8 @@ import 'package:project_android/constants.dart';
 import 'package:project_android/screens/favorite/components/favorite_provider.dart';
 import 'package:provider/provider.dart';
 
-class productItem extends StatefulWidget {
-  const productItem(
+class ProductItem extends StatefulWidget {
+  const ProductItem(
       {Key? key,
       required this.id,
       required this.title,
@@ -17,15 +19,15 @@ class productItem extends StatefulWidget {
   final String title, image;
 
   @override
-  State<productItem> createState() => _productItemState();
+  State<ProductItem> createState() => _ProductItemState();
 }
 
-class _productItemState extends State<productItem> {
-  DBConfig dbConfig = DBConfig();
+class _ProductItemState extends State<ProductItem> {
+  DBConfig dbConfig = DBConfig.instance;
   @override
   Widget build(BuildContext context) {
     bool ischeck = false;
-    final wishList = Provider.of<FavoriteProvider>(context);
+    // final wishList = Provider.of<FavoriteProvider>(context);
     return ischeck == false
         ? Container(
             width: 180.0,

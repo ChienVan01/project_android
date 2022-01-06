@@ -76,7 +76,7 @@ class _BodyState extends State<Body> {
                         mainAxisSpacing: 8,
                         crossAxisSpacing: 8,
                         itemCount: snapshot.data!.length,
-                        itemBuilder: (context, index) => productItem(
+                        itemBuilder: (context, index) => ProductItem(
                               id: snapshot.data![index].productId,
                               title: snapshot.data![index].name,
                               image: snapshot.data![index].avatar,

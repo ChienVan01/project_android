@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:project_android/screens/choose_payment/component/model.dart';
 
 class ChoosePaymentScreen extends StatefulWidget {
@@ -50,7 +49,7 @@ class _PaymentScreen extends State<ChoosePaymentScreen> {
         title: const Text('Phương Thức Thanh Toán'),
       ),
       body: Container(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         child: ListView.builder(
           itemCount: itemData.length,
           itemBuilder: (BuildContext context, int index) {
@@ -61,7 +60,7 @@ class _PaymentScreen extends State<ChoosePaymentScreen> {
               children: [
                 ExpansionPanel(
                   body: Container(
-                    padding: EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -96,7 +95,7 @@ class _PaymentScreen extends State<ChoosePaymentScreen> {
                                   ),
                                   IconButton(
                                       onPressed: () {},
-                                      icon: Icon(Icons.check_circle)),
+                                      icon: const Icon(Icons.check_circle)),
                                 ],
                               )
                             ]),

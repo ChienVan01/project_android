@@ -12,7 +12,7 @@ class _SearchWidgetState extends State<SearchWidget> {
   final TextEditingController _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 50,
       child: TextFormField(
         style: const TextStyle(color: Colors.white, fontSize: 18),

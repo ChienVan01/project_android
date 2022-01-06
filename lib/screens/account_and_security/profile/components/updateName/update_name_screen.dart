@@ -9,20 +9,25 @@ class UpdateNameScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar:  PreferredSize(
+        appBar: PreferredSize(
           child: Header(
               title: 'Sửa tên',
               backgroundColor: primaryColor,
               textColor: colorWhite,
               action: <Widget>[
-                ElevatedButton(onPressed: () {}, child: const Text("Lưu"),style: ButtonStyle(elevation: MaterialStateProperty.all(0),))
+                ElevatedButton(
+                    onPressed: () {},
+                    child: const Text("Lưu"),
+                    style: ButtonStyle(
+                      elevation: MaterialStateProperty.all(0),
+                    ))
               ]),
-          preferredSize: Size(double.infinity, 55),
+          preferredSize: const Size(double.infinity, 55),
         ),
         body: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const <Widget>[
-              TextFieldWidget(text: "Nhập vào đây",obscureText:false),
+              TextFieldWidget(text: "Nhập vào đây", obscureText: false),
               Padding(
                 padding: EdgeInsets.all(defaultPadding / 2),
                 child: Text("dưới 100 kí tự"),

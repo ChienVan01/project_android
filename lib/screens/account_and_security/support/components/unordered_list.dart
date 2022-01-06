@@ -1,7 +1,9 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 
 class UnorderedList extends StatelessWidget {
-  UnorderedList(this.widgets);
+  const UnorderedList(this.widgets);
   final List<Widget> widgets;
   @override
   Widget build(BuildContext context) {
@@ -10,13 +12,14 @@ class UnorderedList extends StatelessWidget {
       // Add list item
       widgetList.add(UnorderedListItem(widget));
       // Add space between items
-      widgetList.add(SizedBox(height: 5.0));
+      widgetList.add(const SizedBox(height: 5.0));
     }
     return Column(children: widgetList);
   }
 }
+
 class UnorderedListItem extends StatelessWidget {
-  UnorderedListItem(this.widget);
+  const UnorderedListItem(this.widget);
   final Widget widget;
 
   @override
@@ -24,7 +27,7 @@ class UnorderedListItem extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text("• "),
+        const Text("• "),
         Expanded(
           child: widget,
         ),

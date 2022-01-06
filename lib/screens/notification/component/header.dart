@@ -7,7 +7,7 @@ Widget header(context) {
         onPressed: () {
           Navigator.pop(context);
         },
-        icon: Icon(Icons.arrow_back_ios) //phím quay lại screen trước
+        icon: const Icon(Icons.arrow_back_ios) //phím quay lại screen trước
         ),
     title: const Text(
       'Thông Báo',
@@ -16,8 +16,4 @@ Widget header(context) {
     centerTitle: true,
     backgroundColor: primaryColor,
   );
-}
-
-void _test() {
-  //nothing to do
 }

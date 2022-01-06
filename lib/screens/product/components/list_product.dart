@@ -77,36 +77,33 @@ class ListProduct extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      // margin: const EdgeInsets.only(top: 18, left: 14, right: 14),
-      child: Column(
-        children: [
-          Navbar(),
-          Expanded(
-            child: StaggeredGridView.countBuilder(
-              physics: const BouncingScrollPhysics(),
-              crossAxisCount: 4,
-              itemCount: _product.length,
-              itemBuilder: (BuildContext context, int index) {
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.pushNamed(context, '/productDetail');
-                  },
-                  child: _productItem(
-                    title: _product[index].title,
-                    image: _product[index].image,
-                    price: _product[index].price.toString(),
-                    isFavorited: Random().nextBool(),
-                  ),
-                );
-              },
-              staggeredTileBuilder: (int index) => const StaggeredTile.fit(2),
-              mainAxisSpacing: 4,
-              crossAxisSpacing: 4,
-            ),
-          )
-        ],
-      ),
+    return Column(
+      children: [
+        const Navbar(),
+        Expanded(
+          child: StaggeredGridView.countBuilder(
+            physics: const BouncingScrollPhysics(),
+            crossAxisCount: 4,
+            itemCount: _product.length,
+            itemBuilder: (BuildContext context, int index) {
+              return GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, '/productDetail');
+                },
+                child: _productItem(
+                  title: _product[index].title,
+                  image: _product[index].image,
+                  price: _product[index].price.toString(),
+                  isFavorited: Random().nextBool(),
+                ),
+              );
+            },
+            staggeredTileBuilder: (int index) => const StaggeredTile.fit(2),
+            mainAxisSpacing: 4,
+            crossAxisSpacing: 4,
+          ),
+        )
+      ],
     );
   }
 }
@@ -168,7 +165,7 @@ Widget _productItem(
           height: 8,
         ),
         Text(
-          '$title',
+          title,
           style: const TextStyle(fontWeight: FontWeight.bold),
         ),
         Row(

@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:project_android/components/filter_list_product.dart';
 import 'package:project_android/components/search_screen.dart';
 import 'package:project_android/constants.dart';
+import 'package:project_android/screens/account/account_screen.dart';
+import 'package:project_android/screens/account/components/user_provider.dart';
 import 'package:project_android/screens/address/address_screen.dart';
 import 'package:project_android/screens/cart/cart_screen.dart';
 import 'package:project_android/screens/account_and_security/address/address_screen.dart';
@@ -34,10 +36,11 @@ import 'package:project_android/screens/recently_viewed/recently_screen.dart';
 import 'package:project_android/screens/register/register_screen.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'screens/main/main_screen.dart';
 import 'package:project_android/screens/choose_payment/choose_payment_screen.dart';
 
-void main() {
+void main() async {
   // Bloc.observer = SimpleBlocObserver();
   // final ProductRepository productRepository =
   //     ProductRepository(httpClient: http.Client());
@@ -56,6 +59,7 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => CartProvider()),
           ChangeNotifierProvider(create: (_) => ProductTypeProvider()),
           ChangeNotifierProvider(create: (_) => FavoriteProvider()),
+          ChangeNotifierProvider(create: (_) => UserProvider()),
         ],
         child: MaterialApp(
           title: 'Shop Gear',
@@ -81,6 +85,7 @@ class MyApp extends StatelessWidget {
             '/search': (context) => const FilterListProduct(),
             '/favorite': (context) => const FavoriteScreen(),
             '/recently': (context) => const Recently(),
+            '/account': (context) => const AccountsScreen(),
             '/account_and_security': (context) => const AccountAndSecurity(),
             '/account_and_security/profile': (context) => const ProfileScreen(),
             '/account_and_security/address': (context) => const AddressScreen(),

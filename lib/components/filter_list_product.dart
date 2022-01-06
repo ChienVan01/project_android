@@ -92,7 +92,7 @@ class _FilterListProductState extends State<FilterListProduct> {
 
         setState(() {
           this.query = query;
-          this.products = products;
+          products = products;
         });
       });
   Widget buildSearchProduct(Product product) => InkWell(

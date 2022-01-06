@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_import, unused_import
+// ignore_for_file: unnecessary_import, unused_import, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';

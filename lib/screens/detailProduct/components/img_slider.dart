@@ -1,7 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:project_android/model/product.dart';
-import 'package:project_android/screens/detailProduct/components/header_detail_product.dart';
 
 final List<String> imgList = [
   'product01.jpg',
@@ -94,7 +93,8 @@ class _CarouselWithIndicatorState extends State<ImgSlider> {
                 child: Container(
                   width: 8.0,
                   height: 8.0,
-                  margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+                  margin: const EdgeInsets.symmetric(
+                      vertical: 8.0, horizontal: 4.0),
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: (Theme.of(context).brightness == Brightness.dark

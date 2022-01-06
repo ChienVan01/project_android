@@ -3,7 +3,7 @@ import 'package:project_android/DB/db_config.dart';
 import 'package:project_android/model/cart.dart';
 
 class FavoriteProvider with ChangeNotifier {
-  DBConfig db = DBConfig();
+  DBConfig db = DBConfig.instance;
   bool isWishlist = false;
   late Future<List<Cart>> wishlist;
   late Future<Cart> wish;

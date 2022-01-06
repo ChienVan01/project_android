@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import, avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
@@ -5,9 +7,14 @@ import 'package:project_android/DB/db_config.dart';
 import 'package:project_android/constants.dart';
 import 'package:project_android/model/cart.dart';
 import 'package:project_android/model/product.dart';
+import 'package:project_android/model/user.dart';
 import 'package:project_android/screens/favorite/components/favorite_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:uuid/uuid.dart';
+
+UserProfile user = UserProfile as UserProfile;
+Future refreshNote() async {
+  user = await DBConfig.instance.getUser();
+}
 
 class TitleProduct extends StatelessWidget {
   const TitleProduct({Key? key, required this.product}) : super(key: key);
@@ -16,10 +23,10 @@ class TitleProduct extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DBConfig? dbConfig = DBConfig();
-    final wishList = Provider.of<FavoriteProvider>(context);
+    DBConfig dbConfig = DBConfig.instance;
+    // final wishList = Provider.of<FavoriteProvider>(context);
     // final wish = wishList.getDataProduct(2, product.id);
-    final wish = dbConfig.getProduct(2, 'wishlist', product.id);
+    // final wish = dbConfig.getProduct(2, 'wishlist', product.id);
     return Column(
       children: [
         Container(
@@ -102,11 +109,11 @@ class TitleProduct extends StatelessWidget {
                       InkWell(
                           onTap: () {
                             dbConfig
-                                .insert(
+                                .insertCart(
                                     Cart(
                                         id: product.id.toString(),
                                         productId: product.id,
-                                        userId: 2,
+                                        userId: user.id,
                                         name: product.name,
                                         origin: product.origin,
                                         productTypeId: product.productTypeId,

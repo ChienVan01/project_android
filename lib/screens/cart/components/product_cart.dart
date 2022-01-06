@@ -18,7 +18,7 @@ class ProductCart extends StatefulWidget {
   _ProductCartState createState() => _ProductCartState();
 }
 
-DBConfig? dbConfig = DBConfig();
+DBConfig? dbConfig = DBConfig.instance;
 
 class _ProductCartState extends State<ProductCart> {
   bool isChecked = false;

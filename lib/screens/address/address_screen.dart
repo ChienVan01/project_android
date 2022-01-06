@@ -84,7 +84,7 @@ class _MyStatefulWidgetState extends State<_AddressScreen> {
           ),
         ),
         Container(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
               primary: primaryColor,

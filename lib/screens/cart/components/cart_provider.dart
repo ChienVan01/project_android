@@ -1,10 +1,12 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/cupertino.dart';
 import 'package:project_android/DB/db_config.dart';
 import 'package:project_android/model/cart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CartProvider with ChangeNotifier {
-  DBConfig db = DBConfig();
+  // DBConfig db = DBConfig();
   int _counter = 0;
   int get counter => _counter;
 
@@ -18,7 +20,7 @@ class CartProvider with ChangeNotifier {
   // Future<List<Cart>> get cart => _cart;
 
   Future<List<Cart>> getData(int id) async {
-    cart = db.getCartList(id, 'cart');
+    cart = DBConfig.instance.getCartList(id, 'cart');
     return cart;
   }
 

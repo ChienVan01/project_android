@@ -29,8 +29,7 @@ class _BodyState extends State<Body> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: ListView(
+    return ListView(
       children: [
         Padding(
           padding: const EdgeInsets.only(bottom: defaultPadding / 2),
@@ -43,9 +42,8 @@ class _BodyState extends State<Body> {
                       left: defaultPadding, right: defaultPadding / 2),
                   child: Row(
                     children: [
-                      Padding(
-                        padding:
-                            const EdgeInsets.only(right: defaultPadding / 2),
+                      const Padding(
+                        padding: EdgeInsets.only(right: defaultPadding / 2),
                         child: Icon(
                           Icons.menu_outlined,
                         ),
@@ -56,7 +54,7 @@ class _BodyState extends State<Body> {
                               MaterialStateProperty.all(backgroundColor),
                           shadowColor: MaterialStateProperty.all(primaryColor),
                           padding: MaterialStateProperty.all(
-                              EdgeInsets.only(top: 15, bottom: 15)),
+                              const EdgeInsets.only(top: 15, bottom: 15)),
                           elevation: MaterialStateProperty.all(0),
                           shape:
                               MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -119,11 +117,11 @@ class _BodyState extends State<Body> {
                               "Trước tiên, bạn cần xác minh số điên thoại cho tài khoản của mình để có thể đặt hàng thành công.Xem hướng dẫn",
                           textStyle1: DefaultTextStyle.of(context).style,
                           text2: " Tại Đây",
-                          textStyle2: TextStyle(
+                          textStyle2: const TextStyle(
                               fontWeight: FontWeight.bold,
                               color: primaryColor))),
-                  Padding(
-                      padding: const EdgeInsets.only(bottom: defaultPadding),
+                  const Padding(
+                      padding: EdgeInsets.only(bottom: defaultPadding),
                       child: RichTextWidget(
                           text1: "Bước 1:",
                           textStyle1: TextStyle(
@@ -136,7 +134,7 @@ class _BodyState extends State<Body> {
                   Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Column(children: [
+                        Column(children: const [
                           CircleAvatar(
                             backgroundColor: primaryColor,
                             radius: 30.0,
@@ -145,12 +143,11 @@ class _BodyState extends State<Body> {
                             ),
                           ),
                           Padding(
-                            padding:
-                                const EdgeInsets.only(top: defaultPadding / 2),
+                            padding: EdgeInsets.only(top: defaultPadding / 2),
                             child: Text("Gõ từ khóa"),
                           )
                         ]),
-                        Column(children: [
+                        Column(children: const [
                           CircleAvatar(
                             backgroundColor: primaryColor,
                             radius: 30.0,
@@ -159,8 +156,7 @@ class _BodyState extends State<Body> {
                             ),
                           ),
                           Padding(
-                            padding:
-                                const EdgeInsets.only(top: defaultPadding / 2),
+                            padding: EdgeInsets.only(top: defaultPadding / 2),
                             child: SizedBox(
                                 width: 120,
                                 child: Text(
@@ -172,7 +168,7 @@ class _BodyState extends State<Body> {
                       ]),
                   Padding(
                       padding: const EdgeInsets.only(bottom: defaultPadding),
-                      child: Row(children: [
+                      child: Row(children: const [
                         RichTextWidget(
                             text1: "Xem chi tiết ",
                             textStyle1: TextStyle(color: primaryTextColor),
@@ -183,7 +179,7 @@ class _BodyState extends State<Body> {
                       ])),
                   Padding(
                       padding: const EdgeInsets.only(bottom: defaultPadding),
-                      child: Row(children: [
+                      child: Row(children: const [
                         RichTextWidget(
                             text1: "Bước 2:",
                             textStyle1: TextStyle(
@@ -203,7 +199,7 @@ class _BodyState extends State<Body> {
                   const SizedBox(
                     height: 10,
                   ),
-                  Column(children: [
+                  Column(children: const [
                     UnorderedList([
                       Text("Hình ảnh ,tên sản phẩm"),
                       Text("Giá sản phẩm ( Giá gốc / giá ưu đãi"),
@@ -281,9 +277,9 @@ class _BodyState extends State<Body> {
                       ])),
                   Padding(
                     padding: const EdgeInsets.only(bottom: defaultPadding),
-                    child: Column(children: [
+                    child: Column(children: const [
                       UnorderedList([
-                        const RichTextWidget(
+                        RichTextWidget(
                             text1:
                                 "Xem lại địa chỉ nhận hàng ,đơn vị vận chuyển,phương thức thanh toán trước khi ấn nút ",
                             textStyle1: TextStyle(
@@ -298,8 +294,8 @@ class _BodyState extends State<Body> {
                       ])
                     ]),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: defaultPadding * 2),
+                  const Padding(
+                    padding: EdgeInsets.only(bottom: defaultPadding * 2),
                     child: Text(
                       "Sau khi đọc hướng dấn , hãy trở lại ứng dụng ShopGear để bắt đầu hành trình mua sắm bất tận bạn nhé!",
                       style: TextStyle(
@@ -318,14 +314,14 @@ class _BodyState extends State<Body> {
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(
                                       35.0)), // set the buttons shape. Make its birders rounded etc
-                              side: BorderSide(
+                              side: const BorderSide(
                                   color: colorBorder,
                                   style: BorderStyle
                                       .solid), //set border for the button
                               elevation: 0, //buttons Material shadow
                             ),
                             onPressed: () {},
-                            child: Text("Câu hỏi thường gặp",
+                            child: const Text("Câu hỏi thường gặp",
                                 style: TextStyle(color: primaryTextColor))),
                       ),
                       Padding(
@@ -337,14 +333,14 @@ class _BodyState extends State<Body> {
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(
                                       35.0)), // set the buttons shape. Make its birders rounded etc
-                              side: BorderSide(
+                              side: const BorderSide(
                                   color: colorBorder,
                                   style: BorderStyle
                                       .solid), //set border for the button
                               elevation: 0, //buttons Material shadow
                             ),
                             onPressed: () {},
-                            child: Text("Đơn hàng & thanh toán",
+                            child: const Text("Đơn hàng & thanh toán",
                                 style: TextStyle(color: primaryTextColor))),
                       ),
                       ElevatedButton(
@@ -353,19 +349,19 @@ class _BodyState extends State<Body> {
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(
                                     35.0)), // set the buttons shape. Make its birders rounded etc
-                            side: BorderSide(
+                            side: const BorderSide(
                                 color: colorBorder,
                                 style: BorderStyle
                                     .solid), //set border for the button
                             elevation: 0, //buttons Material shadow
                           ),
                           onPressed: () {},
-                          child: Text("Đơn hàng",
+                          child: const Text("Đơn hàng",
                               style: TextStyle(color: primaryTextColor)))
                     ]),
                   ),
-                  Row(children: [
-                    const Text("Bài viết có hữu ích cho bạn không ?",
+                  Row(children: const [
+                    Text("Bài viết có hữu ích cho bạn không ?",
                         style: TextStyle(fontWeight: FontWeight.bold))
                   ]),
                   Wrap(children: [
@@ -376,16 +372,16 @@ class _BodyState extends State<Body> {
                             style: ElevatedButton.styleFrom(
                               primary: backgroundColor,
 
-                              side: BorderSide(
+                              side: const BorderSide(
                                   color: colorBorder,
                                   style: BorderStyle
                                       .solid), //set border for the button
                               elevation: 0, //buttons Material shadow
                             ),
-                            child: Row(children: [
+                            child: Row(children: const [
                               Padding(
-                                padding: const EdgeInsets.only(
-                                    right: defaultPadding / 2),
+                                padding:
+                                    EdgeInsets.only(right: defaultPadding / 2),
                                 child: Icon(
                                   Icons.thumb_up_outlined,
                                   color: primaryTextColor,
@@ -394,21 +390,21 @@ class _BodyState extends State<Body> {
                               Text("Có",
                                   style: TextStyle(color: primaryTextColor))
                             ])),
-                        SizedBox(width: 20),
+                        const SizedBox(width: 20),
                         ElevatedButton(
                             onPressed: () {},
                             style: ElevatedButton.styleFrom(
                               primary: backgroundColor,
-                              side: BorderSide(
+                              side: const BorderSide(
                                   color: colorBorder,
                                   style: BorderStyle
                                       .solid), //set border for the button
                               elevation: 0, //buttons Material shadow
                             ),
-                            child: Row(children: [
+                            child: Row(children: const [
                               Padding(
-                                padding: const EdgeInsets.only(
-                                    right: defaultPadding / 2),
+                                padding:
+                                    EdgeInsets.only(right: defaultPadding / 2),
                                 child: Icon(
                                   Icons.thumb_down_outlined,
                                   color: primaryTextColor,
@@ -428,13 +424,13 @@ class _BodyState extends State<Body> {
             child: Padding(
               padding: const EdgeInsets.all(defaultPadding),
               child: Column(children: [
-                Wrap(children: [
+                Wrap(children: const [
                   Text("XEM TRẠNG THÁI YÊU CẦU HỖ TRỢ CỦA BẠN VỚI SHOPGEAR"),
                 ]),
                 Padding(
                   padding: const EdgeInsets.only(top: defaultPadding / 2),
                   child: Row(
-                    children: [
+                    children: const [
                       CircleAvatar(
                         backgroundColor: primaryColor,
                         radius: 30.0,
@@ -457,13 +453,13 @@ class _BodyState extends State<Body> {
               child: Padding(
                 padding: const EdgeInsets.all(defaultPadding),
                 child: Column(children: [
-                  Wrap(children: [
+                  Wrap(children: const [
                     Text("XEM TRẠNG THÁI YÊU CẦU HỖ TRỢ CỦA BẠN VỚI SHOPGEAR"),
                   ]),
                   Padding(
                     padding: const EdgeInsets.only(top: defaultPadding / 2),
                     child: Row(
-                      children: [
+                      children: const [
                         CircleAvatar(
                           backgroundColor: primaryColor,
                           radius: 30.0,
@@ -480,7 +476,7 @@ class _BodyState extends State<Body> {
                   Padding(
                     padding: const EdgeInsets.only(top: defaultPadding / 2),
                     child: Row(
-                      children: [
+                      children: const [
                         CircleAvatar(
                           backgroundColor: primaryColor,
                           radius: 30.0,
@@ -497,7 +493,7 @@ class _BodyState extends State<Body> {
                   Padding(
                     padding: const EdgeInsets.only(top: defaultPadding / 2),
                     child: Row(
-                      children: [
+                      children: const [
                         CircleAvatar(
                           backgroundColor: primaryColor,
                           radius: 30.0,
@@ -517,7 +513,7 @@ class _BodyState extends State<Body> {
         Padding(
             padding: const EdgeInsets.all(defaultPadding),
             child: Center(
-              child: Row(children: [
+              child: Row(children: const [
                 Icon(
                   Icons.copyright_outlined,
                 ),
@@ -525,6 +521,6 @@ class _BodyState extends State<Body> {
               ]),
             ))
       ],
-    ));
+    );
   }
 }

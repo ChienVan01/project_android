@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:project_android/components/text_style.dart';
 import 'package:project_android/constants.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:project_android/screens/payment/components/transport_unit.dart';

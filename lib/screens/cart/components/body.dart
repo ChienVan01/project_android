@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:project_android/DB/db_config.dart';
 import 'package:project_android/constants.dart';
 import 'package:project_android/model/cart.dart';
+import 'package:project_android/model/user.dart';
 import 'package:project_android/screens/cart/components/cart_provider.dart';
 import 'package:project_android/screens/cart/components/product_cart.dart';
 import 'package:provider/provider.dart';
@@ -16,12 +17,34 @@ class BodyCart extends StatefulWidget {
 }
 
 class _BodyCartState extends State<BodyCart> {
-  DBConfig? dbHelper = DBConfig();
+  UserProfile user = UserProfile(
+    id: 0,
+    email: "",
+    password: "",
+    name: "",
+    phone: "",
+    address: "",
+    avatar: "",
+    tokenUser: '',
+    status: 0,
+  );
+  @override
+  void initState() {
+    super.initState();
+
+    refreshNote();
+  }
+
+  Future refreshNote() async {
+    user = await DBConfig.instance.getUser();
+  }
+
+  DBConfig? dbHelper = DBConfig.instance;
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context);
     return FutureBuilder(
-        future: cart.getData(2),
+        future: cart.getData(user.id),
         builder: (context, AsyncSnapshot<List<Cart>> snapshot) {
           if (snapshot.hasData) {
             if (snapshot.data!.isEmpty) {
