@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:project_android/constants.dart';
+import 'package:project_android/screens/cart/components/cart_provider.dart';
+import 'package:provider/provider.dart';
 
 class BottomNav extends StatelessWidget {
   const BottomNav({Key? key}) : super(key: key);
@@ -24,16 +27,21 @@ class BottomNav extends StatelessWidget {
               Row(
                 children: [
                   Row(
-                    children: const [
-                      Text(
+                    children: [
+                      const Text(
                         "Thành Tiền:  ",
                       ),
-                      Text('1000000',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: primaryColor,
-                            fontSize: 20,
-                          ))
+                      Consumer<CartProvider>(
+                          builder: (context, value, child) => (Text(
+                              NumberFormat.decimalPattern()
+                                      .format(value.getTotalPrice())
+                                      .toString() +
+                                  'đ',
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: primaryColor,
+                                fontSize: 20,
+                              ))))
                     ],
                   ),
                 ],

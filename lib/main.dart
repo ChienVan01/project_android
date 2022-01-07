@@ -105,7 +105,7 @@ class MyApp extends StatelessWidget {
                 (context) => const ChangePasswordScreen(),
             '/choosevoucher': (context) => const ChooseVoucherScreen(),
             '/choosepayment': (context) => const ChoosePaymentScreen(),
-            '/payment': (context) => const PaymentScreen(),
+            // '/payment': (context) => const PaymentScreen(),
             '/address': (context) => const ChooseAddressScreen()
           },
         ));
