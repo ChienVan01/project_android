@@ -1,13 +1,17 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
+import 'package:project_android/DB/db_config.dart';
 import 'package:project_android/components/text_style.dart';
 import 'package:project_android/constants.dart';
+import 'package:project_android/model/user.dart';
 import 'package:project_android/screens/account/account_screen.dart';
 import 'package:project_android/screens/cart/cart_screen.dart';
+import 'package:project_android/screens/cart/components/cart_provider.dart';
 import 'package:project_android/screens/discount/discount_screen.dart';
 import 'package:project_android/screens/home/home_screen.dart';
-import 'package:project_android/screens/product/product_screen.dart';
+import 'package:project_android/screens/login/login_screen.dart';
 import 'package:project_android/screens/notification/notification_screen.dart';
+import 'package:provider/provider.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -17,6 +21,21 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  UserProfile user = UserProfile(
+      id: 0,
+      email: '',
+      password: '',
+      name: '',
+      phone: '',
+      address: '',
+      avatar: '',
+      tokenUser: '',
+      status: 0);
+
+  Future refreshNote() async {
+    user = await DBConfig.instance.getUser();
+  }
+
   int pageIndex = 2;
 
   bool isLoading = false;
@@ -24,6 +43,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   void initState() {
     super.initState();
+    refreshNote();
     loading();
   }
 
@@ -37,11 +57,13 @@ class _MainScreenState extends State<MainScreen> {
     const DiscountScreen(),
     const NotificationSrceen(),
     const HomeScreen(),
-    const Cart(),
+    const CartScreen(),
     const AccountsScreen(),
   ];
 
   Widget footer() {
+    final cart = Provider.of<CartProvider>(context);
+    final double total = cart.getTotalPrice();
     return BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.white,
@@ -49,6 +71,8 @@ class _MainScreenState extends State<MainScreen> {
         onTap: (value) {
           setState(() {
             pageIndex = value;
+
+            cart.removeTotalPrice(total);
           });
         },
         currentIndex: pageIndex,
@@ -58,9 +82,12 @@ class _MainScreenState extends State<MainScreen> {
           BottomNavigationBarItem(
               icon: Icon(Icons.notifications_outlined), label: 'Thông báo'),
           BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home_outlined,
-                size: 35.0,
+              icon: SizedBox(
+                height: 30,
+                child: Icon(
+                  Icons.home_outlined,
+                  size: 45.0,
+                ),
               ),
               label: ''),
           BottomNavigationBarItem(
@@ -106,7 +133,11 @@ class _MainScreenState extends State<MainScreen> {
                 secondaryAnimation: secondaryAnimation,
                 child: child,
               ),
-              child: pageList[pageIndex],
+              child: pageIndex == 3
+                  ? user.name == ''
+                      ? const Login()
+                      : pageList[pageIndex]
+                  : pageList[pageIndex],
             ),
             bottomNavigationBar: footer(),
           );

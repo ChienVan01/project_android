@@ -15,14 +15,13 @@ class DeliveredOrderScreen extends StatelessWidget {
         children: [
           detailOrderWidget(
               context,
-              "product01.jpg",
+              "product02.jpg",
               "Chuột Gaming Logitec G502 (Đen)",
               1,
               "19.900.000đ",
               "Giao hàng thành công",
               "Đánh Giá",
-              '/rating' //Navigator.pushNamed(context, "/rating")
-              ),
+              '/rating'),
         ],
       ),
     );

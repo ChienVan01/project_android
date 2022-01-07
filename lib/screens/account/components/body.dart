@@ -8,9 +8,9 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(children: <Widget>[
-      infoUser(),
-      directionalItem(),
+    return ListView(children: const <Widget>[
+      InfoUser(),
+      DirectionalItem(),
     ]);
   }
 }

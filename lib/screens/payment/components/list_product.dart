@@ -52,28 +52,26 @@ Widget product(context) {
                   color: primaryTextColor,
                   decoration: TextDecoration.lineThrough),
             ),
-            Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Container(
-                    padding: const EdgeInsets.all(0),
-                    width: 40,
-                    height: 23,
-                    decoration: const BoxDecoration(
-                        // border: Border.all(color: Colors.grey, width: 2),
-                        color: Colors.white),
-                    child: Center(
-                      child: Text(
-                        "4",
-                        style: style(16, primaryTextColor, FontWeight.bold),
-                      ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Container(
+                  padding: const EdgeInsets.all(0),
+                  width: 40,
+                  height: 23,
+                  decoration: const BoxDecoration(
+                      // border: Border.all(color: Colors.grey, width: 2),
+                      color: Colors.white),
+                  child: Center(
+                    child: Text(
+                      "4",
+                      style: style(16, primaryTextColor, FontWeight.bold),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             )
           ],
         ),

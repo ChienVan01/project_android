@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
@@ -13,7 +12,7 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatScreen> {
-  List<types.Message> _messages = [];
+  final List<types.Message> _messages = [];
   final _user = const types.User(id: 'U000001');
   final _bot = const types.User(id: 'BOT000001');
 

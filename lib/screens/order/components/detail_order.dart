@@ -1,7 +1,6 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:project_android/constants.dart';
+import 'package:project_android/screens/rating/components/rating_popup.dart';
 
 Widget detailOrderWidget(context, String img, String productName, int qty,
     String unitPrice, String status, String txtButton, String press) {
@@ -29,13 +28,13 @@ Widget detailOrderWidget(context, String img, String productName, int qty,
             ]),
             Column(
               children: [
-                Container(
+                SizedBox(
                     width: 250,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text(productName,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.black,
                             )),
@@ -45,7 +44,7 @@ Widget detailOrderWidget(context, String img, String productName, int qty,
                         ),
                         const SizedBox(height: 20),
                         Text(unitPrice,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               color: primaryColor,
                               fontSize: 20,
@@ -62,7 +61,7 @@ Widget detailOrderWidget(context, String img, String productName, int qty,
         ),
         Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Column(
-            children: [Text("1 sản phẩm")],
+            children: const [Text("1 sản phẩm")],
           ),
           Column(
             children: [
@@ -116,7 +115,11 @@ Widget detailOrderWidget(context, String img, String productName, int qty,
               alignment: Alignment.topRight,
               child: ElevatedButton(
                 onPressed: () {
-                  press == '' ? '' : Navigator.pushNamed(context, press);
+                  if (txtButton != "Đánh Giá") {
+                    press == '' ? '' : Navigator.pushNamed(context, press);
+                  } else {
+                    showRatingDialog(context, img);
+                  }
                 },
                 child: Text(txtButton),
               ),

@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:percent_indicator/percent_indicator.dart';
@@ -194,7 +196,7 @@ class PercenIndicated extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: defaultPadding / 2),
+      padding: const EdgeInsets.only(left: defaultPadding / 2),
       child: Row(
         children: [
           Padding(

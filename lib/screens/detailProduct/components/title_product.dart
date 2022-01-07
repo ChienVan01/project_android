@@ -1,8 +1,20 @@
+// ignore_for_file: unused_import, avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
+import 'package:project_android/DB/db_config.dart';
 import 'package:project_android/constants.dart';
+import 'package:project_android/model/cart.dart';
 import 'package:project_android/model/product.dart';
+import 'package:project_android/model/user.dart';
+import 'package:project_android/screens/favorite/components/favorite_provider.dart';
+import 'package:provider/provider.dart';
+
+UserProfile user = UserProfile as UserProfile;
+Future refreshNote() async {
+  user = await DBConfig.instance.getUser();
+}
 
 class TitleProduct extends StatelessWidget {
   const TitleProduct({Key? key, required this.product}) : super(key: key);
@@ -11,6 +23,10 @@ class TitleProduct extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    DBConfig dbConfig = DBConfig.instance;
+    // final wishList = Provider.of<FavoriteProvider>(context);
+    // final wish = wishList.getDataProduct(2, product.id);
+    // final wish = dbConfig.getProduct(2, 'wishlist', product.id);
     return Column(
       children: [
         Container(
@@ -37,7 +53,7 @@ class TitleProduct extends StatelessWidget {
                             const EdgeInsets.only(right: defaultPadding / 4),
                         child: Text(
                           product.origin,
-                          style: TextStyle(color: primaryColor),
+                          style: const TextStyle(color: primaryColor),
                         ),
                       ),
                       // Text(
@@ -90,9 +106,49 @@ class TitleProduct extends StatelessWidget {
                           width: 25,
                         ),
                       ),
-                      const Icon(
-                        Icons.favorite_border,
-                      ),
+                      InkWell(
+                          onTap: () {
+                            dbConfig
+                                .insertCart(
+                                    Cart(
+                                        id: product.id.toString(),
+                                        productId: product.id,
+                                        userId: user.id,
+                                        name: product.name,
+                                        origin: product.origin,
+                                        productTypeId: product.productTypeId,
+                                        price: product.price,
+                                        initialPrice: product.price,
+                                        quantity: 1,
+                                        avatar: product.avatar,
+                                        status: 1),
+                                    'wishlist')
+                                .then((value) {
+                              // cart.addTotalPrice(double.parse(product.price.toString()));
+                              // cart.addCounter();
+                              print('Them thanh cong');
+                              // const snackBar = SnackBar(
+                              //   backgroundColor: Colors.green,
+                              //   content: Text('Thêm sản phẩm thành công'),
+                              //   duration: Duration(seconds: 1),
+                              // );
+
+                              // ScaffoldMessenger.of(context)
+                              //     .showSnackBar(snackBar);
+                            }).onError((error, stackTrace) {
+                              dbConfig.deleteWish(product.id, 'wishlist');
+                              // const snackBar = SnackBar(
+                              //     backgroundColor: Colors.red,
+                              //     content:
+                              //         Text('Sản phẩm đã có trong giỏ hàng!'),
+                              //     duration: Duration(seconds: 1));
+
+                              // ScaffoldMessenger.of(context)
+                              //     .showSnackBar(snackBar);
+                            });
+                          },
+                          child: const Icon(Icons.favorite_border_outlined,
+                              color: Colors.red)),
                     ],
                   ),
                 ],
