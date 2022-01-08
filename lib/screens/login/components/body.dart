@@ -51,7 +51,7 @@ class _BodyLoginState extends State<BodyLogin> {
               controller: emailController,
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
-                iconColor: Colors.red,
+                // iconColor: Colors.red,
                 hintText: 'Tên đăng nhập',
                 hintStyle: style(20, Colors.grey, FontWeight.normal),
                 prefixIcon:

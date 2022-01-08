@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:project_android/constants.dart';
 import 'package:project_android/screens/account_and_security/components/button_footer.dart';
 
-class Body extends StatelessWidget {
+class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
 
+  @override
+  State<Body> createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
@@ -61,21 +66,26 @@ class TilteItem extends StatelessWidget {
   }
 }
 
-class Item extends StatelessWidget {
+class Item extends StatefulWidget {
   const Item({
     Key? key,
     required this.text,required this.press,
   }) : super(key: key);
   final String text,press;
-  
+
+  @override
+  State<Item> createState() => _ItemState();
+}
+
+class _ItemState extends State<Item> {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(text),
+      title: Text(widget.text),
       trailing: const Icon(
         Icons.navigate_next_outlined,
       ),
-      onTap:   () {Navigator.pushNamed(context,press);}
+      onTap:   () {Navigator.pushNamed(context,widget.press);}
     );
   }
 }

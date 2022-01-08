@@ -75,7 +75,7 @@ class MyApp extends StatelessWidget {
                 Theme.of(context).textTheme.apply(bodyColor: primaryTextColor),
             visualDensity: VisualDensity.adaptivePlatformDensity,
           ),
-          initialRoute: '/',
+          initialRoute: '/account',
           routes: {
             '/': (context) => const MainScreen(),
             '/loading': (context) => const Loading(),
