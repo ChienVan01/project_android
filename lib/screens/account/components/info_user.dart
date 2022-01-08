@@ -49,14 +49,6 @@ class _InfoUserState extends State<InfoUser> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          // Text(
-                          //   ("Mẫn Trần"),
-                          //   style: TextStyle(color: Colors.white, fontSize: 25.0),
-                          // ),
-                          // Text(
-                          //   "0962455419",
-                          //   style: TextStyle(color: Colors.white, fontSize: 20.0),
-                          // )
                           InkWell(
                             child: const Text('Đăng nhập',
                                 style: TextStyle(
@@ -95,11 +87,6 @@ class _InfoUserState extends State<InfoUser> {
                             style: const TextStyle(
                                 color: Colors.white, fontSize: 18.0),
                           ),
-                          // Text(
-                          //   snapshot.data!.phone.toString(),
-                          //   style: const TextStyle(
-                          //       color: Colors.white, fontSize: 20.0),
-                          // )
                         ],
                       ),
                     ],
@@ -118,14 +105,6 @@ class _InfoUserState extends State<InfoUser> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Text(
-                      //   ("Mẫn Trần"),
-                      //   style: TextStyle(color: Colors.white, fontSize: 25.0),
-                      // ),
-                      // Text(
-                      //   "0962455419",
-                      //   style: TextStyle(color: Colors.white, fontSize: 20.0),
-                      // )
                       InkWell(
                         child: const Text('Đăng nhập',
                             style:

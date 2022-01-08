@@ -24,7 +24,6 @@ class DBConfig {
   initDatabase() async {
     io.Directory documentDirectory = await getApplicationDocumentsDirectory();
     String path = join(documentDirectory.path, 'shopgear.db');
-    print(path);
     var db = await openDatabase(path, version: 1, onCreate: _onCreate);
     // await deleteDatabase(path);
     return db;
@@ -64,12 +63,12 @@ class DBConfig {
     return queryResult.map((e) => Cart.fromJson(e)).toList();
   }
 
-  Future<Cart> getProduct(int id, String table, int productId) async {
+  Future<Cart> getProduct(String id, String table) async {
     var dbClient = await db;
-    final Map<String, Object?> queryResult = (await dbClient.query(table,
-        where: 'userID = ?, productId',
-        whereArgs: [id, productId])) as Map<String, Object?>;
-    return Cart.fromJson(queryResult);
+    final queryResult =
+        await dbClient.query(table, where: 'id = ?', whereArgs: [id]);
+
+    return Cart.fromJson(queryResult.first);
   }
 
   Future<UserProfile> getUser() async {
@@ -91,7 +90,7 @@ class DBConfig {
     return await dbClient.delete('checkout');
   }
 
-  Future<int> deleteWish(int id, String table) async {
+  Future<int> deleteWish(String id, String table) async {
     var dbClient = await db;
     return await dbClient.delete(table, where: 'id = ?', whereArgs: [id]);
   }
@@ -100,5 +99,11 @@ class DBConfig {
     var dbClient = await db;
     return await dbClient
         .update('cart', cart.toJson(), where: 'id = ?', whereArgs: [cart.id]);
+  }
+
+  Future<int> updateUser(UserProfile user) async {
+    var dbClient = await db;
+    return await dbClient
+        .update('user', user.toJson(), where: 'id = ?', whereArgs: [user.id]);
   }
 }
