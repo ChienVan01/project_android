@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:project_android/DB/db_config.dart';
 import 'package:project_android/constants.dart';
 import 'package:project_android/model/user.dart';
+import 'package:project_android/screens/account/components/user_provider.dart';
 import 'package:project_android/services/logout_service.dart';
+import 'package:provider/provider.dart';
 
 class DirectionalItem extends StatefulWidget {
   const DirectionalItem({Key? key}) : super(key: key);
@@ -30,12 +32,13 @@ class _DirectionalItemState extends State<DirectionalItem> {
   }
 
   Future refreshNote() async {
-    user = await DBConfig.instance.getUser();
+    final userProvider = Provider.of<UserProvider>(context);
+    user = await userProvider.getData();
   }
 
   @override
   Widget build(BuildContext context) {
-    return user.name != ''
+    return user.tokenUser != ''
         ? Column(
             children: [
               Container(
@@ -202,7 +205,8 @@ class _DirectionalItemState extends State<DirectionalItem> {
               ),
               InkWell(
                   onTap: () {
-                    logoutService(user.tokenUser.toString(), user.id, context);
+                    print(user.tokenUser);
+                    // logoutService(user.tokenUser.toString(), user.id, context);
                   },
                   child: Container(
                     margin: const EdgeInsets.only(top: defaultPadding / 2),

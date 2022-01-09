@@ -15,8 +15,8 @@ class ProductItem extends StatefulWidget {
       required this.image,
       required this.price})
       : super(key: key);
-  final int id, price;
-  final String title, image;
+  final int price;
+  final String id, title, image;
 
   @override
   State<ProductItem> createState() => _ProductItemState();
@@ -24,100 +24,73 @@ class ProductItem extends StatefulWidget {
 
 class _ProductItemState extends State<ProductItem> {
   DBConfig dbConfig = DBConfig.instance;
+
   @override
   Widget build(BuildContext context) {
-    bool ischeck = false;
     // final wishList = Provider.of<FavoriteProvider>(context);
-    return ischeck == false
-        ? Container(
-            width: 180.0,
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(8.0)),
-              color: colorWhite,
+    return Container(
+      width: 180.0,
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+        color: colorWhite,
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Image.asset(
+            'assets/images/product/${widget.image}',
+            width: 100,
+            height: 100,
+            fit: BoxFit.cover,
+          ),
+          const SizedBox(height: 8),
+          Padding(
+            padding: const EdgeInsets.only(left: defaultPadding / 2),
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: Column(children: <Widget>[
+                Text(
+                  widget.title,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ]),
             ),
-            child: Column(
+          ),
+          Padding(
+            padding: const EdgeInsets.all(defaultPadding / 2),
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Image.asset(
-                  'assets/images/product/${widget.image}',
-                  width: 100,
-                  height: 100,
-                  fit: BoxFit.cover,
-                ),
-                const SizedBox(height: 8),
-                Padding(
-                  padding: const EdgeInsets.only(left: defaultPadding / 2),
-                  child: Align(
-                    alignment: Alignment.topLeft,
-                    child: Column(children: <Widget>[
-                      Text(
-                        widget.title,
-                        style: const TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      // const SizedBox(height: 8),
-                    ]),
+              children: [
+                Column(children: [
+                  Text(
+                    NumberFormat.decimalPattern().format(widget.price),
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, color: primaryColor),
                   ),
-                ),
-                // Padding(
-                //   padding: const EdgeInsets.only(left: defaultPadding / 2),
-                //   child: Align(
-                //       alignment: Alignment.topLeft,
-                //       child: Column(children: [
-                //         Text(
-                //           NumberFormat.decimalPattern().format(price),
-                //           style: const TextStyle(
-                //               fontWeight: FontWeight.bold, color: primaryColor),
-                //         ),
-                //         Text(
-                //           NumberFormat.decimalPattern().format(price * 1.3.toInt()),
-                //           style: const TextStyle(
-                //               fontWeight: FontWeight.bold,
-                //               color: Colors.grey,
-                //               fontSize: 13,
-                //               decoration: TextDecoration.lineThrough),
-                //         ),
-                //       ])),
-                // ),
-                Padding(
-                  padding: const EdgeInsets.all(defaultPadding / 2),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(children: [
-                        Text(
-                          NumberFormat.decimalPattern().format(widget.price),
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, color: primaryColor),
-                        ),
-                        Text(
-                          NumberFormat.decimalPattern()
-                              .format(widget.price * 1.3.toInt()),
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey,
-                              fontSize: 13,
-                              decoration: TextDecoration.lineThrough),
-                        ),
-                      ]),
-                      InkWell(
-                        onTap: () {
-                          dbConfig.deleteWish(widget.id, 'wishlist');
-                          // setState(() {
-                          //   ischeck = true;
-                          //   print(ischeck);
-                          // });
-                        },
-                        child: const Icon(
-                          Icons.favorite_outlined,
-                          color: primaryColor,
-                        ),
-                      ),
-                    ],
+                  Text(
+                    NumberFormat.decimalPattern()
+                        .format(widget.price * 1.3.toInt()),
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.grey,
+                        fontSize: 13,
+                        decoration: TextDecoration.lineThrough),
+                  ),
+                ]),
+                InkWell(
+                  onTap: () {
+                    dbConfig.deleteWish(widget.id, 'wishlist');
+                  },
+                  child: const Icon(
+                    Icons.favorite_outlined,
+                    color: primaryColor,
                   ),
                 ),
               ],
             ),
-          )
-        : Container();
+          ),
+        ],
+      ),
+    );
   }
 }

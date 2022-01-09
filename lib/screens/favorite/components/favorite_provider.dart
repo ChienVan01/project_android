@@ -4,7 +4,7 @@ import 'package:project_android/model/cart.dart';
 
 class FavoriteProvider with ChangeNotifier {
   DBConfig db = DBConfig.instance;
-  bool isWishlist = false;
+  bool isWishlistCheck = false;
   late Future<List<Cart>> wishlist;
   late Future<Cart> wish;
 
@@ -13,12 +13,17 @@ class FavoriteProvider with ChangeNotifier {
     return wishlist;
   }
 
-  Future<Cart> getDataProduct(int id, int productId) async {
-    wish = db.getProduct(id, 'wishlist', productId);
+  Future<Cart> getDataProduct(String id) async {
+    wish = db.getProduct(id, 'wishlist');
     return wish;
   }
 
-  void deleteProduct(int id, String table) {
-    db.deleteWish(id, 'wishlist');
+  isWishlist(value) {
+    isWishlistCheck = value;
+    return isWishlistCheck;
   }
+
+  // void deleteProduct(int id, String table) {
+  //   db.deleteWish(id, 'wishlist');
+  // }
 }

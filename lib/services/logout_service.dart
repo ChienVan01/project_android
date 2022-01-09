@@ -6,11 +6,9 @@ import 'package:project_android/constants.dart';
 Future logoutService(token, int id, context) async {
   final response = await http.post(Uri.parse(LogoutUrl),
       headers: ({'Authorization': 'Bearer ' + token}));
-  // print(user.id);
-  // print(user);
   if (response.statusCode == 200) {
     ScaffoldMessenger.of(context)
-        .showSnackBar(const SnackBar(content: Text("Loout Successfully")));
+        .showSnackBar(const SnackBar(content: Text("Logout Successfully")));
     Navigator.pushNamedAndRemoveUntil(context, "/", (route) => false);
     DBConfig.instance.delete(id, 'user');
   } else {

@@ -12,7 +12,7 @@ class UpdateNameScreen extends StatefulWidget {
   @override
   State<UpdateNameScreen> createState() => _UpdateNameScreenState();
 }
-
+DBConfig? dbConfig = DBConfig.instance;
 class _UpdateNameScreenState extends State<UpdateNameScreen> {
    UserProfile user = UserProfile(
       id: 0,
@@ -50,7 +50,19 @@ class _UpdateNameScreenState extends State<UpdateNameScreen> {
                       print(controller.text.toString());
                       print(user.id);
                       update(controller.text.toString(), user.id, context);
-
+                      dbConfig!.updateUser(UserProfile(
+                        id: user.id, 
+                        email: user.email, 
+                        password: user.password, 
+                        name: controller.text.toString(),
+                        tokenUser: user.tokenUser, 
+                        status: user.status,
+                      )).then((value) {
+                            print('sua thanh cong');
+                          }).onError((error, stackTrace) {
+                            print(error.toString());
+                              print('sua that bai');
+                          });
                     },
                     child: const Text("Lưu"),
                     style: ButtonStyle(
