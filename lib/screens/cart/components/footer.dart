@@ -1,15 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:project_android/DB/db_config.dart';
 import 'package:project_android/components/text_style.dart';
 import 'package:project_android/constants.dart';
+import 'package:project_android/model/cart.dart';
+import 'package:project_android/model/user.dart';
 import 'package:project_android/screens/cart/components/cart_provider.dart';
+import 'package:project_android/screens/payment/payment_screen.dart';
 import 'package:provider/provider.dart';
+
+UserProfile user = UserProfile(
+  id: 0,
+  email: "",
+  password: "",
+  name: "",
+  phone: "",
+  address: "",
+  avatar: "",
+  tokenUser: '',
+  status: 0,
+);
+List<Cart> cart = [];
+
+Future getUser() async {
+  user = await DBConfig.instance.getUser();
+}
+
+Future getCart(context) async {
+  getUser();
+  final cartP = Provider.of<CartProvider>(context);
+  cart = await cartP.getCheckout(user.id);
+}
 
 class FooterCart extends StatelessWidget {
   const FooterCart({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    getCart(context);
+
     return Consumer<CartProvider>(
         builder: (context, value, child) => Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -31,7 +60,10 @@ class FooterCart extends StatelessWidget {
                   ]),
                 ),
                 TextButton(
-                  onPressed: () => Navigator.pushNamed(context, '/'),
+                  onPressed: () => Navigator.push(context,
+                      MaterialPageRoute(builder: (context) {
+                    return PaymentScreen(product: cart);
+                  })),
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(primaryColor),
                     padding: MaterialStateProperty.all(
@@ -43,12 +75,9 @@ class FooterCart extends StatelessWidget {
                       ),
                     ),
                   ),
-                  child: InkWell(
-                    onTap: () => Navigator.pushNamed(context, '/payment'),
-                    child: Text(
-                      'Mua hàng',
-                      style: style(20, backgroundColor, FontWeight.bold),
-                    ),
+                  child: Text(
+                    'Mua hàng',
+                    style: style(20, backgroundColor, FontWeight.bold),
                   ),
                 ),
               ],

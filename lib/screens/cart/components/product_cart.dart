@@ -43,6 +43,38 @@ class _ProductCartState extends State<ProductCart> {
               setState(() {
                 isChecked = value!;
               });
+              if (value == true) {
+                dbConfig!
+                    .insertCart(
+                        Cart(
+                            id: widget.cart.id.toString() +
+                                widget.cart.userId.toString(),
+                            productId: widget.cart.productId,
+                            userId: widget.cart.userId,
+                            name: widget.cart.name,
+                            origin: widget.cart.origin,
+                            productTypeId: widget.cart.productTypeId,
+                            price: widget.cart.price,
+                            initialPrice: widget.cart.initialPrice,
+                            quantity: widget.cart.quantity,
+                            avatar: widget.cart.avatar,
+                            status: 1),
+                        'checkout')
+                    .then((value) {
+                  print('Them checkout thanh cong');
+                }).onError((error, stackTrace) {
+                  print("error: " + error.toString());
+                });
+              } else {
+                print('xoa checkout thanh cong');
+                // dbConfig!.deleteAll();
+                // print('idCart: ${widget.cart.id}');
+                // dbConfig!.delete(
+                //     widget.cart.id + widget.cart.userId.toString(), 'cart');
+                cartProvider.deleteP(
+                    widget.cart.id + widget.cart.userId.toString(),
+                    widget.cart.userId);
+              }
 
               cartProvider.checked(value, widget.cart.price.toDouble());
             },
@@ -116,8 +148,8 @@ class _ProductCartState extends State<ProductCart> {
                               .then((value) {
                             newPrice = 0;
                             quantity = 0;
-                            // cartProvider.removeTotalPrice(double.parse(
-                            //     widget.cart.initialPrice.toString()));
+                            cartProvider.removeTotalPrice(double.parse(
+                                widget.cart.initialPrice.toString()));
                           }).onError((error, stackTrace) {
                             print(error.toString());
                           });
@@ -175,8 +207,8 @@ class _ProductCartState extends State<ProductCart> {
                           .then((value) {
                         newPrice = 0;
                         quantity = 0;
-                        // cartProvider.addTotalPrice(double.parse(
-                        //     (widget.cart.initialPrice).toString()));
+                        cartProvider.addTotalPrice(double.parse(
+                            (widget.cart.initialPrice).toString()));
                       }).onError((error, stackTrace) {
                         print(error.toString());
                       });

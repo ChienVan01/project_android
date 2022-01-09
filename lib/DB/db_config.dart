@@ -39,6 +39,8 @@ class DBConfig {
         'CREATE TABLE wishlist (id VARCHAR PRIMARY KEY , productId INTEGER, userId INTEGER , name TEXT , origin TEXT , productTypeId INTERGER ,initialPrice INTEGER, price INTEGER , quantity INTEGER, avatar TEXT , status BOOL )');
     await db.execute(
         'CREATE TABLE user (id INTEGER PRIMARY KEY , email TEXT, password VARCHAR, name NVARCHAR, phone VARCHAR , address TEXT , avatar VARCHAR , tokenUser VARCHAR , status INTEGER )');
+    await db.execute(
+        'CREATE TABLE checkout (id VARCHAR PRIMARY KEY , productId INTEGER, userId INTEGER , name TEXT , origin TEXT , productTypeId INTERGER ,initialPrice INTEGER, price INTEGER , quantity INTEGER, avatar TEXT , status BOOL )');
   }
 
   Future<Cart> insertCart(Cart cart, String table) async {
@@ -81,6 +83,12 @@ class DBConfig {
     var dbClient = await db;
     print('xoa thanh cong');
     return await dbClient.delete(table, where: 'id = ?', whereArgs: [id]);
+  }
+
+  Future<int> deleteAll() async {
+    var dbClient = await db;
+    print('xoa thanh cong');
+    return await dbClient.delete('checkout');
   }
 
   Future<int> deleteWish(int id, String table) async {

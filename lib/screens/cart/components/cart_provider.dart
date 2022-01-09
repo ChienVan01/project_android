@@ -24,6 +24,17 @@ class CartProvider with ChangeNotifier {
     return cart;
   }
 
+  Future<List<Cart>> deleteP(idProduct, id) async {
+    DBConfig.instance.delete(idProduct.toString(), 'checkout');
+    cart = DBConfig.instance.getCartList(id, 'checkout');
+    return cart;
+  }
+
+  Future<List<Cart>> getCheckout(int id) async {
+    cart = DBConfig.instance.getCartList(id, 'checkout');
+    return cart;
+  }
+
   void _setPrefItems() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setInt('cart_item', _counter);

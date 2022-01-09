@@ -2,51 +2,43 @@ import 'package:intl/intl.dart';
 import 'package:project_android/components/text_style.dart';
 import 'package:project_android/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:project_android/model/cart.dart';
 
 class ListProducts extends StatelessWidget {
-  const ListProducts({Key? key}) : super(key: key);
-
+  const ListProducts({Key? key, required this.listProduct}) : super(key: key);
+  final List<Cart> listProduct;
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
-        product(context),
-        product(context),
-        product(context),
-        product(context),
-        product(context),
-      ],
+      children: listProduct.map((e) => product(context, e)).toList(),
     );
   }
 }
 
-Widget product(context) {
+Widget product(context, Cart cart) {
   return Container(
     height: 120,
     color: Colors.white,
     padding: const EdgeInsets.all(defaultPadding / 4),
     margin: const EdgeInsets.only(bottom: defaultPadding),
     child: Row(children: <Widget>[
-      Image.asset('assets/images/product/image1.jpg', width: 120),
+      Image.network('http://10.0.2.2:8080/upload/product/${cart.avatar}',
+          width: 120),
       // SizedBox(width: 120, child: Text(widget.cart.avatar)),
       Flexible(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
-              "widget.cart.name",
+              cart.name,
               style: style(16, primaryTextColor, FontWeight.bold),
             ),
             Text(
-              'SKU: 1810470',
-              style: style(14, Colors.black45, FontWeight.normal),
-            ),
-            Text(
-              NumberFormat.decimalPattern().format(100000) + 'đ',
+              NumberFormat.decimalPattern().format(cart.price) + 'đ',
               style: style(16, primaryColor, FontWeight.bold),
             ),
             Text(
-              NumberFormat.decimalPattern().format(1000000 * 1.1) + 'đ',
+              NumberFormat.decimalPattern().format(cart.price * 1.1) + 'đ',
               style: const TextStyle(
                   fontSize: 15,
                   color: primaryTextColor,
@@ -57,6 +49,7 @@ Widget product(context) {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
+                const Text('Số lượng: '),
                 Container(
                   padding: const EdgeInsets.all(0),
                   width: 40,
@@ -66,7 +59,7 @@ Widget product(context) {
                       color: Colors.white),
                   child: Center(
                     child: Text(
-                      "4",
+                      cart.quantity.toString(),
                       style: style(16, primaryTextColor, FontWeight.bold),
                     ),
                   ),

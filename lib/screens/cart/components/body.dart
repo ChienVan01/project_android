@@ -39,7 +39,7 @@ class _BodyCartState extends State<BodyCart> {
     user = await DBConfig.instance.getUser();
   }
 
-  DBConfig? dbHelper = DBConfig.instance;
+  DBConfig? dbConfig = DBConfig.instance;
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context);
@@ -68,7 +68,7 @@ class _BodyCartState extends State<BodyCart> {
                       direction: DismissDirection.endToStart,
                       onDismissed: (direction) {
                         setState(() {
-                          dbHelper!.delete(snapshot.data![index].id, 'cart');
+                          dbConfig!.delete(snapshot.data![index].id, 'cart');
                           cart.removerCounter();
                           // cart.removeTotalPrice(double.parse(
                           //     snapshot.data![index].price.toString()));

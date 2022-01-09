@@ -35,7 +35,8 @@ class _DirectionalItemState extends State<DirectionalItem> {
 
   @override
   Widget build(BuildContext context) {
-    return user.name != ''
+    print(user.name);
+    return user.tokenUser == ''
         ? Column(
             children: [
               Container(

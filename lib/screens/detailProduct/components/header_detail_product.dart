@@ -61,6 +61,7 @@ class _HeaderDetailProductState extends State<HeaderDetailProduct> {
                         MaterialPageRoute(builder: (context) {
                         // double total = cart.getTotalPrice();
                         cart.removeTotalPrice(total);
+                        DBConfig.instance.deleteAll();
                         return CartScreen(product: widget.product);
                       }))),
           ],

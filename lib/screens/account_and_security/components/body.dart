@@ -16,9 +16,13 @@ class Body extends StatelessWidget {
                 color: Colors.white,
                 child: Column(children: const <Widget>[
                   TilteItem(text: "Tài khoản của tôi"),
-                  Item(text: 'Hồ sơ của tôi',press: '/account_and_security/profile'),
+                  Item(
+                      text: 'Hồ sơ của tôi',
+                      press: '/account_and_security/profile'),
                   Divider(),
-                  Item(text: 'Thay đổi địa chỉ',press:'/account_and_security/address'),
+                  Item(
+                      text: 'Thay đổi địa chỉ',
+                      press: '/account_and_security/address'),
                 ])),
           ),
           Padding(
@@ -27,15 +31,18 @@ class Body extends StatelessWidget {
                 color: Colors.white,
                 child: Column(children: const <Widget>[
                   TilteItem(text: "Hỗ Trợ"),
-                  Item(text: 'Trung tâm hỗ trợ',press:'/account_and_security/support'),
+                  Item(
+                      text: 'Trung tâm hỗ trợ',
+                      press: '/account_and_security/support'),
                   Divider(),
-                  Item(text: 'Điều khoản ShopGear',press:'/account_and_security/rules'),
+                  Item(
+                      text: 'Điều khoản ShopGear',
+                      press: '/account_and_security/rules'),
                 ])),
           ),
           footerButton(),
         ],
       ),
-      
     ]);
   }
 }
@@ -64,18 +71,20 @@ class TilteItem extends StatelessWidget {
 class Item extends StatelessWidget {
   const Item({
     Key? key,
-    required this.text,required this.press,
+    required this.text,
+    required this.press,
   }) : super(key: key);
-  final String text,press;
-  
+  final String text, press;
+
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(text),
-      trailing: const Icon(
-        Icons.navigate_next_outlined,
-      ),
-      onTap:   () {Navigator.pushNamed(context,press);}
-    );
+        title: Text(text),
+        trailing: const Icon(
+          Icons.navigate_next_outlined,
+        ),
+        onTap: () {
+          Navigator.pushNamed(context, press);
+        });
   }
 }

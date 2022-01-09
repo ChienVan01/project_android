@@ -76,7 +76,7 @@ class _FooterDetailState extends State<FooterDetail> {
                   dbConfig
                       .insertCart(
                           Cart(
-                              id: widget.product.id.toString() + '2',
+                              id: widget.product.id.toString() + '${user.id}',
                               productId: widget.product.id,
                               userId: user.id,
                               name: widget.product.name,

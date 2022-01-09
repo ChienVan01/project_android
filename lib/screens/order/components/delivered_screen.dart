@@ -21,7 +21,7 @@ class DeliveredOrderScreen extends StatelessWidget {
               "19.900.000đ",
               "Giao hàng thành công",
               "Đánh Giá",
-              '/rating'),
+              ''),
         ],
       ),
     );
