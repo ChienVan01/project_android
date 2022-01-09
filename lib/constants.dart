@@ -13,6 +13,6 @@ const BaseUrl = 'http://10.0.2.2:8000/api';
 
 const ProductUrl = BaseUrl + '/products';
 const LoginUrl = BaseUrl + '/login';
-const ProductTypeUrl = BaseUrl + '/product_type';
+const ProductTypeUrl = BaseUrl + '/product_types';
 const RegisterUrl = BaseUrl + '/register';
 const LogoutUrl = BaseUrl + '/logout';
