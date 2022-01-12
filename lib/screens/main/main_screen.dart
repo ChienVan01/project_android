@@ -64,6 +64,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget footer() {
     final cart = Provider.of<CartProvider>(context);
     final double total = cart.getTotalPrice();
+    DBConfig dbConfig = DBConfig.instance;
     return BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.white,

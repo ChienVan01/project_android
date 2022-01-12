@@ -10,7 +10,7 @@ Future logoutService(token, int id, context) async {
   // print(user);
   if (response.statusCode == 200) {
     ScaffoldMessenger.of(context)
-        .showSnackBar(const SnackBar(content: Text("Loout Successfully")));
+        .showSnackBar(const SnackBar(content: Text("Logout Successfully")));
     Navigator.pushNamedAndRemoveUntil(context, "/", (route) => false);
     DBConfig.instance.delete(id, 'user');
   } else {
