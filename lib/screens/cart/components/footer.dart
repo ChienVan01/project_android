@@ -60,10 +60,36 @@ class FooterCart extends StatelessWidget {
                   ]),
                 ),
                 TextButton(
-                  onPressed: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (context) {
-                    return PaymentScreen(product: cart);
-                  })),
+                  onPressed: () {
+                    if (cart.isEmpty) {
+                      showDialog(
+                          context: context,
+                          builder: (context) {
+                            Future.delayed(const Duration(milliseconds: 1300),
+                                () {
+                              Navigator.of(context).pop();
+                            });
+                            return const AlertDialog(
+                              title: Text("Mua hàng không thành công"),
+                              content: Text("Bạn chưa chọn sản phầm nào!"),
+                              // actions: <Widget>[
+                              //   // usually buttons at the bottom of the dialog
+                              //   TextButton(
+                              //     child: const Text("OK"),
+                              //     onPressed: () {
+                              //       Navigator.of(context).pop();
+                              //     },
+                              //   ),
+                              // ],
+                            );
+                          });
+                    } else {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const PaymentScreen()));
+                    }
+                  },
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(primaryColor),
                     padding: MaterialStateProperty.all(

@@ -5,8 +5,7 @@ import 'package:project_android/screens/payment/components/header.dart';
 import 'package:project_android/screens/payment/components/bottomnav.dart';
 
 class PaymentScreen extends StatefulWidget {
-  const PaymentScreen({Key? key, required this.product}) : super(key: key);
-  final List<Cart> product;
+  const PaymentScreen({Key? key}) : super(key: key);
 
   @override
   _PaymentScreenState createState() => _PaymentScreenState();
@@ -15,11 +14,11 @@ class PaymentScreen extends StatefulWidget {
 class _PaymentScreenState extends State<PaymentScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const PreferredSize(
+    return const Scaffold(
+      appBar: PreferredSize(
           preferredSize: Size(double.maxFinite, 50), child: Header()),
-      body: BodyPayment(product: widget.product),
-      bottomNavigationBar: const BottomNav(),
+      body: BodyPayment(),
+      bottomNavigationBar: BottomNav(),
     );
   }
 }

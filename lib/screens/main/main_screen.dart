@@ -72,7 +72,7 @@ class _MainScreenState extends State<MainScreen> {
         onTap: (value) {
           setState(() {
             pageIndex = value;
-
+            dbConfig.deleteAll();
             cart.removeTotalPrice(total);
           });
         },

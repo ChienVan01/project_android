@@ -35,7 +35,7 @@ Cart cart = Cart(
   productTypeId: 0,
   price: 0,
   initialPrice: 0,
-  quantity: 0,
+  Quantity: 0,
   avatar: '',
   status: 0,
 );
@@ -177,7 +177,7 @@ class _TitleProductState extends State<TitleProduct> {
                                           widget.product.productTypeId,
                                       price: widget.product.price,
                                       initialPrice: widget.product.price,
-                                      quantity: 1,
+                                      Quantity: 1,
                                       avatar: widget.product.avatar,
                                       status: 1),
                                   'wishlist')

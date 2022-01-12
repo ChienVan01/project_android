@@ -11,7 +11,8 @@ class Header extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: const Icon(Icons.arrow_back_ios) //phím quay lại screen trước
+          icon: const Icon(Icons.navigate_before_outlined,
+              size: 30) //phím quay lại screen trước
           ),
       title: const Text(
         'Thanh Toán',

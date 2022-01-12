@@ -16,3 +16,4 @@ const LoginUrl = BaseUrl + '/login';
 const ProductTypeUrl = BaseUrl + '/product_types';
 const RegisterUrl = BaseUrl + '/register';
 const LogoutUrl = BaseUrl + '/logout';
+const SaveOrdertUrl = BaseUrl + '/order/create';

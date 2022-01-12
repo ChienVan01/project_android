@@ -7,7 +7,7 @@ class Cart {
   int productTypeId;
   int price;
   int initialPrice;
-  int quantity;
+  int Quantity;
   String avatar;
   int status;
 
@@ -20,7 +20,7 @@ class Cart {
     required this.productTypeId,
     required this.price,
     required this.initialPrice,
-    required this.quantity,
+    required this.Quantity,
     required this.avatar,
     required this.status,
   });
@@ -34,7 +34,7 @@ class Cart {
         productTypeId: json['productTypeId'],
         price: json['price'],
         initialPrice: json['initialPrice'],
-        quantity: json['quantity'],
+        Quantity: json['quantity'],
         avatar: json['avatar'],
         status: json['status'],
       );
@@ -42,16 +42,16 @@ class Cart {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
-    data['productId'] = productId;
-    data['userId'] = userId;
-    data['name'] = name;
-    data['origin'] = origin;
-    data['productTypeId'] = productTypeId;
-    data['price'] = price;
-    data['initialPrice'] = initialPrice;
-    data['quantity'] = quantity;
-    data['avatar'] = avatar;
-    data['status'] = status;
+    data['ProductId'] = productId;
+    data['UserId'] = userId;
+    data['Name'] = name;
+    data['Origin'] = origin;
+    data['ProductTypeId'] = productTypeId;
+    data['Price'] = price;
+    data['InitialPrice'] = initialPrice;
+    data['Quantity'] = Quantity;
+    data['Avatar'] = avatar;
+    data['Status'] = status;
     return data;
   }
 }

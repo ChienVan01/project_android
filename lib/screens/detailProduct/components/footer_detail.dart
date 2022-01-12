@@ -6,6 +6,9 @@ import 'package:project_android/constants.dart';
 import 'package:project_android/model/cart.dart';
 import 'package:project_android/model/product.dart';
 import 'package:project_android/model/user.dart';
+import 'package:project_android/screens/cart/components/cart_provider.dart';
+import 'package:project_android/screens/payment/payment_screen.dart';
+import 'package:provider/provider.dart';
 
 class FooterDetail extends StatefulWidget {
   const FooterDetail({Key? key, required this.product}) : super(key: key);
@@ -31,10 +34,19 @@ class _FooterDetailState extends State<FooterDetail> {
     super.initState();
 
     refreshNote();
+    cart;
+    // getCart();
   }
 
   Future refreshNote() async {
     user = await DBConfig.instance.getUser();
+  }
+
+  List<Cart> cart = [];
+  Future getCart() async {
+    // getUser();
+    final cartP = Provider.of<CartProvider>(context);
+    cart = await cartP.getCheckout(user.id);
   }
 
   @override
@@ -84,7 +96,7 @@ class _FooterDetailState extends State<FooterDetail> {
                               productTypeId: widget.product.productTypeId,
                               price: widget.product.price,
                               initialPrice: widget.product.price,
-                              quantity: quantity,
+                              Quantity: quantity,
                               avatar: widget.product.avatar,
                               status: 1),
                           'cart')
@@ -128,22 +140,6 @@ class _FooterDetailState extends State<FooterDetail> {
               icon: const Icon(Icons.shopping_cart_outlined),
               color: Colors.white),
         ),
-        // ElevatedButton(
-        //     style: ButtonStyle(
-        //       backgroundColor: MaterialStateProperty.all(Colors.white38),
-        //       shadowColor: MaterialStateProperty.all(primaryColor),
-        //       padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
-        //     ),
-        //     child: Container(
-        //       height: 52,
-        //       width: 130.5,
-        //       color: primaryTextColor,
-        //       child: const Icon(Icons.shopping_cart_outlined,
-        //           color: Colors.white),
-        //     ),
-        //     onPressed: () {
-        //       Navigator.pushNamed(context, '/choosevoucher');
-        //     }),
         ElevatedButton(
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(Colors.white38),
@@ -154,11 +150,42 @@ class _FooterDetailState extends State<FooterDetail> {
             height: 52,
             width: 130.5,
             color: primaryColor,
-            child: const Center(
-              child: Text(
-                'Mua ngay',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 20, color: Colors.white),
+            child: Center(
+              child: InkWell(
+                onTap: () async {
+                  dbConfig.deleteAll();
+                  dbConfig
+                      .insertCart(
+                          Cart(
+                              id: widget.product.id.toString() + '${user.id}',
+                              productId: widget.product.id,
+                              userId: user.id,
+                              name: widget.product.name,
+                              origin: widget.product.origin,
+                              productTypeId: widget.product.productTypeId,
+                              price: widget.product.price,
+                              initialPrice: widget.product.price,
+                              Quantity: 1,
+                              avatar: widget.product.avatar,
+                              status: 1),
+                          'checkout')
+                      .then((value) {
+                    print('Them checkout thanh cong');
+                  }).onError((error, stackTrace) {
+                    print("error: " + error.toString());
+                  });
+                  getCart();
+
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const PaymentScreen()));
+                },
+                child: const Text(
+                  'Mua ngay',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, color: Colors.white),
+                ),
               ),
             ),
           ),

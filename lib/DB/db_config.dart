@@ -49,10 +49,10 @@ class DBConfig {
     return cart;
   }
 
-  Future<UserProfile> insertUser(UserProfile user) async {
+  Future<UserProfile> insertUser(UserProfile user, String table) async {
     print(user.toJson());
     var dbClient = await db;
-    await dbClient.insert('user', user.toJson());
+    await dbClient.insert(table, user.toJson());
     return user;
   }
 
@@ -75,7 +75,12 @@ class DBConfig {
     var dbClient = await db;
     final queryResult = await dbClient.query('user');
     return UserProfile.fromJson(queryResult.first);
-    // return queryResult!.map((e) => UserProfile.fromJson(e)).toList();
+  }
+
+  Future<UserProfile> getUserOPT(String table) async {
+    var dbClient = await db;
+    final queryResult = await dbClient.query('useropt');
+    return UserProfile.fromJson(queryResult.first);
   }
 
   Future<int> delete(id, String table) async {
@@ -88,6 +93,12 @@ class DBConfig {
     var dbClient = await db;
     print('xoa thanh cong');
     return await dbClient.delete('checkout');
+  }
+
+  Future<int> deleteOpt() async {
+    var dbClient = await db;
+    print('xoa thanh cong');
+    return await dbClient.delete('userOPT');
   }
 
   Future<int> deleteWish(String id, String table) async {
