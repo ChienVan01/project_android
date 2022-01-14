@@ -3,7 +3,6 @@ import 'package:project_android/DB/db_config.dart';
 import 'package:project_android/constants.dart';
 import 'package:project_android/components/header.dart';
 import 'package:project_android/model/user.dart';
-import 'package:project_android/screens/account_and_security/profile/components/textfield_widget.dart';
 import 'package:project_android/services/update_user_service.dart';
 
 class UpdateNameScreen extends StatefulWidget {
@@ -49,7 +48,8 @@ class _UpdateNameScreenState extends State<UpdateNameScreen> {
                     onPressed: () {
                       print(controller.text.toString());
                       print(user.id);
-                      update(controller.text.toString(), user.id, context);
+                      print(user.password);
+                      updateUser(controller.text.toString(), user.password, user.id, context);
                       dbConfig!.updateUser(UserProfile(
                         id: user.id, 
                         email: user.email, 
@@ -81,11 +81,11 @@ class _UpdateNameScreenState extends State<UpdateNameScreen> {
                   obscureText: false,
                   decoration:const InputDecoration(
                     hintText: "Nhập vào đây",
-                     enabledBorder: const OutlineInputBorder(
+                     enabledBorder:  OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   borderSide: BorderSide(color: colorBorder),
                 ),
-                border: const OutlineInputBorder(
+                border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                     borderSide: BorderSide(
                       width: 1,
@@ -94,8 +94,8 @@ class _UpdateNameScreenState extends State<UpdateNameScreen> {
             
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.all(defaultPadding / 2),
+             const Padding(
+                padding:  EdgeInsets.all(defaultPadding / 2),
                 child: Text("dưới 100 kí tự"),
               )
             ]));

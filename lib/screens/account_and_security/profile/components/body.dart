@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project_android/DB/db_config.dart';
+
 import 'package:project_android/components/text_style.dart';
 import 'package:project_android/constants.dart';
 import 'package:project_android/model/user.dart';
@@ -72,14 +72,14 @@ class _BodyState extends State<Body> {
                       title: snapshot.data!.phone.toString(),
                       press:
                           '/account_and_security/profile/components/updateName',
-                      trailing: Text("")),
+                      trailing: const Text("")),
                   const Divider(height: 1),
                   Item(
                       leading: "Email",
                       title: snapshot.data!.email,
                       press:
                           '/account_and_security/profile/components/updateName',
-                      trailing: Text("")),
+                      trailing: const Text("")),
                   const Divider(height: 1),
                   const SizedBox(
                     height: 20,

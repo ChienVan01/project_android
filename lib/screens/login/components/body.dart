@@ -27,7 +27,7 @@ class _BodyLoginState extends State<BodyLogin> {
           status: 0));
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
-
+  bool _isObscure = true;
   @override
   void initState() {
     super.initState();
@@ -36,6 +36,7 @@ class _BodyLoginState extends State<BodyLogin> {
 
   @override
   Widget build(BuildContext context) {
+ 
     return ListView(children: [
       Padding(
         padding:
@@ -75,10 +76,19 @@ class _BodyLoginState extends State<BodyLogin> {
               onSaved: (input) => requestModel.user!.password = input!,
               validator: (input) =>
                   (input)!.length < 3 ? "Mật khẩu nhiều hơn 3 kí tự" : null,
+              obscureText: _isObscure,
               decoration: InputDecoration(
                 prefixIcon:
                     const Icon(Icons.lock_outlined, color: Colors.black),
                 hintText: 'Mật khẩu',
+                suffixIcon: IconButton(
+                    icon: Icon(
+                        _isObscure ? Icons.visibility : Icons.visibility_off),
+                    onPressed: () {
+                      setState(() {
+                        _isObscure = !_isObscure;
+                      });
+                    }),
                 hintStyle: style(20, Colors.grey, FontWeight.normal),
                 enabledBorder: const OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -91,7 +101,6 @@ class _BodyLoginState extends State<BodyLogin> {
                     )),
               ),
               cursorColor: Colors.white,
-              obscureText: true,
               keyboardType: TextInputType.visiblePassword,
             ),
             const SizedBox(height: defaultPadding),

@@ -7,18 +7,19 @@ import 'package:http/http.dart' as http;
 
 import '../constants.dart';
 
-Future<void> update(String name ,id,context) async {
+Future<void> updateUser(String? name,String? password ,id,context) async {
   // Profile result = Profile( tokenUser: "",
   // user: User(id: 0, email: "", password: "", name: "", phone: "", address: "", avatar: "", userTypeId: 0, status: 0)) ;
 
-  if (name.isNotEmpty  ) {
+ try {
     final response = await http.put(
       Uri.parse(UpdateUserUrl+'/$id'),
       body: json.encode({
         "Name": name,
+        "Password":password,
         // "email": email,
         // "phone": phone,
-        // "password": password,
+     
         // "password_confirmation": repassword,
       }),
       headers: {
@@ -76,7 +77,7 @@ Future<void> update(String name ,id,context) async {
                 ],
               ));
     }
-  } else {
+  } catch (e) {
     ScaffoldMessenger.of(context)
         .showSnackBar(const SnackBar(content: Text("Vui lòng không bỏ trống")));
   }

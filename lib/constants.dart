@@ -13,7 +13,21 @@ const BaseUrl = 'http://10.0.2.2:8000/api';
 
 const ProductUrl = BaseUrl + '/products';
 const LoginUrl = BaseUrl + '/login';
-const ProductTypeUrl = BaseUrl + '/product_type';
+const ProductTypeUrl = BaseUrl + '/product_types';
 const RegisterUrl = BaseUrl + '/register';
 const LogoutUrl = BaseUrl + '/logout';
 const UpdateUserUrl = BaseUrl + '/user/update';
+const ForgotUserPassword = BaseUrl + '/user/forgot-password';
+
+final otpInputDecoration = InputDecoration(
+  border: outlineInputBorder(),
+  focusedBorder: outlineInputBorder(),
+  enabledBorder: outlineInputBorder(),
+);
+
+OutlineInputBorder outlineInputBorder() {
+  return OutlineInputBorder(
+    borderRadius: BorderRadius.circular(15),
+    borderSide: const BorderSide(color: primaryTextColor),
+  );
+}

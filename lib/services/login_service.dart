@@ -17,6 +17,7 @@ Future<Profile> login(String email, String password, context) async {
           name: "",
           phone: "",
           address: "",
+          otp:"",
           avatar: "",
           userType_id: 0,
           status: 0));
@@ -41,9 +42,10 @@ Future<Profile> login(String email, String password, context) async {
         phone: result.user!.phone,
         address: result.user!.address,
         avatar: result.user!.avatar,
+        otp: "",
         tokenUser: result.tokenUser,
         status: result.user!.status,
-      ));
+      ),"user");
       // print(result.user!.name);
       ScaffoldMessenger.of(context)
           .showSnackBar(const SnackBar(content: Text("Login Successfully")));
