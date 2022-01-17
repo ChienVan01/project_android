@@ -95,7 +95,7 @@ Widget product(context, Cart cart) {
                       color: Colors.white),
                   child: Center(
                     child: Text(
-                      cart.Quantity.toString(),
+                      cart.quantity.toString(),
                       style: style(16, primaryTextColor, FontWeight.bold),
                     ),
                   ),

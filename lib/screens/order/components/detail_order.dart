@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:project_android/constants.dart';
 
-Widget detailOrderWidget(String img, String productName, int qty,
-    String unitPrice, String status, String txtButton) {
+Widget detailOrderWidget(String img, String productName, int qty, int unitPrice,
+    String status, String txtButton) {
   return Container(
     padding: const EdgeInsets.fromLTRB(
         defaultPadding, defaultPadding / 2, defaultPadding, defaultPadding / 2),
@@ -42,7 +43,11 @@ Widget detailOrderWidget(String img, String productName, int qty,
                           "Số lượng : $qty",
                         ),
                         const SizedBox(height: 20),
-                        Text(unitPrice,
+                        Text(
+                            NumberFormat.decimalPattern()
+                                    .format(unitPrice)
+                                    .toString() +
+                                'đ',
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               color: primaryColor,
@@ -71,7 +76,11 @@ Widget detailOrderWidget(String img, String productName, int qty,
                       const Text(
                         "Thành Tiền:  ",
                       ),
-                      Text(unitPrice,
+                      Text(
+                          NumberFormat.decimalPattern()
+                                  .format(unitPrice)
+                                  .toString() +
+                              'đ',
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             color: primaryColor,

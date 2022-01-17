@@ -1,10 +1,12 @@
 // ignore_for_file: avoid_print
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:project_android/model/cart.dart';
+import 'package:project_android/model/order.dart';
 
 import '../constants.dart';
 
@@ -39,19 +41,6 @@ Future<void> orderService(int paymentId, int userId, int voucherId,
     if (response.statusCode == 201) {
       print("response status ${response.statusCode}");
       print("response body ${response.body}");
-
-      // result = Profile.fromJson(json.decode(response.body));
-      // // print(result.user!.name);
-      //  ScaffoldMessenger.of(context)
-      //   .showSnackBar(const SnackBar(content: Text("Register Successfully")));
-      // Navigator.pushNamed(context, "/login");
-      // jsonResponse = json.decode(response.body.toString());
-      // ScaffoldMessenger.of(context)
-      //     .showSnackBar(SnackBar(content: Text(" ${jsonResponse['Message']}")));
-
-      //Or put here your next screen using Navigator.push() method
-      // print('success');
-
       showDialog(
           context: context,
           builder: (context) => AlertDialog(
@@ -91,3 +80,83 @@ Future<void> orderService(int paymentId, int userId, int voucherId,
         .showSnackBar(const SnackBar(content: Text("Vui lòng không bỏ trống")));
   }
 }
+
+Future<List<Order>> getOrderByStatus(context, userId, id) async {
+  List<Order> result = [];
+  try {
+    final response = await http.get(
+      Uri.parse(BaseUrl + '/order/status/' + userId + '/' + id),
+      headers: {
+        HttpHeaders.contentTypeHeader: "application/json",
+      },
+    );
+    if (response.statusCode == 200) {
+      final item = json.decode(response.body);
+
+      result = (item as List).map((p) => Order.fromJson(p)).toList();
+    }
+  } catch (e) {
+    rethrow;
+  }
+  return result;
+}
+
+// Future<OrderDetail> getOrderDetail(context, id) async {
+//   OrderDetail result = OrderDetail(
+//     id: 0,
+//     orderId: 0,
+//     productId: 0,
+//     unitPrice: '',
+//     quantity: 0,
+//     intoMoney: '',
+//     status: 0,
+//     createdAt: '',
+//     updatedAt: '',
+//   );
+//   try {
+//     final response = await http.get(
+//       Uri.parse(BaseUrl + '/order/detail/' + id),
+//       headers: {
+//         HttpHeaders.contentTypeHeader: "application/json",
+//       },
+//     );
+//     if (response.statusCode == 200) {
+//       final item = json.decode(response.body);
+
+//       result = OrderDetail.fromJson(item);
+//     }
+//   } catch (e) {
+//     rethrow;
+//   }
+//   return result;
+// }
+
+// Future<OrderDetail> getOrderDetail(context, id) async {
+//   OrderDetail result = OrderDetail(
+//     id: 0,
+//     orderId: 0,
+//     productId: 0,
+//     unitPrice: '',
+//     quantity: 0,
+//     intoMoney: '',
+//     status: 0,
+//     createdAt: '',
+//     updatedAt: '',
+//   );
+//   try {
+//     final response = await http.get(
+//       Uri.parse(BaseUrl + '/order/detail/' + id),
+//       headers: {
+//         HttpHeaders.contentTypeHeader: "application/json",
+//       },
+//     );
+//     if (response.statusCode == 200) {
+//       final item = json.decode(response.body);
+
+//       result = OrderDetail.fromJson(item);
+//     }
+//   } catch (e) {
+//     rethrow;
+//   }
+//   return result;
+// }

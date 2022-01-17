@@ -28,6 +28,7 @@ import 'package:project_android/screens/forget_password/step03/step03.dart';
 import 'package:project_android/screens/home/components/product_type_provider.dart';
 import 'package:project_android/screens/loading/loading_screen.dart';
 import 'package:project_android/screens/login/login_screen.dart';
+import 'package:project_android/screens/order/components/order_provider.dart';
 import 'package:project_android/screens/order/order_screen.dart';
 import 'package:project_android/screens/payment/payment_screen.dart';
 import 'package:project_android/screens/product/components/product_provider.dart';
@@ -60,6 +61,7 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => ProductTypeProvider()),
           ChangeNotifierProvider(create: (_) => FavoriteProvider()),
           ChangeNotifierProvider(create: (_) => UserProvider()),
+          ChangeNotifierProvider(create: (_) => OrderProvider()),
         ],
         child: MaterialApp(
           title: 'Shop Gear',
@@ -81,7 +83,7 @@ class MyApp extends StatelessWidget {
             '/loading': (context) => const Loading(),
             // '/product': (context) => const ProductScreen(id: null),
             // '/productdetail': (context) => const ProductDetail(),
-            '/order': (context) => const OrderScreen(),
+            // '/order': (context) => const OrderScreen(),
             '/search': (context) => const FilterListProduct(),
             '/favorite': (context) => const FavoriteScreen(),
             '/recently': (context) => const Recently(),

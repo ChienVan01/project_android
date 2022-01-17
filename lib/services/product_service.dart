@@ -69,31 +69,35 @@ Future<List<Product>> getAllProductbyProductType(context, String id) async {
   return result;
 }
 
+Future<Product> getProductDetail(context, id) async {
+  Product result = Product(
+    id: 0,
+    name: '',
+    configuration: '',
+    info: '',
+    origin: '',
+    productTypeId: 0,
+    price: 0,
+    quantity: 0,
+    avatar: '',
+    status: 0,
+    createdAt: '',
+    updatedAt: '',
+  );
+  try {
+    final response = await http.get(
+      Uri.parse(BaseUrl + '/products/' + id),
+      headers: {
+        HttpHeaders.contentTypeHeader: "application/json",
+      },
+    );
+    if (response.statusCode == 200) {
+      final item = json.decode(response.body);
 
-
-
-// import 'dart:convert';
-
-// import 'package:project_android/constants.dart';
-// import 'package:project_android/model/product.dart';
-// import 'package:http/http.dart' as http;
-
-// abstract class ServiceApi {
-//   Future<List<Product>> getProduct();
-// }
-
-// class ProductRepository extends ServiceApi {
-//   @override
-//   Future<List<Product>> getProduct() async {
-//     try {
-//       var uri = Uri.parse(BaseUrl);
-//       var response =
-//           await http.get(uri, headers: {"ContentType": "application/json"});
-//       var Productlist = ProductFromJson(response.body);
-
-//       return Productlist;
-//     } catch (e) {
-//       return List<Product>.empty();
-//     }
-//   }
-// }
+      result = Product.fromJson(item);
+    }
+  } catch (e) {
+    rethrow;
+  }
+  return result;
+}

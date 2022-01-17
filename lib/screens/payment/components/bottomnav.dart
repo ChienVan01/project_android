@@ -42,7 +42,7 @@ class BottomNav extends StatelessWidget {
               "Name": e.name,
               "ProductType_id": e.productTypeId,
               "Price": e.initialPrice,
-              "Quantity": e.Quantity
+              "Quantity": e.quantity
             })
         .toList();
     final cartP = Provider.of<CartProvider>(context);
@@ -106,7 +106,7 @@ class BottomNav extends StatelessWidget {
                 onPressed: () {
                   orderService(
                     1,
-                    3,
+                    user.id,
                     1,
                     1,
                     total,
@@ -115,10 +115,9 @@ class BottomNav extends StatelessWidget {
                   );
                   DBConfig.instance.deleteAll();
 
-                  // print(listCart[0].id);
-                  listCart
-                      .forEach((i) => DBConfig.instance.delete(i.id, 'cart'));
-                  // print(listCart.map((e) => e.id));
+                  for (var i in listCart) {
+                    DBConfig.instance.delete(i.id, 'cart');
+                  }
                 },
               )
             ],

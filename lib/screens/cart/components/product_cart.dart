@@ -55,7 +55,7 @@ class _ProductCartState extends State<ProductCart> {
                             productTypeId: widget.cart.productTypeId,
                             price: widget.cart.price,
                             initialPrice: widget.cart.initialPrice,
-                            Quantity: widget.cart.Quantity,
+                            quantity: widget.cart.quantity,
                             avatar: widget.cart.avatar,
                             status: 1),
                         'checkout')
@@ -114,7 +114,7 @@ class _ProductCartState extends State<ProductCart> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  if (widget.cart.Quantity == 1)
+                  if (widget.cart.quantity == 1)
                     Padding(
                       padding: const EdgeInsets.only(
                           left: defaultPadding, right: defaultPadding),
@@ -126,7 +126,7 @@ class _ProductCartState extends State<ProductCart> {
                   else
                     ElevatedButton(
                       onPressed: () {
-                        int quantity = widget.cart.Quantity;
+                        int quantity = widget.cart.quantity;
                         int price = widget.cart.initialPrice;
                         quantity--;
                         int? newPrice = price * quantity;
@@ -142,7 +142,7 @@ class _ProductCartState extends State<ProductCart> {
                                     productTypeId: widget.cart.productTypeId,
                                     price: newPrice,
                                     initialPrice: widget.cart.initialPrice,
-                                    Quantity: quantity,
+                                    quantity: quantity,
                                     avatar: widget.cart.avatar,
                                     status: 1))
                                 .then((value) {
@@ -164,7 +164,7 @@ class _ProductCartState extends State<ProductCart> {
                                     productTypeId: widget.cart.productTypeId,
                                     price: newPrice,
                                     initialPrice: widget.cart.initialPrice,
-                                    Quantity: quantity,
+                                    quantity: quantity,
                                     avatar: widget.cart.avatar,
                                     status: 1))
                                 .then((value) {
@@ -202,14 +202,14 @@ class _ProductCartState extends State<ProductCart> {
                         color: Colors.white),
                     child: Center(
                       child: Text(
-                        (widget.cart.Quantity).toString(),
+                        (widget.cart.quantity).toString(),
                         style: style(16, primaryTextColor, FontWeight.bold),
                       ),
                     ),
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      int quantity = widget.cart.Quantity;
+                      int quantity = widget.cart.quantity;
                       int price = widget.cart.initialPrice;
                       quantity++;
                       int? newPrice = price * quantity;
@@ -224,7 +224,7 @@ class _ProductCartState extends State<ProductCart> {
                                 productTypeId: widget.cart.productTypeId,
                                 price: newPrice,
                                 initialPrice: widget.cart.initialPrice,
-                                Quantity: quantity,
+                                quantity: quantity,
                                 avatar: widget.cart.avatar,
                                 status: 1))
                             .then((value) {
@@ -246,7 +246,7 @@ class _ProductCartState extends State<ProductCart> {
                                 productTypeId: widget.cart.productTypeId,
                                 price: newPrice,
                                 initialPrice: widget.cart.initialPrice,
-                                Quantity: quantity,
+                                quantity: quantity,
                                 avatar: widget.cart.avatar,
                                 status: 1))
                             .then((value) {

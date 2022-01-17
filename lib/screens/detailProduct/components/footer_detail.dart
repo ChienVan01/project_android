@@ -96,7 +96,7 @@ class _FooterDetailState extends State<FooterDetail> {
                               productTypeId: widget.product.productTypeId,
                               price: widget.product.price,
                               initialPrice: widget.product.price,
-                              Quantity: quantity,
+                              quantity: quantity,
                               avatar: widget.product.avatar,
                               status: 1),
                           'cart')
@@ -165,7 +165,7 @@ class _FooterDetailState extends State<FooterDetail> {
                               productTypeId: widget.product.productTypeId,
                               price: widget.product.price,
                               initialPrice: widget.product.price,
-                              Quantity: 1,
+                              quantity: 1,
                               avatar: widget.product.avatar,
                               status: 1),
                           'checkout')

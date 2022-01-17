@@ -7,7 +7,7 @@ class Cart {
   int productTypeId;
   int price;
   int initialPrice;
-  int Quantity;
+  int quantity;
   String avatar;
   int status;
 
@@ -20,7 +20,7 @@ class Cart {
     required this.productTypeId,
     required this.price,
     required this.initialPrice,
-    required this.Quantity,
+    required this.quantity,
     required this.avatar,
     required this.status,
   });
@@ -34,7 +34,7 @@ class Cart {
         productTypeId: json['productTypeId'],
         price: json['price'],
         initialPrice: json['initialPrice'],
-        Quantity: json['quantity'],
+        quantity: json['quantity'],
         avatar: json['avatar'],
         status: json['status'],
       );
@@ -49,7 +49,7 @@ class Cart {
     data['ProductTypeId'] = productTypeId;
     data['Price'] = price;
     data['InitialPrice'] = initialPrice;
-    data['Quantity'] = Quantity;
+    data['Quantity'] = quantity;
     data['Avatar'] = avatar;
     data['Status'] = status;
     return data;
