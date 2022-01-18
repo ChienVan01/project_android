@@ -16,4 +16,6 @@ const LoginUrl = BaseUrl + '/login';
 const ProductTypeUrl = BaseUrl + '/product_types';
 const RegisterUrl = BaseUrl + '/register';
 const LogoutUrl = BaseUrl + '/logout';
-const RatingUrl = BaseUrl + '/  ';
+const RatingUrl = BaseUrl + '/comments';
+const NotifyUrl = BaseUrl + '/notifies';
+const VoucherUrl = BaseUrl + '/vouchers';

@@ -53,9 +53,10 @@ class _MainScreenState extends State<MainScreen> {
     setState(() => isLoading = false);
   }
 
+  
   List<Widget> pageList = <Widget>[
     const DiscountScreen(),
-    const NotificationSrceen(),
+    NotificationSrceen(id: 4),
     const HomeScreen(),
     const CartScreen(),
     const AccountsScreen(),

@@ -69,9 +69,6 @@ Future<List<Product>> getAllProductbyProductType(context, String id) async {
   return result;
 }
 
-
-
-
 // import 'dart:convert';
 
 // import 'package:project_android/constants.dart';
@@ -97,3 +94,33 @@ Future<List<Product>> getAllProductbyProductType(context, String id) async {
 //     }
 //   }
 // }
+//http://127.0.0.1:8000/api/1
+Future<Product> getProductByID(context, id) async {
+  Product result = Product(
+      id: 0,
+      name: "",
+      configuration: "",
+      info: "",
+      origin: "",
+      productTypeId: 0,
+      price: 0,
+      quantity: 0,
+      avatar: "",
+      status: 0,
+      createdAt: "",
+      updatedAt: "");
+  try {
+    final response = await http.get(
+      Uri.parse(ProductUrl + '/' + id),
+      headers: {
+        HttpHeaders.contentTypeHeader: "application/json",
+      },
+    );
+    if (response.statusCode == 200) {
+      result = Product.fromJson(json.decode(response.body));
+    }
+  } catch (e) {
+    rethrow;
+  }
+  return result;
+}

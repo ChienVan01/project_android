@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-
 import 'components/body.dart';
 import 'components/header.dart';
 
 class RatingScreen extends StatefulWidget {
-  const RatingScreen({Key? key}) : super(key: key);
-
+  const RatingScreen({
+    Key? key, required this.id
+  }) : super(key: key);
+  final int id;
   @override
   _RatingScreenState createState() => _RatingScreenState();
 }
@@ -13,13 +14,13 @@ class RatingScreen extends StatefulWidget {
 class _RatingScreenState extends State<RatingScreen> {
   @override
   Widget build(BuildContext context) {
-    return const DefaultTabController(
+    return  DefaultTabController(
         initialIndex: 0,
-        length: 6,
+        length: 1,
         child: Scaffold(
-          appBar: PreferredSize(
+          appBar: const PreferredSize(
               preferredSize: Size(double.maxFinite, 50), child: Header()),
-          body: BodyRating(),
+          body: BodyRating(id: widget.id),
         ));
   }
 }
