@@ -5,14 +5,14 @@ import 'package:project_android/components/header.dart';
 import 'package:project_android/model/user.dart';
 import 'package:project_android/services/update_user_service.dart';
 
-class UpdateNameScreen extends StatefulWidget {
-  const UpdateNameScreen({Key? key}) : super(key: key);
+class UpdatePhoneScreen extends StatefulWidget {
+  const UpdatePhoneScreen({Key? key}) : super(key: key);
 
   @override
-  State<UpdateNameScreen> createState() => _UpdateNameScreenState();
+  State<UpdatePhoneScreen> createState() => _UpdatePhoneScreenState();
 }
 DBConfig? dbConfig = DBConfig.instance;
-class _UpdateNameScreenState extends State<UpdateNameScreen> {
+class _UpdatePhoneScreenState extends State<UpdatePhoneScreen> {
    UserProfile user = UserProfile(
       id: 0,
       email: '',
@@ -40,7 +40,7 @@ class _UpdateNameScreenState extends State<UpdateNameScreen> {
     return Scaffold(
         appBar: PreferredSize(
           child: Header(
-              title: 'Sửa tên',
+              title: 'Sửa số điện thoại',
               backgroundColor: primaryColor,
               textColor: colorWhite,
               action: <Widget>[
@@ -49,13 +49,13 @@ class _UpdateNameScreenState extends State<UpdateNameScreen> {
                       print(controller.text.toString());
                       print(user.id);
                       print(user.password);
-                      updateUser(controller.text.toString(), user.password, user.phone, user.id, context);
+                      updateUser(user.name, user.password,controller.text.toString(), user.id, context);
                       dbConfig!.updateUser(UserProfile(
                         id: user.id, 
                         email: user.email, 
                         password: user.password, 
-                        name: controller.text.toString(),
-                        phone:user.phone,
+                        name: user.name, 
+                        phone:controller.text.toString(),
                         tokenUser: user.tokenUser, 
                         status: user.status,
                       )).then((value) {
