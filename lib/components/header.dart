@@ -18,12 +18,13 @@ class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppBar(
       centerTitle: true,
-      leading: IconButton(
-        onPressed: () {
-          Navigator.pop(context);
-        },
-        icon: Icon(Icons.navigate_before_outlined, color: textColor, size: 30),
-      ),
+      leading: Navigator.canPop(context)
+          ? IconButton(
+              icon: Icon(Icons.navigate_before_outlined,
+                  color: textColor, size: 30),
+              onPressed: () => Navigator.of(context).pop(),
+            )
+          : null,
       title: Text(
         title,
         style: style(22, textColor, FontWeight.bold),

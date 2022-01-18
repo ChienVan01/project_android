@@ -1,7 +1,5 @@
 // ignore_for_file: unused_import
-
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:intl/intl.dart';
@@ -13,9 +11,9 @@ import 'package:project_android/screens/product/components/product_provider.dart
 import 'package:provider/provider.dart';
 
 class ListProduct extends StatefulWidget {
-  const ListProduct({
-    Key? key,
-  }) : super(key: key);
+  const ListProduct({Key? key, this.id, this.nameProduct}) : super(key: key);
+  final String? id;
+  final String? nameProduct;
 
   @override
   State<ListProduct> createState() => _Liststate();
@@ -25,16 +23,30 @@ class _Liststate extends State<ListProduct> {
   @override
   void initState() {
     super.initState();
-    final products = Provider.of<ProductProvider>(context, listen: false);
-    products.getProduct(context);
+    if (widget.id == '') {
+      final products = Provider.of<ProductProvider>(context, listen: false);
+      products.getProduct(context);
+    } else {
+      final products = Provider.of<ProductProvider>(context, listen: false);
+      products.getProductbyProductType(context, widget.id);
+    }
+    widget.nameProduct;
   }
 
   @override
   Widget build(BuildContext context) {
     return Consumer<ProductProvider>(builder: (context, state, child) {
       return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Navbar(),
+          if (widget.nameProduct != null)
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text('${widget.nameProduct}',
+                  style: const TextStyle(
+                      fontSize: 18, fontWeight: FontWeight.bold)),
+            ),
           Expanded(
             child: StaggeredGridView.countBuilder(
               // physics: const BouncingScrollPhysics(),
@@ -51,21 +63,22 @@ class _Liststate extends State<ListProduct> {
                       ),
                     );
                   },
-                  child: state.loading == true
-                      ? Center(
-                          child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            CircularProgressIndicator(),
-                            SizedBox(height: defaultPadding),
-                            Text('Đang tải...')
-                          ],
-                        ))
-                      : _productItem(
-                          title: state.products[index].name,
-                          image: state.products[index].avatar,
-                          price: state.products[index].price,
-                        ),
+                  child:
+                      // state.loading == true
+                      //     ? Center(
+                      //         child: Column(
+                      //         mainAxisAlignment: MainAxisAlignment.center,
+                      //         children: const [
+                      //           CircularProgressIndicator(),
+                      //           SizedBox(height: defaultPadding),
+                      //           Text('Đang tải...')
+                      //         ],
+                      //       ))
+                      _productItem(
+                    title: state.products[index].name,
+                    image: state.products[index].avatar,
+                    price: state.products[index].price,
+                  ),
                 );
               },
               staggeredTileBuilder: (int index) =>
@@ -108,9 +121,13 @@ Widget _productItem({required String title, image, price}) {
         const SizedBox(
           height: 8,
         ),
-        Text(
-          title,
-          style: const TextStyle(fontWeight: FontWeight.bold),
+        Expanded(
+          child: Text(
+            title,
+            style: const TextStyle(fontWeight: FontWeight.bold),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
         ),
         Text(
           NumberFormat.decimalPattern().format(price),

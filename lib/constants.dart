@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:flutter/material.dart';
 
 const primaryColor = Color(0xffD90429);
@@ -9,4 +11,28 @@ const colorBorder = Color(0xffC4C4C4);
 
 const BaseUrl = 'http://10.0.2.2:8000/api';
 
-const ProductUrl = BaseUrl + '/product';
+const ProductUrl = BaseUrl + '/products';
+const LoginUrl = BaseUrl + '/login';
+const ProductTypeUrl = BaseUrl + '/product_types';
+const RegisterUrl = BaseUrl + '/register';
+const LogoutUrl = BaseUrl + '/logout';
+const SaveOrdertUrl = BaseUrl + '/order/create';
+const UpdateUserUrl = BaseUrl + '/user/update';
+const ForgotUserPassword = BaseUrl + '/user/forgot-password';
+
+final otpInputDecoration = InputDecoration(
+  border: outlineInputBorder(),
+  focusedBorder: outlineInputBorder(),
+  enabledBorder: outlineInputBorder(),
+);
+
+OutlineInputBorder outlineInputBorder() {
+  return OutlineInputBorder(
+    borderRadius: BorderRadius.circular(15),
+    borderSide: const BorderSide(color: primaryTextColor),
+  );
+}
+
+const RatingUrl = BaseUrl + '/comments';
+const NotifyUrl = BaseUrl + '/notifies';
+const VoucherUrl = BaseUrl + '/vouchers';

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:project_android/constants.dart';
 
-class AddressScreen extends StatelessWidget {
-  const AddressScreen({Key? key}) : super(key: key);
+class ChooseAddressScreen extends StatelessWidget {
+  const ChooseAddressScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +84,7 @@ class _MyStatefulWidgetState extends State<_AddressScreen> {
           ),
         ),
         Container(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
               primary: primaryColor,

@@ -1,11 +1,13 @@
 import 'package:project_android/constants.dart';
 import 'package:flutter/material.dart';
 
-Widget header() {
+Widget header(context) {
   return AppBar(
-    leading: const IconButton(
-        onPressed: _test,
-        icon: Icon(Icons.arrow_back_ios) //phím quay lại screen trước
+    leading: IconButton(
+        onPressed: () {
+          Navigator.pop(context);
+        },
+        icon: const Icon(Icons.arrow_back_ios) //phím quay lại screen trước
         ),
     title: const Text(
       'Khuyến Mãi',
@@ -14,7 +16,4 @@ Widget header() {
     centerTitle: true,
     backgroundColor: primaryColor,
   );
-}
-void _test() {
-  //nothing to do
 }

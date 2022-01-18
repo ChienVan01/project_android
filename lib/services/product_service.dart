@@ -10,7 +10,7 @@ Future<List<Product>> getAllProduct(context) async {
   List<Product> result = [];
   try {
     final response = await http.get(
-      Uri.parse(ProductUrl),
+      Uri.parse(BaseUrl + '/products'),
       headers: {
         HttpHeaders.contentTypeHeader: "application/json",
       },
@@ -26,19 +26,20 @@ Future<List<Product>> getAllProduct(context) async {
   return result;
 }
 
-Future<Product> getDetailProduct(context, id) async {
-  Product result = Product as Product;
+Future<List<Product>> search(String query) async {
+  List<Product> result = [];
   try {
-    final response = await http.get(
-      Uri.parse(ProductUrl + id),
-      headers: {
-        HttpHeaders.contentTypeHeader: "application/json",
-      },
-    );
+    final response = await http.get(Uri.parse(BaseUrl + '/products'));
     if (response.statusCode == 200) {
       final item = json.decode(response.body);
 
-      result = item.map((p) => Product.fromJson(p));
+      result = (item as List).map((p) => Product.fromJson(p)).where((e) {
+        final titleLower = e.name.toLowerCase();
+        // final authorLower = book.author.toLowerCase();
+        final searchLower = query.toLowerCase();
+
+        return titleLower.contains(searchLower);
+      }).toList();
     }
   } catch (e) {
     rethrow;
@@ -46,8 +47,27 @@ Future<Product> getDetailProduct(context, id) async {
   return result;
 }
 
+Future<List<Product>> getAllProductbyProductType(context, String id) async {
+  List<Product> result = [];
+  try {
+    final response = await http.get(
+//http://10.0.2.2:8000/api/product_type/{id}
 
+      Uri.parse(ProductTypeUrl + '/' + id),
+      headers: {
+        HttpHeaders.contentTypeHeader: "application/json",
+      },
+    );
+    if (response.statusCode == 200) {
+      final item = json.decode(response.body);
 
+      result = (item as List).map((p) => Product.fromJson(p)).toList();
+    }
+  } catch (e) {
+    rethrow;
+  }
+  return result;
+}
 
 // import 'dart:convert';
 
@@ -74,3 +94,33 @@ Future<Product> getDetailProduct(context, id) async {
 //     }
 //   }
 // }
+//http://127.0.0.1:8000/api/1
+Future<Product> getProductByID(context, id) async {
+  Product result = Product(
+      id: 0,
+      name: "",
+      configuration: "",
+      info: "",
+      origin: "",
+      productTypeId: 0,
+      price: 0,
+      quantity: 0,
+      avatar: "",
+      status: 0,
+      createdAt: "",
+      updatedAt: "");
+  try {
+    final response = await http.get(
+      Uri.parse(ProductUrl + '/' + id),
+      headers: {
+        HttpHeaders.contentTypeHeader: "application/json",
+      },
+    );
+    if (response.statusCode == 200) {
+      result = Product.fromJson(json.decode(response.body));
+    }
+  } catch (e) {
+    rethrow;
+  }
+  return result;
+}

@@ -78,12 +78,11 @@ class _BannerHomeState extends State<BannerHome> {
   Widget build(BuildContext context) {
     return Container(
       height: 170.0,
-      decoration: BoxDecoration(
-          color: primaryColor,
-          borderRadius: const BorderRadius.only(
-            bottomLeft: Radius.circular(7),
-            bottomRight: Radius.circular(7),
-          ),
+      decoration: BoxDecoration(color: primaryColor,
+          // borderRadius: const BorderRadius.only(
+          //   bottomLeft: Radius.circular(7),
+          //   bottomRight: Radius.circular(7),
+          // ),
           boxShadow: [
             BoxShadow(
                 offset: const Offset(0, 10),
@@ -121,7 +120,8 @@ class _BannerHomeState extends State<BannerHome> {
                 child: Container(
                   width: 8.0,
                   height: 8.0,
-                  margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+                  margin: const EdgeInsets.symmetric(
+                      vertical: 8.0, horizontal: 4.0),
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: (Theme.of(context).brightness == Brightness.light

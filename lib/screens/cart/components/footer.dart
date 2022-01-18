@@ -1,17 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:project_android/DB/db_config.dart';
 import 'package:project_android/components/text_style.dart';
 import 'package:project_android/constants.dart';
-import 'package:project_android/model/product.dart';
+import 'package:project_android/model/cart.dart';
+import 'package:project_android/model/user.dart';
 import 'package:project_android/screens/cart/components/cart_provider.dart';
-import 'package:project_android/screens/cart/components/product_cart.dart';
+import 'package:project_android/screens/payment/payment_screen.dart';
 import 'package:provider/provider.dart';
+
+UserProfile user = UserProfile(
+  id: 0,
+  email: "",
+  password: "",
+  name: "",
+  phone: "",
+  address: "",
+  avatar: "",
+  tokenUser: '',
+  status: 0,
+);
+List<Cart> cart = [];
+
+Future getUser() async {
+  user = await DBConfig.instance.getUser();
+}
+
+Future getCart(context) async {
+  getUser();
+  final cartP = Provider.of<CartProvider>(context);
+  cart = await cartP.getCheckout(user.id);
+}
 
 class FooterCart extends StatelessWidget {
   const FooterCart({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    getCart(context);
+
     return Consumer<CartProvider>(
         builder: (context, value, child) => Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -29,11 +56,40 @@ class FooterCart extends StatelessWidget {
                                 .format(value.getTotalPrice())
                                 .toString() +
                             'đ',
-                        style: style(20, primaryColor, FontWeight.bold)),
+                        style: style(20, primaryColor, FontWeight.bold))
                   ]),
                 ),
                 TextButton(
-                  onPressed: () => Navigator.pushNamed(context, '/'),
+                  onPressed: () {
+                    if (cart.isEmpty) {
+                      showDialog(
+                          context: context,
+                          builder: (context) {
+                            Future.delayed(const Duration(milliseconds: 1300),
+                                () {
+                              Navigator.of(context).pop();
+                            });
+                            return const AlertDialog(
+                              title: Text("Mua hàng không thành công"),
+                              content: Text("Bạn chưa chọn sản phầm nào!"),
+                              // actions: <Widget>[
+                              //   // usually buttons at the bottom of the dialog
+                              //   TextButton(
+                              //     child: const Text("OK"),
+                              //     onPressed: () {
+                              //       Navigator.of(context).pop();
+                              //     },
+                              //   ),
+                              // ],
+                            );
+                          });
+                    } else {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const PaymentScreen()));
+                    }
+                  },
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(primaryColor),
                     padding: MaterialStateProperty.all(

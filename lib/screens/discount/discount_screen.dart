@@ -12,9 +12,11 @@ class DiscountScreen extends StatelessWidget {
       initialIndex: 0,
       length: 2,
       child: Scaffold(
-          appBar: PreferredSize(
-              preferredSize: const Size(double.infinity, 50), child: header()),
-          body: body(context)),
+        appBar: PreferredSize(
+            preferredSize: const Size(double.infinity, 50),
+            child: header(context)),
+        body: const DiscountBody(),
+      ),
     );
   }
 }

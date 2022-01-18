@@ -4,11 +4,39 @@ import 'package:project_android/services/product_service.dart';
 
 class ProductProvider extends ChangeNotifier {
   List<Product> products = [];
+  Product product = Product(
+    id: 0,
+    name: '',
+    configuration: '',
+    info: '',
+    origin: '',
+    productTypeId: 0,
+    price: 0,
+    quantity: 0,
+    avatar: '',
+    status: 0,
+    createdAt: '',
+    updatedAt: '',
+  );
   bool loading = false;
 
   getProduct(context) async {
     loading = true;
     products = await getAllProduct(context);
+    loading = false;
+    notifyListeners();
+  }
+
+  getProductbyProductType(context, id) async {
+    loading = true;
+    products = await getAllProductbyProductType(context, id);
+    loading = false;
+    notifyListeners();
+  }
+
+  getProductbyProductID(context, id) async {
+    loading = true;
+    product = await getProductByID(context, id);
     loading = false;
     notifyListeners();
   }

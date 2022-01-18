@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:project_android/constants.dart';
 
@@ -132,7 +134,7 @@ class Specifications extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: defaultPadding / 2),
+      margin: const EdgeInsets.only(top: defaultPadding / 2),
       color: Colors.white,
       // height: 500,
       child: Column(

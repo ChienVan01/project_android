@@ -4,15 +4,13 @@ import 'package:project_android/constants.dart';
 import 'package:project_android/screens/account_and_security/profile/components/body.dart';
 import 'package:project_android/components/header.dart';
 
-
-
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const PreferredSize(
+    return const Scaffold(
+      appBar: PreferredSize(
         child: Header(
             title: 'Sửa hồ sơ',
             backgroundColor: primaryColor,
@@ -20,7 +18,7 @@ class ProfileScreen extends StatelessWidget {
             action: null),
         preferredSize: Size(double.infinity, 55),
       ),
-      body: const Body(),
+      body: Body(),
     );
   }
 }

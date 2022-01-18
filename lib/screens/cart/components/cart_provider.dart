@@ -1,23 +1,38 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/cupertino.dart';
 import 'package:project_android/DB/db_config.dart';
 import 'package:project_android/model/cart.dart';
-import 'package:project_android/model/product.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CartProvider with ChangeNotifier {
-  DBConfig db = DBConfig();
+  // DBConfig db = DBConfig();
   int _counter = 0;
   int get counter => _counter;
 
   double _totalPrice = 0.0;
   double get totalPrice => _totalPrice;
 
-  late Future<List<Cart>> _cart;
-  Future<List<Cart>> get cart => _cart;
+  bool check = false;
+  // bool get check => _check;
 
-  Future<List<Cart>> getData() async {
-    _cart = db.getCartList();
-    return _cart;
+  late Future<List<Cart>> cart;
+  // Future<List<Cart>> get cart => _cart;
+
+  Future<List<Cart>> getData(int id) async {
+    cart = DBConfig.instance.getCartList(id, 'cart');
+    return cart;
+  }
+
+  Future<List<Cart>> deleteP(idProduct, id) async {
+    DBConfig.instance.delete(idProduct.toString(), 'checkout');
+    cart = DBConfig.instance.getCartList(id, 'checkout');
+    return cart;
+  }
+
+  Future<List<Cart>> getCheckout(int id) async {
+    cart = DBConfig.instance.getCartList(id, 'checkout');
+    return cart;
   }
 
   void _setPrefItems() async {
@@ -67,6 +82,25 @@ class CartProvider with ChangeNotifier {
     _getPrefItems();
     return _counter;
   }
+
+  bool checked(value, double productPrice) {
+    // _totalPrice = 0;
+    // value == true ? false : true;
+    check = value;
+    if (check == true) {
+      addTotalPrice(productPrice);
+    } else {
+      removeTotalPrice(productPrice);
+      // removerCounter();
+    }
+    print(check);
+    notifyListeners();
+    return check;
+  }
+
+  // bool getChecked() {
+  //   return check;
+  // }
 }
 
 

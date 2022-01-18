@@ -1,90 +1,96 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:project_android/DB/db_config.dart';
 import 'package:project_android/constants.dart';
+import 'package:project_android/screens/favorite/components/favorite_provider.dart';
+import 'package:provider/provider.dart';
 
+class ProductItem extends StatefulWidget {
+  const ProductItem(
+      {Key? key,
+      required this.id,
+      required this.title,
+      required this.image,
+      required this.price})
+      : super(key: key);
+  final int price;
+  final String id, title, image;
 
+  @override
+  State<ProductItem> createState() => _ProductItemState();
+}
 
-Widget productItem({required String title, image, price}) {
-  return Container(
-    width: 180.0,
-    decoration: const BoxDecoration(
-      borderRadius: BorderRadius.all(Radius.circular(8.0)),
-      color: colorWhite,
-    ),
-    child: Column(
-      children: <Widget>[
-        Image.asset(
-          'assets/images/product/$image',
-          width: 100,
-          height: 100,
-          fit: BoxFit.cover,
-        ),
-        const SizedBox(
-          height: 8,
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: defaultPadding / 2),
-          child: Align(
-            alignment: Alignment.topLeft,
-            child: Column(children: <Widget>[
-              Text(
-                title,
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-            ]),
+class _ProductItemState extends State<ProductItem> {
+  DBConfig dbConfig = DBConfig.instance;
+
+  @override
+  Widget build(BuildContext context) {
+    // final wishList = Provider.of<FavoriteProvider>(context);
+    return Container(
+      width: 180.0,
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+        color: colorWhite,
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Image.asset(
+            'assets/images/product/${widget.image}',
+            width: 100,
+            height: 100,
+            fit: BoxFit.cover,
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: defaultPadding / 2),
-          child: Align(
+          const SizedBox(height: 8),
+          Padding(
+            padding: const EdgeInsets.only(left: defaultPadding / 2),
+            child: Align(
               alignment: Alignment.topLeft,
-              child: Column(children: [
+              child: Column(children: <Widget>[
                 Text(
-                  NumberFormat.decimalPattern().format(price),
-                  style: const TextStyle(
-                      fontWeight: FontWeight.bold, color: primaryColor),
+                  widget.title,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
-                Text(
-                  NumberFormat.decimalPattern().format(price * 1.3),
-                  style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.grey,
-                      fontSize: 13,
-                      decoration: TextDecoration.lineThrough),
-                ),
-              ])),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(bottom: defaultPadding / 2),
-          child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                
-                const Icon(
-                  Icons.favorite_outlined,
-                  color: primaryColor,
-                ),
-                ElevatedButton(
-                 
-                    onPressed: () {},
-                    style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(colorWhite),
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(3),
-                                    side: const BorderSide(color: primaryColor),
-                                    
-                                ))),
-                                    
-                    child: const Text("Tìm sản phảm",
-                        style: TextStyle(color: primaryColor)))
               ]),
-        )
-      ],
-    ),
-  );
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(defaultPadding / 2),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(children: [
+                  Text(
+                    NumberFormat.decimalPattern().format(widget.price),
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, color: primaryColor),
+                  ),
+                  Text(
+                    NumberFormat.decimalPattern()
+                        .format(widget.price * 1.3.toInt()),
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.grey,
+                        fontSize: 13,
+                        decoration: TextDecoration.lineThrough),
+                  ),
+                ]),
+                InkWell(
+                  onTap: () {
+                    dbConfig.deleteWish(widget.id, 'wishlist');
+                  },
+                  child: const Icon(
+                    Icons.favorite_outlined,
+                    color: primaryColor,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
