@@ -22,9 +22,9 @@ import 'package:project_android/screens/choose_voucher/choose_voucher_screen.dar
 import 'package:project_android/screens/detailProduct/detail_product_screen.dart';
 import 'package:project_android/screens/favorite/components/favorite_provider.dart';
 import 'package:project_android/screens/favorite/favorite_screen.dart';
-import 'package:project_android/screens/forget_password/step01/forget_password.dart';
-import 'package:project_android/screens/forget_password/step02/step02.dart';
-import 'package:project_android/screens/forget_password/step03/step03.dart';
+import 'package:project_android/screens/forgot_password/step01/forgot_password.dart';
+import 'package:project_android/screens/forgot_password/step02/step02.dart';
+import 'package:project_android/screens/forgot_password/step03/step03.dart';
 import 'package:project_android/screens/home/components/product_type_provider.dart';
 import 'package:project_android/screens/loading/loading_screen.dart';
 import 'package:project_android/screens/login/login_screen.dart';

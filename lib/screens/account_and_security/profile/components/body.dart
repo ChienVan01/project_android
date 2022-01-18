@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project_android/DB/db_config.dart';
+
 import 'package:project_android/components/text_style.dart';
 import 'package:project_android/constants.dart';
 import 'package:project_android/model/user.dart';
@@ -14,27 +14,6 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  UserProfile user = UserProfile(
-      id: 0,
-      email: '',
-      password: '',
-      name: '',
-      phone: '',
-      address: '',
-      avatar: '',
-      tokenUser: '',
-      status: 0);
-  @override
-  void initState() {
-    super.initState();
-
-    refreshNote();
-  }
-
-  Future refreshNote() async {
-    user = await DBConfig.instance.getUser();
-  }
-
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context);
@@ -87,30 +66,20 @@ class _BodyState extends State<Body> {
                   const SizedBox(
                     height: 20,
                   ),
-                  const Item(
-                    leading: "Ngày sinh",
-                    title: "Thiết lập ngay",
-                    press:
-                        '/account_and_security/profile/components/updateName',
-                    trailing: Icon(
-                      Icons.navigate_next_outlined,
-                      color: primaryColor,
-                    ),
-                  ),
-                  const Divider(height: 1),
-                  const Item(
+                  
+                   Item(
                       leading: "Điện thoại",
-                      title: "*******419",
+                      title: snapshot.data!.phone.toString(),
                       press:
                           '/account_and_security/profile/components/updateName',
-                      trailing: Text("")),
+                      trailing: const Text("")),
                   const Divider(height: 1),
-                  const Item(
+                  Item(
                       leading: "Email",
-                      title: "Tr**********@gmail.com",
+                      title: snapshot.data!.email,
                       press:
                           '/account_and_security/profile/components/updateName',
-                      trailing: Text("")),
+                      trailing: const Text("")),
                   const Divider(height: 1),
                   const SizedBox(
                     height: 20,

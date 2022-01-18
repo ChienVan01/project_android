@@ -25,7 +25,7 @@ class DBConfig {
     io.Directory documentDirectory = await getApplicationDocumentsDirectory();
     String path = join(documentDirectory.path, 'shopgear.db');
     var db = await openDatabase(path, version: 1, onCreate: _onCreate);
-    // await deleteDatabase(path);
+    //await deleteDatabase(path);
     return db;
   }
 
@@ -37,9 +37,11 @@ class DBConfig {
     await db.execute(
         'CREATE TABLE wishlist (id VARCHAR PRIMARY KEY , productId INTEGER, userId INTEGER , name TEXT , origin TEXT , productTypeId INTERGER ,initialPrice INTEGER, price INTEGER , quantity INTEGER, avatar TEXT , status BOOL )');
     await db.execute(
-        'CREATE TABLE user (id INTEGER PRIMARY KEY , email TEXT, password VARCHAR, name NVARCHAR, phone VARCHAR , address TEXT , avatar VARCHAR , tokenUser VARCHAR , status INTEGER )');
+        'CREATE TABLE user (id INTEGER PRIMARY KEY , email TEXT, password VARCHAR, name NVARCHAR, phone VARCHAR , address TEXT , avatar VARCHAR , otp VARCHAR  , tokenUser VARCHAR , status INTEGER )');
     await db.execute(
         'CREATE TABLE checkout (id VARCHAR PRIMARY KEY , productId INTEGER, userId INTEGER , name TEXT , origin TEXT , productTypeId INTERGER ,initialPrice INTEGER, price INTEGER , quantity INTEGER, avatar TEXT , status BOOL )');
+    await db.execute(
+        'CREATE TABLE userOTP (id INTEGER PRIMARY KEY , email TEXT, password VARCHAR, name NVARCHAR, phone VARCHAR , address TEXT , avatar VARCHAR , otp VARCHAR  , tokenUser VARCHAR , status INTEGER )');
   }
 
   Future<Cart> insertCart(Cart cart, String table) async {
@@ -54,6 +56,12 @@ class DBConfig {
     var dbClient = await db;
     await dbClient.insert(table, user.toJson());
     return user;
+  }
+
+  Future<UserProfile> getUserOPT() async {
+    var dbClient = await db;
+    final queryResult = await dbClient.query('userOTP');
+    return UserProfile.fromJson(queryResult.first);
   }
 
   Future<List<Cart>> getCartList(int id, String table) async {
@@ -77,28 +85,22 @@ class DBConfig {
     return UserProfile.fromJson(queryResult.first);
   }
 
-  Future<UserProfile> getUserOPT(String table) async {
-    var dbClient = await db;
-    final queryResult = await dbClient.query('useropt');
-    return UserProfile.fromJson(queryResult.first);
-  }
-
   Future<int> delete(id, String table) async {
     var dbClient = await db;
     print('xoa thanh cong');
     return await dbClient.delete(table, where: 'id = ?', whereArgs: [id]);
   }
 
+  Future<int> deleteOpt() async {
+    var dbClient = await db;
+    print('xoa thanh cong');
+    return await dbClient.delete('userOTP');
+  }
+
   Future<int> deleteAll() async {
     var dbClient = await db;
     print('xoa thanh cong');
     return await dbClient.delete('checkout');
-  }
-
-  Future<int> deleteOpt() async {
-    var dbClient = await db;
-    print('xoa thanh cong');
-    return await dbClient.delete('userOPT');
   }
 
   Future<int> deleteWish(String id, String table) async {

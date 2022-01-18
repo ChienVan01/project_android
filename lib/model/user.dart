@@ -29,6 +29,7 @@ class User {
   String? phone;
   String? address;
   String? avatar;
+  String? otp;
   int? userType_id;
   int status;
   String? createdAt;
@@ -42,6 +43,7 @@ class User {
       this.phone,
       this.address,
       this.avatar,
+      this.otp,
       this.userType_id,
       required this.status,
       this.createdAt,
@@ -55,6 +57,7 @@ class User {
         phone: json['Phone'],
         address: json['Address'],
         avatar: json['Avatar'],
+        otp: json['otp'],
         userType_id: json['UserType_id'],
         status: json['Status'],
         createdAt: json['created_at'],
@@ -70,6 +73,7 @@ class User {
     data['Phone'] = phone;
     data['Address'] = address;
     data['Avatar'] = avatar;
+    data['otp'] = otp;
     data['UserType_id'] = userType_id;
     data['Status'] = status;
     data['created_at'] = createdAt;
@@ -86,7 +90,8 @@ class UserProfile {
   String? phone;
   String? address;
   String? avatar;
-  String tokenUser;
+  String? otp;
+  String? tokenUser;
   int status;
 
   UserProfile({
@@ -96,8 +101,9 @@ class UserProfile {
     required this.name,
     this.phone,
     this.address,
+    this.otp,
     this.avatar,
-    required this.tokenUser,
+    this.tokenUser,
     required this.status,
   });
 
@@ -108,6 +114,7 @@ class UserProfile {
         name: json['name'],
         phone: json['phone'],
         address: json['address'],
+        otp: json['otp'],
         avatar: json['avatar'],
         tokenUser: json['tokenUser'],
         status: json['status'],
@@ -122,6 +129,7 @@ class UserProfile {
     data['phone'] = phone;
     data['address'] = address;
     data['avatar'] = avatar;
+    data['otp'] = otp;
     data['tokenUser'] = tokenUser;
     data['status'] = status;
 

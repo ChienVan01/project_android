@@ -17,3 +17,18 @@ const ProductTypeUrl = BaseUrl + '/product_types';
 const RegisterUrl = BaseUrl + '/register';
 const LogoutUrl = BaseUrl + '/logout';
 const SaveOrdertUrl = BaseUrl + '/order/create';
+const UpdateUserUrl = BaseUrl + '/user/update';
+const ForgotUserPassword = BaseUrl + '/user/forgot-password';
+
+final otpInputDecoration = InputDecoration(
+  border: outlineInputBorder(),
+  focusedBorder: outlineInputBorder(),
+  enabledBorder: outlineInputBorder(),
+);
+
+OutlineInputBorder outlineInputBorder() {
+  return OutlineInputBorder(
+    borderRadius: BorderRadius.circular(15),
+    borderSide: const BorderSide(color: primaryTextColor),
+  );
+}
