@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:project_android/DB/db_config.dart';
 import 'package:project_android/constants.dart';
@@ -11,9 +13,11 @@ class UpdateNameScreen extends StatefulWidget {
   @override
   State<UpdateNameScreen> createState() => _UpdateNameScreenState();
 }
+
 DBConfig? dbConfig = DBConfig.instance;
+
 class _UpdateNameScreenState extends State<UpdateNameScreen> {
-   UserProfile user = UserProfile(
+  UserProfile user = UserProfile(
       id: 0,
       email: '',
       password: '',
@@ -49,20 +53,23 @@ class _UpdateNameScreenState extends State<UpdateNameScreen> {
                       print(controller.text.toString());
                       print(user.id);
                       print(user.password);
-                      updateUser(controller.text.toString(), user.password, user.id, context);
-                      dbConfig!.updateUser(UserProfile(
-                        id: user.id, 
-                        email: user.email, 
-                        password: user.password, 
+                      updateUser(controller.text.toString(), user.password,
+                          user.id, context);
+                      dbConfig!
+                          .updateUser(UserProfile(
+                        id: user.id,
+                        email: user.email,
+                        password: user.password,
                         name: controller.text.toString(),
-                        tokenUser: user.tokenUser, 
+                        tokenUser: user.tokenUser,
                         status: user.status,
-                      )).then((value) {
-                            print('sua thanh cong');
-                          }).onError((error, stackTrace) {
-                            print(error.toString());
-                              print('sua that bai');
-                          });
+                      ))
+                          .then((value) {
+                        print('sua thanh cong');
+                      }).onError((error, stackTrace) {
+                        print(error.toString());
+                        print('sua that bai');
+                      });
                     },
                     child: const Text("Lưu"),
                     style: ButtonStyle(
@@ -79,23 +86,22 @@ class _UpdateNameScreenState extends State<UpdateNameScreen> {
                 child: TextField(
                   controller: controller,
                   obscureText: false,
-                  decoration:const InputDecoration(
+                  decoration: const InputDecoration(
                     hintText: "Nhập vào đây",
-                     enabledBorder:  OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  borderSide: BorderSide(color: colorBorder),
-                ),
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                    borderSide: BorderSide(
-                      width: 1,
-                    )),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      borderSide: BorderSide(color: colorBorder),
+                    ),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        borderSide: BorderSide(
+                          width: 1,
+                        )),
                   ),
-            
                 ),
               ),
-             const Padding(
-                padding:  EdgeInsets.all(defaultPadding / 2),
+              const Padding(
+                padding: EdgeInsets.all(defaultPadding / 2),
                 child: Text("dưới 100 kí tự"),
               )
             ]));

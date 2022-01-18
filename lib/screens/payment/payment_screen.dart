@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:project_android/model/cart.dart';
 import 'package:project_android/screens/payment/components/body.dart';
 import 'package:project_android/screens/payment/components/header.dart';
 import 'package:project_android/screens/payment/components/bottomnav.dart';

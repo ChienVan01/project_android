@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:project_android/constants.dart';
 import 'package:project_android/screens/order/components/detail_order.dart';
 import 'package:project_android/screens/order/components/order_provider.dart';
-import 'package:project_android/screens/product/components/product_provider.dart';
 import 'package:provider/provider.dart';
 
 class WaitOrderScreen extends StatefulWidget {
@@ -43,12 +42,13 @@ class _WaitOrderScreenState extends State<WaitOrderScreen> {
                 itemCount: state.orders.length,
                 itemBuilder: (context, i) {
                   return detailOrderWidget(
-                      state.orders[i].avatar,
-                      state.orders[i].name,
-                      1,
-                      state.orders[i].totalPrice,
-                      "Chờ xác nhận",
-                      "Hủy Đơn Hàng");
+                      img: state.orders[i].avatar,
+                      productName: state.orders[i].name,
+                      qty: 1,
+                      unitPrice: state.orders[i].totalPrice,
+                      status: "Chờ xác nhận",
+                      txtButton: "Hủy Đơn Hàng",
+                      press: '');
                 },
               );
             }

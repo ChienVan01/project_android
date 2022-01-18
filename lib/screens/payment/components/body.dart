@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_android/constants.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:project_android/model/cart.dart';
 import 'package:project_android/screens/payment/components/transport_unit.dart';
 import 'package:project_android/screens/payment/components/list_product.dart';
 

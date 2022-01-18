@@ -43,12 +43,13 @@ class _DeliveredOrderScreenState extends State<DeliveredOrderScreen> {
                 itemCount: state.orders.length,
                 itemBuilder: (context, i) {
                   return detailOrderWidget(
-                      state.orders[i].avatar,
-                      state.orders[i].name,
-                      1,
-                      state.orders[i].totalPrice,
-                      "Giao hàng thành công",
-                      "Đánh Giá");
+                      img: state.orders[i].avatar,
+                      productName: state.orders[i].name,
+                      qty: 1,
+                      unitPrice: state.orders[i].totalPrice,
+                      status: "Giao hàng thành công",
+                      txtButton: "Đánh Giá",
+                      press: '');
                 },
               );
             }

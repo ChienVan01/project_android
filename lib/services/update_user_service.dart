@@ -7,19 +7,19 @@ import 'package:http/http.dart' as http;
 
 import '../constants.dart';
 
-Future<void> updateUser(String? name,String? password ,id,context) async {
+Future<void> updateUser(String? name, String? password, id, context) async {
   // Profile result = Profile( tokenUser: "",
   // user: User(id: 0, email: "", password: "", name: "", phone: "", address: "", avatar: "", userTypeId: 0, status: 0)) ;
 
- try {
+  try {
     final response = await http.put(
-      Uri.parse(UpdateUserUrl+'/$id'),
+      Uri.parse(UpdateUserUrl + '/$id'),
       body: json.encode({
         "Name": name,
-        "Password":password,
+        "Password": password,
         // "email": email,
         // "phone": phone,
-     
+
         // "password_confirmation": repassword,
       }),
       headers: {
@@ -54,7 +54,8 @@ Future<void> updateUser(String? name,String? password ,id,context) async {
                   TextButton(
                     child: const Text("OK"),
                     onPressed: () {
-                      Navigator.pushNamed(context, "/account");
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, "/account", (route) => false);
                     },
                   ),
                 ],

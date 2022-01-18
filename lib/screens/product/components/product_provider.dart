@@ -34,9 +34,9 @@ class ProductProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  getProductDetailProvider(context, id) async {
+  getProductbyProductID(context, id) async {
     loading = true;
-    product = await getProductDetail(context, id);
+    product = await getProductByID(context, id);
     loading = false;
     notifyListeners();
   }

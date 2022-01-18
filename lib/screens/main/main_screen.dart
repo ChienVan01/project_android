@@ -55,7 +55,7 @@ class _MainScreenState extends State<MainScreen> {
 
   List<Widget> pageList = <Widget>[
     const DiscountScreen(),
-    const NotificationSrceen(),
+    const NotificationSrceen(id: 4),
     const HomeScreen(),
     const CartScreen(),
     const AccountsScreen(),

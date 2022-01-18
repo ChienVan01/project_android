@@ -42,12 +42,13 @@ class _CancelledOrderScreenState extends State<CancelledOrderScreen> {
                 itemCount: state.orders.length,
                 itemBuilder: (context, i) {
                   return detailOrderWidget(
-                      state.orders[i].avatar,
-                      state.orders[i].name,
-                      1,
-                      state.orders[i].totalPrice,
-                      "Đã hủy bởi bạn",
-                      "Mua Lại");
+                      img: state.orders[i].avatar,
+                      productName: state.orders[i].name,
+                      qty: 1,
+                      unitPrice: state.orders[i].totalPrice,
+                      status: "Đã hủy bởi bạn",
+                      txtButton: "Mua Lại",
+                      press: '');
                 },
               );
             }

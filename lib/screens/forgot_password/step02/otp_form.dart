@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:project_android/DB/db_config.dart';
 import 'package:project_android/components/text_style.dart';
@@ -22,7 +24,7 @@ class _OtpFormState extends State<OtpForm> {
   TextEditingController opt2 = TextEditingController();
   TextEditingController opt3 = TextEditingController();
   TextEditingController opt4 = TextEditingController();
-   UserProfile user = UserProfile(
+  UserProfile user = UserProfile(
       id: 0,
       email: '',
       password: '',
@@ -42,8 +44,8 @@ class _OtpFormState extends State<OtpForm> {
 
     refreshNote();
   }
-  
-    Future refreshNote() async {
+
+  Future refreshNote() async {
     user = await DBConfig.instance.getUserOPT();
   }
 
@@ -92,7 +94,7 @@ class _OtpFormState extends State<OtpForm> {
                   controller: opt2,
                   focusNode: pin2FocusNode,
                   obscureText: false,
-                  style:const TextStyle(fontSize: 24),
+                  style: const TextStyle(fontSize: 24),
                   keyboardType: TextInputType.number,
                   textAlign: TextAlign.center,
                   decoration: otpInputDecoration,
@@ -105,7 +107,7 @@ class _OtpFormState extends State<OtpForm> {
                   controller: opt3,
                   focusNode: pin3FocusNode,
                   obscureText: false,
-                  style:const TextStyle(fontSize: 24),
+                  style: const TextStyle(fontSize: 24),
                   keyboardType: TextInputType.number,
                   textAlign: TextAlign.center,
                   decoration: otpInputDecoration,
@@ -134,32 +136,32 @@ class _OtpFormState extends State<OtpForm> {
           ),
           const SizedBox(height: defaultPadding),
           ElevatedButton(
-            onPressed: () {       
-              var result = opt1.text.toString()+opt2.text.toString()+opt3.text.toString()+opt4.text.toString();
+            onPressed: () {
+              var result = opt1.text.toString() +
+                  opt2.text.toString() +
+                  opt3.text.toString() +
+                  opt4.text.toString();
               print('opt = $result');
               print('opt sqlite = ${user.otp}');
-              if(result == user.otp){
+              if (result == user.otp) {
                 Navigator.pushNamed(context, '/forgotpassword/step03');
-               
-              }else{
+              } else {
                 showDialog(
-          context: context,
-          builder: (context) => AlertDialog(
-                title: const Text("Xác nhận thất bạu"),
-                content:
-                    const Text("Vui lòng nhập lại mã OTP"),
-                actions: <Widget>[
-                  // usually buttons at the bottom of the dialog
-                  TextButton(
-                    child: const Text("OK"),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                ],
-              ));
+                    context: context,
+                    builder: (context) => AlertDialog(
+                          title: const Text("Xác nhận thất bạu"),
+                          content: const Text("Vui lòng nhập lại mã OTP"),
+                          actions: <Widget>[
+                            // usually buttons at the bottom of the dialog
+                            TextButton(
+                              child: const Text("OK"),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ],
+                        ));
               }
-              
             },
             style: ButtonStyle(
                 minimumSize: MaterialStateProperty.all(const Size(400, 50))),

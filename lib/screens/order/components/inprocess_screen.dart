@@ -41,12 +41,13 @@ class _InprocssOrderScreenState extends State<InprocssOrderScreen> {
                 itemCount: state.orders.length,
                 itemBuilder: (context, i) {
                   return detailOrderWidget(
-                      state.orders[i].avatar,
-                      state.orders[i].name,
-                      1,
-                      state.orders[i].totalPrice,
-                      "Đang Giao Hàng",
-                      "Xem");
+                      img: state.orders[i].avatar,
+                      productName: state.orders[i].name,
+                      qty: 1,
+                      unitPrice: state.orders[i].totalPrice,
+                      status: 'Đang Giao Hàng',
+                      txtButton: 'Xem',
+                      press: '');
                 },
               );
             }

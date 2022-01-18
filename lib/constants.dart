@@ -32,3 +32,7 @@ OutlineInputBorder outlineInputBorder() {
     borderSide: const BorderSide(color: primaryTextColor),
   );
 }
+
+const RatingUrl = BaseUrl + '/comments';
+const NotifyUrl = BaseUrl + '/notifies';
+const VoucherUrl = BaseUrl + '/vouchers';

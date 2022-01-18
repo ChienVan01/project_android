@@ -57,7 +57,7 @@ Widget product(context, Cart cart) {
     padding: const EdgeInsets.all(defaultPadding / 4),
     margin: const EdgeInsets.only(bottom: defaultPadding),
     child: Row(children: <Widget>[
-      Image.network('http://10.0.2.2/upload/product/${cart.avatar}',
+      Image.network('http://10.0.2.2:8080/upload/product/${cart.avatar}',
           width: 120),
       // SizedBox(width: 120, child: Text(widget.cart.avatar)),
       Flexible(
