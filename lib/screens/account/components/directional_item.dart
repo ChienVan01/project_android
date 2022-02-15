@@ -1,9 +1,11 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:flutter/material.dart';
-import 'package:project_android/DB/db_config.dart';
 import 'package:project_android/constants.dart';
 import 'package:project_android/model/user.dart';
 import 'package:project_android/screens/account/components/user_provider.dart';
-import 'package:project_android/screens/cart/components/footer.dart';
+import 'package:project_android/screens/order/order_screen.dart';
+import 'package:project_android/screens/rating/rating_screen.dart';
 import 'package:project_android/services/logout_service.dart';
 import 'package:provider/provider.dart';
 
@@ -26,6 +28,7 @@ class _DirectionalItemState extends State<DirectionalItem> {
   //     tokenUser: '',
   //     status: 0);
   // @override
+  @override
   void initState() {
     super.initState();
 
@@ -122,7 +125,6 @@ class _DirectionalItemState extends State<DirectionalItem> {
                       ],
                     ),
                   ),
-                  
                 ],
               );
             } else {
@@ -131,24 +133,38 @@ class _DirectionalItemState extends State<DirectionalItem> {
                   Container(
                     decoration: const BoxDecoration(color: Colors.white),
                     child: Column(
-                      children: const <Widget>[
-                        Divider(
+                      children: <Widget>[
+                        const Divider(
                             thickness: defaultPadding / 2,
                             height: defaultPadding / 2,
                             color: backgroundColor),
-                        PageRoute(
-                            text: 'Đơn Hàng',
-                            iconLeading: Icons.receipt_long_outlined,
-                            iconTraling: Icons.navigate_next_outlined,
-                            press: '/order'),
-                        Divider(thickness: 1, height: 1),
-                        PageRoute(
+                        ListTile(
+                            leading: const Icon(
+                              Icons.receipt_long_outlined,
+                            ),
+                            title: const Text('Đơn Hàng'),
+                            trailing: const Icon(Icons.navigate_next_outlined),
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => OrderScreen(
+                                          userId:
+                                              snapshot.data!.id.toString())));
+                            }),
+                        // PageRoute(
+                        //     text: 'Đơn Hàng',
+                        //     iconLeading: Icons.receipt_long_outlined,
+                        //     iconTraling: Icons.navigate_next_outlined,
+                        //     press: '/order'),
+                        const Divider(thickness: 1, height: 1),
+                        const PageRoute(
                             text: 'Đã Thích',
                             iconLeading: Icons.favorite_border_outlined,
                             iconTraling: Icons.navigate_next_outlined,
                             press: '/favorite'),
-                        Divider(thickness: 1, height: 1),
-                        PageRoute(
+                        const Divider(thickness: 1, height: 1),
+                        const PageRoute(
                             text: 'Mã Giảm Giá',
                             iconLeading: Icons.receipt_outlined,
                             iconTraling: Icons.navigate_next_outlined,
@@ -159,22 +175,30 @@ class _DirectionalItemState extends State<DirectionalItem> {
                   Container(
                     decoration: const BoxDecoration(color: Colors.white),
                     child: Column(
-                      children: const <Widget>[
-                        Divider(
+                      children: <Widget>[
+                        const Divider(
                             thickness: defaultPadding / 2,
                             height: defaultPadding / 2,
                             color: backgroundColor),
-                        PageRoute(
+                        const PageRoute(
                             text: 'Đã Xem Gần Đây',
                             iconLeading: Icons.schedule_outlined,
                             iconTraling: Icons.navigate_next_outlined,
                             press: '/account/components/order'),
-                        Divider(thickness: 1, height: 1),
-                        PageRoute(
-                            text: 'Đánh Giá Của Tôi',
-                            iconLeading: Icons.star_border_outlined,
-                            iconTraling: Icons.navigate_next_outlined,
-                            press: '/account/components/order'),
+                        const Divider(thickness: 1, height: 1),
+                        ListTile(
+                            leading: const Icon(
+                              Icons.star_border_outlined,
+                            ),
+                            title: const Text('Đánh Giá Của Tôi'),
+                            trailing: const Icon(Icons.navigate_next_outlined),
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          RatingScreen(id: snapshot.data!.id)));
+                            }),
                       ],
                     ),
                   ),
@@ -270,7 +294,7 @@ class _DirectionalItemState extends State<DirectionalItem> {
                         text: 'Đánh Giá Của Tôi',
                         iconLeading: Icons.star_border_outlined,
                         iconTraling: Icons.navigate_next_outlined,
-                        press: '/account/components/order'),
+                        press: '/rating'),
                   ],
                 ),
               ),
@@ -302,18 +326,19 @@ class _DirectionalItemState extends State<DirectionalItem> {
   }
 }
 
-
 class PageRoute extends StatelessWidget {
-  const PageRoute({
-    Key? key,
-    required this.text,
-    required this.iconLeading,
-    required this.iconTraling,
-    required this.press,
-  }) : super(key: key);
+  const PageRoute(
+      {Key? key,
+      required this.text,
+      required this.iconLeading,
+      required this.iconTraling,
+      required this.press,
+      this.userId})
+      : super(key: key);
 
   final String text, press;
   final IconData iconLeading, iconTraling;
+  final int? userId;
 
   @override
   Widget build(BuildContext context) {
@@ -324,7 +349,7 @@ class PageRoute extends StatelessWidget {
         title: Text(text),
         trailing: Icon(iconTraling),
         onTap: () {
-          Navigator.pushNamed(context, press);
+          Navigator.pushNamed(context, press, arguments: userId);
         });
   }
 }

@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:intl/intl.dart';
@@ -5,9 +7,7 @@ import 'package:project_android/DB/db_config.dart';
 import 'package:project_android/constants.dart';
 import 'package:project_android/model/cart.dart';
 import 'package:project_android/model/user.dart';
-import 'package:project_android/screens/cart/components/footer.dart';
 import 'package:project_android/screens/favorite/components/favorite_provider.dart';
-import 'package:project_android/screens/favorite/components/product_item.dart';
 import 'package:project_android/screens/favorite/components/tabbar.dart';
 import 'package:provider/provider.dart';
 
@@ -79,7 +79,7 @@ class _BodyState extends State<Body> {
           ),
         ),
         FutureBuilder(
-            future: cart.getData(6),
+            future: cart.getData(user.id),
             builder: (context, AsyncSnapshot<List<Cart>> snapshot) {
               if (snapshot.hasData) {
                 if (snapshot.data!.isEmpty) {
@@ -195,7 +195,7 @@ class _BodyState extends State<Body> {
                 }
               }
               return Center(
-                child: Text('Danh sách yêu thích trống 🌵',
+                child: Text('Danh sách yêu thích trốngg 🌵',
                     style: Theme.of(context).textTheme.headline5),
               );
             })

@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:project_android/DB/db_config.dart';
 import 'package:project_android/components/header.dart';

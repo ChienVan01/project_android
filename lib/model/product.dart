@@ -1,7 +1,7 @@
 class Product {
   int id;
   String name;
-  String configuration;
+  String? configuration;
   String info;
   String origin;
   int productTypeId;
@@ -15,7 +15,7 @@ class Product {
   Product({
     required this.id,
     required this.name,
-    required this.configuration,
+    this.configuration,
     required this.info,
     required this.origin,
     required this.productTypeId,
@@ -59,82 +59,3 @@ class Product {
     return data;
   }
 }
-
-
-// List<Product> product = [
-//   Product(
-//     name: 'Laptop ASUS UX3..',
-//     image: 'product01.jpg',
-//     price: 27999000,
-//   ),
-//   Product(
-//     name: 'Màn hình LCD PHILIPS..',
-//     image: 'product02.jpg',
-//     price: 5050000,
-//   ),
-//   Product(
-//     name: 'Lót chuột DAREU ESP1009-XL',
-//     image: 'product03.jpg',
-//     price: 189000,
-//   ),
-//   Product(
-//     name: 'Bàn phím cơ Akko 3084..',
-//     image: 'product04.jpg',
-//     price: 1499000,
-//   ),
-//   Product(
-//     name: 'Laptop Dell Alienware..',
-//     image: 'product05.jpg',
-//     price: 62990000,
-//   ),
-//   Product(
-//     name: 'Laptop ASUS UX3..',
-//     image: 'product01.jpg',
-//     price: 27999000,
-//   ),
-//   Product(
-//     name: 'Màn hình LCD PHILIPS..',
-//     image: 'product02.jpg',
-//     price: 5050000,
-//   ),
-//   Product(
-//     name: 'Lót chuột DAREU ESP1009-XL',
-//     image: 'product03.jpg',
-//     price: 189000,
-//   ),
-//   Product(
-//     name: 'Bàn phím cơ Akko 3084..',
-//     image: 'product04.jpg',
-//     price: 1499000,
-//   ),
-//   Product(
-//     name: 'Laptop Dell Alienware..',
-//     image: 'product05.jpg',
-//     price: 62990000,
-//   ),
-//   Product(
-//     name: 'Laptop ASUS UX3..',
-//     image: 'product01.jpg',
-//     price: 27999000,
-//   ),
-//   Product(
-//     name: 'Màn hình LCD PHILIPS..',
-//     image: 'product02.jpg',
-//     price: 5050000,
-//   ),
-//   Product(
-//     name: 'Lót chuột DAREU ESP1009-XL',
-//     image: 'product03.jpg',
-//     price: 189000,
-//   ),
-//   Product(
-//     name: 'Bàn phím cơ Akko 3084..',
-//     image: 'product04.jpg',
-//     price: 1499000,
-//   ),
-//   Product(
-//     name: 'Laptop Dell Alienware..',
-//     image: 'product05.jpg',
-//     price: 62990000,
-//   ),
-// ];

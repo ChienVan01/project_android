@@ -19,7 +19,7 @@ class BodyProduct extends StatelessWidget {
           ImgSlider(product: product),
           TitleProduct(product: product),
           const Specifications(),
-          const Respect(),
+          Respect(product: product),
           // FooterDetail(),
         ],
       ),

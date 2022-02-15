@@ -21,6 +21,7 @@ import 'package:project_android/screens/cart/components/cart_provider.dart';
 import 'package:project_android/screens/cart/components/product_cart.dart';
 import 'package:project_android/screens/choose_voucher/choose_voucher_screen.dart';
 import 'package:project_android/screens/detailProduct/detail_product_screen.dart';
+import 'package:project_android/screens/discount/component/voucher_provider.dart';
 import 'package:project_android/screens/favorite/components/favorite_provider.dart';
 import 'package:project_android/screens/favorite/favorite_screen.dart';
 import 'package:project_android/screens/forgot_password/step01/forgot_password.dart';
@@ -29,10 +30,15 @@ import 'package:project_android/screens/forgot_password/step03/step03.dart';
 import 'package:project_android/screens/home/components/product_type_provider.dart';
 import 'package:project_android/screens/loading/loading_screen.dart';
 import 'package:project_android/screens/login/login_screen.dart';
+import 'package:project_android/screens/notification/component/notify_provider.dart';
+import 'package:project_android/screens/order/components/order_provider.dart';
 import 'package:project_android/screens/order/order_screen.dart';
 import 'package:project_android/screens/payment/payment_screen.dart';
 import 'package:project_android/screens/product/components/product_provider.dart';
 import 'package:project_android/screens/product/product_screen.dart';
+import 'package:project_android/screens/rating/components/rating_popup.dart';
+import 'package:project_android/screens/rating/components/rating_provider.dart';
+import 'package:project_android/screens/rating/rating_screen.dart';
 import 'package:project_android/screens/recently_viewed/recently_screen.dart';
 import 'package:project_android/screens/register/register_screen.dart';
 import 'package:http/http.dart' as http;
@@ -61,6 +67,10 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => ProductTypeProvider()),
           ChangeNotifierProvider(create: (_) => FavoriteProvider()),
           ChangeNotifierProvider(create: (_) => UserProvider()),
+          ChangeNotifierProvider(create: (_) => OrderProvider()),
+          ChangeNotifierProvider(create: (_) => RatingProvider()),
+          ChangeNotifierProvider(create: (_) => NotifyProvider()),
+          ChangeNotifierProvider(create: (_) => VoucherProvider()),
         ],
         child: MaterialApp(
           title: 'Shop Gear',
@@ -82,7 +92,7 @@ class MyApp extends StatelessWidget {
             '/loading': (context) => const Loading(),
             // '/product': (context) => const ProductScreen(id: null),
             // '/productdetail': (context) => const ProductDetail(),
-            '/order': (context) => const OrderScreen(),
+            // '/order': (context) => const OrderScreen(),
             '/search': (context) => const FilterListProduct(),
             '/favorite': (context) => const FavoriteScreen(),
             '/recently': (context) => const Recently(),
@@ -106,8 +116,9 @@ class MyApp extends StatelessWidget {
                 (context) => const ChangePasswordScreen(),
             '/choosevoucher': (context) => const ChooseVoucherScreen(),
             '/choosepayment': (context) => const ChoosePaymentScreen(),
+            '/address': (context) => const ChooseAddressScreen(),
+            //'/rating': (context)=> const RatingScreen(),
             // '/payment': (context) => const PaymentScreen(),
-            '/address': (context) => const ChooseAddressScreen()
           },
         ));
   }

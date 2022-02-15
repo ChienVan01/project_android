@@ -42,16 +42,16 @@ class Cart {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
-    data['productId'] = productId;
-    data['userId'] = userId;
-    data['name'] = name;
-    data['origin'] = origin;
-    data['productTypeId'] = productTypeId;
-    data['price'] = price;
-    data['initialPrice'] = initialPrice;
-    data['quantity'] = quantity;
-    data['avatar'] = avatar;
-    data['status'] = status;
+    data['ProductId'] = productId;
+    data['UserId'] = userId;
+    data['Name'] = name;
+    data['Origin'] = origin;
+    data['ProductTypeId'] = productTypeId;
+    data['Price'] = price;
+    data['InitialPrice'] = initialPrice;
+    data['Quantity'] = quantity;
+    data['Avatar'] = avatar;
+    data['Status'] = status;
     return data;
   }
 }

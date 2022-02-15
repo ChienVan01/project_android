@@ -5,108 +5,153 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:project_android/components/text_style.dart';
 import 'package:project_android/constants.dart';
+import 'package:project_android/model/product.dart';
+import 'package:project_android/screens/rating/components/rating_provider.dart';
+import 'package:provider/provider.dart';
 
-class Respect extends StatelessWidget {
-  const Respect({Key? key}) : super(key: key);
+class Respect extends StatefulWidget {
+  const Respect({Key? key, required this.product}) : super(key: key);
+  final Product product;
+
+  @override
+  State<Respect> createState() => _RespectState();
+}
+
+class _RespectState extends State<Respect> {
+  @override
+  void initState() {
+    super.initState();
+    print(widget.product.id);
+    final ratings = Provider.of<RatingProvider>(context, listen: false);
+    ratings.getCommentByProductID(
+        context, widget.product.id.toString()); //widget.id.toString()
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(
-          top: defaultPadding / 2, bottom: defaultPadding / 2),
-      padding: const EdgeInsets.all(defaultPadding / 2),
-      color: Colors.white,
-      height: 450,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Flexible(
-            child: Text(
-              'Đánh giá  & nhận xét Laptop MSI Stealth GS66 10SE - 407VN',
+    return Consumer<RatingProvider>(builder: (context, state, child) {
+      return Container(
+        margin: const EdgeInsets.only(
+            top: defaultPadding / 2, bottom: defaultPadding / 2),
+        padding: const EdgeInsets.all(defaultPadding / 2),
+        color: Colors.white,
+        height: 450,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Flexible(
+              child: Text(
+                'Đánh giá  & nhận xét của ' + widget.product.name,
+                style: style(18, primaryTextColor, FontWeight.normal),
+              ),
+            ),
+            const SizedBox(height: defaultPadding),
+            boxRate(),
+            const SizedBox(height: defaultPadding),
+            Text(
+              'Đánh giá của khách hàng',
+              textAlign: TextAlign.left,
               style: style(18, primaryTextColor, FontWeight.normal),
             ),
-          ),
-          const SizedBox(height: defaultPadding),
-          boxRate(),
-          const SizedBox(height: defaultPadding),
-          Text(
-            'Đánh giá của sản phẩm này ',
-            textAlign: TextAlign.left,
-            style: style(18, primaryTextColor, FontWeight.normal),
-          ),
-          const SizedBox(height: defaultPadding),
-          Row(
-            children: <Widget>[
-              Container(
-                width: 27,
-                height: 25,
-                color: Colors.grey,
-                child: Text(
-                  'C',
-                  textAlign: TextAlign.center,
-                  style: style(20, primaryTextColor, FontWeight.bold),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: defaultPadding / 2),
-                child: Text(
-                  'Chiến Văn',
-                  style: style(20, primaryTextColor, FontWeight.bold),
-                ),
-              ),
-              const SizedBox(width: 50),
-              const Icon(Icons.watch_later_outlined),
-              const SizedBox(width: 2),
-              Text(
-                '2021-27-10 20:38:47',
-                style: style(
-                    18, primaryTextColor.withOpacity(0.5), FontWeight.normal),
-              ),
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.only(
-                top: defaultPadding,
-                right: defaultPadding,
-                left: defaultPadding * 2),
-            child: Container(
-              height: 95,
-              width: 340,
-              color: backgroundColor,
-              child: Column(
-                children: <Widget>[
-                  const SizedBox(
-                    width: defaultPadding / 2,
-                    height: defaultPadding / 4,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: defaultPadding / 2),
-                    child: rateStar(MainAxisAlignment.start),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: defaultPadding / 2),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          'Nhận xét: ',
-                          style: style(18, primaryTextColor, FontWeight.bold),
-                        ),
-                        Flexible(
-                            child: Text(
-                                'Hàng đẹp lắm shop ơi, shop là nhất, shop số 1',
-                                style: style(
-                                    18, primaryTextColor, FontWeight.normal)))
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
-          )
-        ],
-      ),
-    );
+            const SizedBox(height: defaultPadding),
+            SizedBox(
+                height: 199,
+                child: Expanded(
+                  child: ListView.builder(
+                      itemCount: state.ratings.length,
+                      itemBuilder: (BuildContext context, index) {
+                        return Column(
+                          children: [
+                            Row(
+                              children: <Widget>[
+                                Container(
+                                  width: 27,
+                                  height: 25,
+                                  color: Colors.grey,
+                                  child: Text(
+                                    'C',
+                                    textAlign: TextAlign.center,
+                                    style: style(
+                                        20, primaryTextColor, FontWeight.bold),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: defaultPadding / 2),
+                                  child: Text(
+                                    state.ratings[index].name,
+                                    style: style(
+                                        20, primaryTextColor, FontWeight.bold),
+                                  ),
+                                ),
+                                const SizedBox(width: 50),
+                                const Icon(Icons.watch_later_outlined),
+                                const SizedBox(width: 2),
+                                Text(
+                                  state.ratings[index].createdAt.toString(),
+                                  style: style(
+                                      18,
+                                      primaryTextColor.withOpacity(0.5),
+                                      FontWeight.normal),
+                                ),
+                              ],
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  top: defaultPadding,
+                                  right: defaultPadding,
+                                  left: defaultPadding * 2),
+                              child: Container(
+                                height: 95,
+                                width: 340,
+                                color: backgroundColor,
+                                child: Column(
+                                  children: <Widget>[
+                                    const SizedBox(
+                                      width: defaultPadding / 2,
+                                      height: defaultPadding / 4,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: defaultPadding / 2),
+                                      child: rateStar(MainAxisAlignment.start,
+                                          state.ratings[index].rate),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: defaultPadding / 2),
+                                      child: Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Text(
+                                            'Nhận xét: ',
+                                            style: style(18, primaryTextColor,
+                                                FontWeight.bold),
+                                          ),
+                                          Flexible(
+                                              child: Text(
+                                                  state
+                                                      .ratings[index].evaluate!,
+                                                  style: style(
+                                                      18,
+                                                      primaryTextColor,
+                                                      FontWeight.normal)))
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            )
+                          ],
+                        );
+                      }),
+                )),
+          ],
+        ),
+      );
+    });
   }
 }
 
@@ -129,7 +174,7 @@ Widget boxRate() {
               '5/5',
               style: style(22, primaryTextColor, FontWeight.bold),
             ),
-            rateStar(MainAxisAlignment.center),
+            rateStar(MainAxisAlignment.center, 5),
             Text(
               '1 đánh giá & nhận xét ',
               textAlign: TextAlign.center,
@@ -163,12 +208,12 @@ Widget boxRate() {
   );
 }
 
-Widget rateStar(mainAxisAlignment) {
+Widget rateStar(mainAxisAlignment, int rate) {
   return Row(
     mainAxisAlignment: mainAxisAlignment,
     children: [
       RatingBar.builder(
-          initialRating: 5,
+          initialRating: rate.toDouble(),
           minRating: 1,
           direction: Axis.horizontal,
           allowHalfRating: true,
@@ -228,4 +273,12 @@ class PercenIndicated extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget txtName(int userId) {
+  //state.ratings[index].userId.toString()
+  return Text(
+    "haha",
+    style: style(20, primaryTextColor, FontWeight.bold),
+  );
 }

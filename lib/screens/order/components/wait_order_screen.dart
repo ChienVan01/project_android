@@ -1,27 +1,58 @@
+// ignore_for_file: must_be_immutable, avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:project_android/constants.dart';
 import 'package:project_android/screens/order/components/detail_order.dart';
+import 'package:project_android/screens/order/components/order_provider.dart';
+import 'package:provider/provider.dart';
 
+class WaitOrderScreen extends StatefulWidget {
+  WaitOrderScreen({Key? key, required this.userId}) : super(key: key);
+  String userId;
+  @override
+  State<WaitOrderScreen> createState() => _WaitOrderScreenState();
+}
 
-class WaitOrderScreen extends StatelessWidget {
-  const WaitOrderScreen({Key? key}) : super(key: key);
+class _WaitOrderScreenState extends State<WaitOrderScreen> {
+  @override
+  void initState() {
+    // print('userId ${widget.userId}');
+    super.initState();
+    final orders = Provider.of<OrderProvider>(context, listen: false);
+    orders.getOrderByStatusProvider(context, widget.userId.toString(), '1');
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: backgroundColor,
-      padding: const EdgeInsets.only(
-       top:  defaultPadding / 2),
-      child: ListView(
-        children: [
-          detailOrderWidget("product01.jpg",
-          "Chuột Gaming Logitec G502 (Đen)",
-          1,"19.900.000đ",
-          "Chờ xác nhận",
-          "Hủy Đơn Hàng"),
-         
-        ],
-      ),
-    );
+        color: backgroundColor,
+        padding: const EdgeInsets.only(top: defaultPadding / 2),
+        child: Consumer<OrderProvider>(builder: (context, state, child) {
+          if (state.loading == true) {
+            return const CircularProgressIndicator();
+          } else {
+            if (state.orders.isEmpty) {
+              return const Center(
+                  child: Text(
+                'Trống trơn 🌵🌵',
+                style: TextStyle(fontSize: 23),
+              ));
+            } else {
+              return ListView.builder(
+                itemCount: state.orders.length,
+                itemBuilder: (context, i) {
+                  return detailOrderWidget(
+                      img: state.orders[i].avatar,
+                      productName: state.orders[i].name,
+                      qty: 1,
+                      unitPrice: state.orders[i].totalPrice,
+                      status: "Chờ xác nhận",
+                      txtButton: "Hủy Đơn Hàng",
+                      press: '');
+                },
+              );
+            }
+          }
+        }));
   }
 }

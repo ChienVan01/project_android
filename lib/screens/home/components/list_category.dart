@@ -149,7 +149,7 @@ class _ListCategoryState extends State<ListCategory> {
                                             ),
                                             child: SizedBox(
                                               child: SvgPicture.network(
-                                                'http://10.0.2.2/upload/category/${item.name}.svg',
+                                                'http://10.0.2.2:8080/upload/category/${item.name}.svg',
                                                 fit: BoxFit.contain,
                                               ),
                                             ),

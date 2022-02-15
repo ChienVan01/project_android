@@ -42,7 +42,6 @@ class DBConfig {
         'CREATE TABLE checkout (id VARCHAR PRIMARY KEY , productId INTEGER, userId INTEGER , name TEXT , origin TEXT , productTypeId INTERGER ,initialPrice INTEGER, price INTEGER , quantity INTEGER, avatar TEXT , status BOOL )');
     await db.execute(
         'CREATE TABLE userOTP (id INTEGER PRIMARY KEY , email TEXT, password VARCHAR, name NVARCHAR, phone VARCHAR , address TEXT , avatar VARCHAR , otp VARCHAR  , tokenUser VARCHAR , status INTEGER )');
-  
   }
 
   Future<Cart> insertCart(Cart cart, String table) async {
@@ -58,12 +57,12 @@ class DBConfig {
     await dbClient.insert(table, user.toJson());
     return user;
   }
+
   Future<UserProfile> getUserOPT() async {
     var dbClient = await db;
     final queryResult = await dbClient.query('userOTP');
     return UserProfile.fromJson(queryResult.first);
   }
-  
 
   Future<List<Cart>> getCartList(int id, String table) async {
     var dbClient = await instance.db;
@@ -84,7 +83,6 @@ class DBConfig {
     var dbClient = await db;
     final queryResult = await dbClient.query('user');
     return UserProfile.fromJson(queryResult.first);
-    // return queryResult!.map((e) => UserProfile.fromJson(e)).toList();
   }
 
   Future<int> delete(id, String table) async {
@@ -92,6 +90,7 @@ class DBConfig {
     print('xoa thanh cong');
     return await dbClient.delete(table, where: 'id = ?', whereArgs: [id]);
   }
+
   Future<int> deleteOpt() async {
     var dbClient = await db;
     print('xoa thanh cong');

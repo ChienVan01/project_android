@@ -11,12 +11,12 @@ Future<void> updateUser(String? name,String? password,String? phone ,id,context)
   // Profile result = Profile( tokenUser: "",
   // user: User(id: 0, email: "", password: "", name: "", phone: "", address: "", avatar: "", userTypeId: 0, status: 0)) ;
 
- try {
+  try {
     final response = await http.put(
-      Uri.parse(UpdateUserUrl+'/$id'),
+      Uri.parse(UpdateUserUrl + '/$id'),
       body: json.encode({
         "Name": name,
-        "Password":password,
+        "Password": password,
         // "email": email,
         "Phone": phone,
      
@@ -54,7 +54,8 @@ Future<void> updateUser(String? name,String? password,String? phone ,id,context)
                   TextButton(
                     child: const Text("OK"),
                     onPressed: () {
-                      Navigator.pushNamed(context, "/account");
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, "/account", (route) => false);
                     },
                   ),
                 ],

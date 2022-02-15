@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:project_android/constants.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:project_android/model/cart.dart';
 import 'package:project_android/screens/payment/components/transport_unit.dart';
 import 'package:project_android/screens/payment/components/list_product.dart';
 
 class BodyPayment extends StatelessWidget {
-  const BodyPayment({Key? key, required this.product}) : super(key: key);
-  final List<Cart> product;
+  const BodyPayment({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +29,7 @@ class BodyPayment extends StatelessWidget {
             Navigator.pushNamed(context, '/address');
           }),
       const Divider(thickness: 2, height: 1),
-      ListProducts(
-        listProduct: product,
-      ),
+      const ListProducts(),
       const Divider(thickness: 2, height: 1),
       const TransportUnit(),
       const Divider(thickness: 2, height: 1),

@@ -28,17 +28,17 @@ class _CarouselWithIndicatorState extends State<ImgSlider> {
   Widget build(BuildContext context) {
     // imgList.add(widget.product.avatar);
 
-    final List<Widget> imageSliders = imgList
-        .map((item) => Container(
-              height: 200,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.0),
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/product/$item'),
-                    fit: BoxFit.cover,
-                  )),
-            ))
-        .toList();
+    // final List<Widget> imageSliders = imgList
+    //     .map((item) => Container(
+    //           height: 200,
+    //           decoration: BoxDecoration(
+    //               borderRadius: BorderRadius.circular(10.0),
+    //               image: DecorationImage(
+    //                 image: AssetImage('assets/images/product/$item'),
+    //                 fit: BoxFit.cover,
+    //               )),
+    //         ))
+    //     .toList();
     return Container(
       height: 270,
       // width: 500,

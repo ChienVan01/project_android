@@ -17,7 +17,7 @@ Future<Profile> login(String email, String password, context) async {
           name: "",
           phone: "",
           address: "",
-          otp:"",
+          otp: "",
           avatar: "",
           userType_id: 0,
           status: 0));
@@ -34,18 +34,20 @@ Future<Profile> login(String email, String password, context) async {
       // print ("response body ${response.body}");
 
       result = Profile.fromJson(json.decode(response.body));
-      db.insertUser(UserProfile(
-        id: result.user!.id,
-        email: result.user!.email,
-        password: result.user!.password,
-        name: result.user!.name,
-        phone: result.user!.phone,
-        address: result.user!.address,
-        avatar: result.user!.avatar,
-        otp: "",
-        tokenUser: result.tokenUser,
-        status: result.user!.status,
-      ),"user");
+      db.insertUser(
+          UserProfile(
+            id: result.user!.id,
+            email: result.user!.email,
+            password: result.user!.password,
+            name: result.user!.name,
+            phone: result.user!.phone,
+            address: result.user!.address,
+            avatar: result.user!.avatar,
+            otp: "",
+            tokenUser: result.tokenUser,
+            status: result.user!.status,
+          ),
+          "user");
       // print(result.user!.name);
       ScaffoldMessenger.of(context)
           .showSnackBar(const SnackBar(content: Text("Login Successfully")));

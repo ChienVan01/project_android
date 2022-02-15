@@ -47,8 +47,7 @@ class _ProductCartState extends State<ProductCart> {
                 dbConfig!
                     .insertCart(
                         Cart(
-                            id: widget.cart.id.toString() +
-                                widget.cart.userId.toString(),
+                            id: widget.cart.id.toString(),
                             productId: widget.cart.productId,
                             userId: widget.cart.userId,
                             name: widget.cart.name,
@@ -132,27 +131,51 @@ class _ProductCartState extends State<ProductCart> {
                         quantity--;
                         int? newPrice = price * quantity;
                         if (quantity > 0) {
-                          dbConfig!
-                              .updateQuantity(Cart(
-                                  id: widget.cart.id,
-                                  productId: widget.cart.productId,
-                                  userId: widget.cart.userId,
-                                  name: widget.cart.name,
-                                  origin: widget.cart.origin,
-                                  productTypeId: widget.cart.productTypeId,
-                                  price: newPrice,
-                                  initialPrice: widget.cart.initialPrice,
-                                  quantity: quantity,
-                                  avatar: widget.cart.avatar,
-                                  status: 1))
-                              .then((value) {
-                            newPrice = 0;
-                            quantity = 0;
-                            cartProvider.removeTotalPrice(double.parse(
-                                widget.cart.initialPrice.toString()));
-                          }).onError((error, stackTrace) {
-                            print(error.toString());
-                          });
+                          if (isChecked == true) {
+                            dbConfig!
+                                .updateQuantity(Cart(
+                                    id: widget.cart.id,
+                                    productId: widget.cart.productId,
+                                    userId: widget.cart.userId,
+                                    name: widget.cart.name,
+                                    origin: widget.cart.origin,
+                                    productTypeId: widget.cart.productTypeId,
+                                    price: newPrice,
+                                    initialPrice: widget.cart.initialPrice,
+                                    quantity: quantity,
+                                    avatar: widget.cart.avatar,
+                                    status: 1))
+                                .then((value) {
+                              newPrice = 0;
+                              quantity = 0;
+                              cartProvider.removeTotalPrice(double.parse(
+                                  widget.cart.initialPrice.toString()));
+                            }).onError((error, stackTrace) {
+                              print(error.toString());
+                            });
+                          } else {
+                            dbConfig!
+                                .updateQuantity(Cart(
+                                    id: widget.cart.id,
+                                    productId: widget.cart.productId,
+                                    userId: widget.cart.userId,
+                                    name: widget.cart.name,
+                                    origin: widget.cart.origin,
+                                    productTypeId: widget.cart.productTypeId,
+                                    price: newPrice,
+                                    initialPrice: widget.cart.initialPrice,
+                                    quantity: quantity,
+                                    avatar: widget.cart.avatar,
+                                    status: 1))
+                                .then((value) {
+                              newPrice = 0;
+                              quantity = 0;
+                              // cartProvider.removeTotalPrice(double.parse(
+                              //     widget.cart.initialPrice.toString()));
+                            }).onError((error, stackTrace) {
+                              print(error.toString());
+                            });
+                          }
                         }
                       },
                       child: Text(
@@ -190,28 +213,49 @@ class _ProductCartState extends State<ProductCart> {
                       int price = widget.cart.initialPrice;
                       quantity++;
                       int? newPrice = price * quantity;
-
-                      dbConfig!
-                          .updateQuantity(Cart(
-                              id: widget.cart.id,
-                              productId: widget.cart.productId,
-                              userId: widget.cart.userId,
-                              name: widget.cart.name,
-                              origin: widget.cart.origin,
-                              productTypeId: widget.cart.productTypeId,
-                              price: newPrice,
-                              initialPrice: widget.cart.initialPrice,
-                              quantity: quantity,
-                              avatar: widget.cart.avatar,
-                              status: 1))
-                          .then((value) {
-                        newPrice = 0;
-                        quantity = 0;
-                        cartProvider.addTotalPrice(double.parse(
-                            (widget.cart.initialPrice).toString()));
-                      }).onError((error, stackTrace) {
-                        print(error.toString());
-                      });
+                      if (isChecked == true) {
+                        dbConfig!
+                            .updateQuantity(Cart(
+                                id: widget.cart.id,
+                                productId: widget.cart.productId,
+                                userId: widget.cart.userId,
+                                name: widget.cart.name,
+                                origin: widget.cart.origin,
+                                productTypeId: widget.cart.productTypeId,
+                                price: newPrice,
+                                initialPrice: widget.cart.initialPrice,
+                                quantity: quantity,
+                                avatar: widget.cart.avatar,
+                                status: 1))
+                            .then((value) {
+                          newPrice = 0;
+                          quantity = 0;
+                          cartProvider.addTotalPrice(double.parse(
+                              (widget.cart.initialPrice).toString()));
+                        }).onError((error, stackTrace) {
+                          print(error.toString());
+                        });
+                      } else {
+                        dbConfig!
+                            .updateQuantity(Cart(
+                                id: widget.cart.id,
+                                productId: widget.cart.productId,
+                                userId: widget.cart.userId,
+                                name: widget.cart.name,
+                                origin: widget.cart.origin,
+                                productTypeId: widget.cart.productTypeId,
+                                price: newPrice,
+                                initialPrice: widget.cart.initialPrice,
+                                quantity: quantity,
+                                avatar: widget.cart.avatar,
+                                status: 1))
+                            .then((value) {
+                          newPrice = 0;
+                          quantity = 0;
+                        }).onError((error, stackTrace) {
+                          print(error.toString());
+                        });
+                      }
                     },
                     child: Text(
                       '+',
