@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-// import 'package:flutter_svg/svg.dart';
 import 'package:project_android/constants.dart';
 import 'package:project_android/model/product_type.dart';
 import 'package:project_android/screens/home/components/product_type_provider.dart';
@@ -149,7 +148,7 @@ class _ListCategoryState extends State<ListCategory> {
                                             ),
                                             child: SizedBox(
                                               child: SvgPicture.network(
-                                                'http://10.0.2.2:8080/upload/category/${item.name}.svg',
+                                                'http://10.0.2.2/upload/category/${item.name}.svg',
                                                 fit: BoxFit.contain,
                                               ),
                                             ),
@@ -202,8 +201,8 @@ class CategoryItem extends StatelessWidget {
                       BoxShadow(color: Colors.black, blurRadius: 0.5),
                     ],
                   ),
-                  child: Image.network(
-                      'http://localhost/upload/category/${productType.name}.svg')
+                  child: SvgPicture.network(
+                      'http://10.0.2.2/upload/category/Laptop.svg')
                   // IconButton(
                   //     onPressed: () {
                   //       Navigator.pushNamed(context, '/product');

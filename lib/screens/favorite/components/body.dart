@@ -1,19 +1,16 @@
-// ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:intl/intl.dart';
 import 'package:project_android/DB/db_config.dart';
 import 'package:project_android/constants.dart';
 import 'package:project_android/model/cart.dart';
-import 'package:project_android/model/user.dart';
 import 'package:project_android/screens/favorite/components/favorite_provider.dart';
 import 'package:project_android/screens/favorite/components/tabbar.dart';
 import 'package:provider/provider.dart';
 
 class Body extends StatefulWidget {
-  const Body({Key? key}) : super(key: key);
-
+  const Body({Key? key, required this.userId}) : super(key: key);
+  final int userId;
   @override
   State<Body> createState() => _BodyState();
 }
@@ -21,26 +18,26 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   bool check = false;
   DBConfig dbConfig = DBConfig.instance;
-  UserProfile user = UserProfile(
-      id: 0,
-      email: '',
-      password: '',
-      name: '',
-      phone: '',
-      address: '',
-      avatar: '',
-      tokenUser: '',
-      status: 0);
-  @override
-  void initState() {
-    super.initState();
-    check;
-    refreshNote();
-  }
+  // UserProfile user = UserProfile(
+  //     id: 0,
+  //     email: '',
+  //     password: '',
+  //     name: '',
+  //     phone: '',
+  //     address: '',
+  //     avatar: '',
+  //     tokenUser: '',
+  //     status: 0);
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   check;
+  //   refreshNote();
+  // }
 
-  Future refreshNote() async {
-    user = await DBConfig.instance.getUser();
-  }
+  // Future refreshNote() async {
+  //   user = await DBConfig.instance.getUser();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +76,7 @@ class _BodyState extends State<Body> {
           ),
         ),
         FutureBuilder(
-            future: cart.getData(user.id),
+            future: cart.getData(widget.userId),
             builder: (context, AsyncSnapshot<List<Cart>> snapshot) {
               if (snapshot.hasData) {
                 if (snapshot.data!.isEmpty) {
@@ -170,7 +167,7 @@ class _BodyState extends State<Body> {
                                                   snapshot.data![index]
                                                           .productId
                                                           .toString() +
-                                                      user.id.toString(),
+                                                      widget.userId.toString(),
                                                   'wishlist');
                                             },
                                             child: const Icon(

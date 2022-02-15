@@ -93,7 +93,7 @@ class MyApp extends StatelessWidget {
             // '/productdetail': (context) => const ProductDetail(),
             // '/order': (context) => const OrderScreen(),
             '/search': (context) => const FilterListProduct(),
-            '/favorite': (context) => const FavoriteScreen(),
+            // '/favorite': (context) => const FavoriteScreen(),
             '/recently': (context) => const Recently(),
             '/account': (context) => const AccountsScreen(),
             '/account_and_security': (context) => const AccountAndSecurity(),

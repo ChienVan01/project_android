@@ -46,7 +46,7 @@ class _FooterDetailState extends State<FooterDetail> {
   Future getCart() async {
     // getUser();
     final cartP = Provider.of<CartProvider>(context);
-    cart = await cartP.getCheckout(user.id);
+    cart = await cartP.getData(user.id, 'checkout');
   }
 
   @override

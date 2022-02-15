@@ -70,9 +70,7 @@ class _ProductCartState extends State<ProductCart> {
                 // print('idCart: ${widget.cart.id}');
                 // dbConfig!.delete(
                 //     widget.cart.id + widget.cart.userId.toString(), 'cart');
-                cartProvider.deleteP(
-                    widget.cart.id + widget.cart.userId.toString(),
-                    widget.cart.userId);
+                cartProvider.deleteP(widget.cart.id, widget.cart.userId);
               }
 
               cartProvider.checked(value, widget.cart.price.toDouble());

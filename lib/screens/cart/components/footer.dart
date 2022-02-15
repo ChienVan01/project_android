@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:project_android/DB/db_config.dart';
@@ -29,7 +31,7 @@ Future getUser() async {
 Future getCart(context) async {
   getUser();
   final cartP = Provider.of<CartProvider>(context);
-  cart = await cartP.getCheckout(user.id);
+  cart = await cartP.getData(user.id, 'checkout');
 }
 
 class FooterCart extends StatelessWidget {
@@ -84,6 +86,7 @@ class FooterCart extends StatelessWidget {
                             );
                           });
                     } else {
+                      print('checkout: ${cart[0].avatar}');
                       Navigator.push(
                           context,
                           MaterialPageRoute(

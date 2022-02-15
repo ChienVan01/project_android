@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:project_android/constants.dart';
 import 'package:project_android/model/user.dart';
 import 'package:project_android/screens/account/components/user_provider.dart';
+import 'package:project_android/screens/favorite/favorite_screen.dart';
 import 'package:project_android/screens/order/order_screen.dart';
 import 'package:project_android/screens/rating/rating_screen.dart';
 import 'package:project_android/services/logout_service.dart';
@@ -158,11 +159,24 @@ class _DirectionalItemState extends State<DirectionalItem> {
                         //     iconTraling: Icons.navigate_next_outlined,
                         //     press: '/order'),
                         const Divider(thickness: 1, height: 1),
-                        const PageRoute(
-                            text: 'Đã Thích',
-                            iconLeading: Icons.favorite_border_outlined,
-                            iconTraling: Icons.navigate_next_outlined,
-                            press: '/favorite'),
+                        ListTile(
+                            leading: const Icon(
+                              Icons.receipt_long_outlined,
+                            ),
+                            title: const Text('Đã Thích'),
+                            trailing: const Icon(Icons.navigate_next_outlined),
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => FavoriteScreen(
+                                          userId: snapshot.data!.id)));
+                            }),
+                        // const PageRoute(
+                        //     text: 'Đã Thích',
+                        //     iconLeading: Icons.favorite_border_outlined,
+                        //     iconTraling: Icons.navigate_next_outlined,
+                        //     press: '/favorite'),
                         const Divider(thickness: 1, height: 1),
                         const PageRoute(
                             text: 'Mã Giảm Giá',

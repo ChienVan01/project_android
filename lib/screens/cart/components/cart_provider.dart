@@ -17,20 +17,22 @@ class CartProvider with ChangeNotifier {
   // bool get check => _check;
 
   late Future<List<Cart>> cart;
+  late Future<List<Cart>> checkout;
   // Future<List<Cart>> get cart => _cart;
 
-  Future<List<Cart>> getData(int id) async {
-    cart = DBConfig.instance.getCartList(id, 'cart');
+  Future<List<Cart>> getData(int id, String table) async {
+    cart = DBConfig.instance.getCartList(id, table);
     return cart;
   }
+
+  // Future<List<Cart>> getCheckout(int id) async {
+  //   checkout = DBConfig.instance.getCartList(id, 'checkout');
+  //   return checkout;
+  // }
 
   Future<List<Cart>> deleteP(idProduct, id) async {
+    print('checkoutid: $idProduct');
     DBConfig.instance.delete(idProduct.toString(), 'checkout');
-    cart = DBConfig.instance.getCartList(id, 'checkout');
-    return cart;
-  }
-
-  Future<List<Cart>> getCheckout(int id) async {
     cart = DBConfig.instance.getCartList(id, 'checkout');
     return cart;
   }

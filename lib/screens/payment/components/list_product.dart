@@ -33,19 +33,18 @@ class ListProducts extends StatelessWidget {
     final cartP = Provider.of<CartProvider>(context);
     // cart = await cartP.getCheckout(user.id);
     return FutureBuilder(
-        future: cartP.getCheckout(user.id),
+        future: cartP.getData(user.id, 'checkout'),
         builder: (context, AsyncSnapshot<List<Cart>> snapshot) {
           if (snapshot.hasData) {
             if (snapshot.data!.isEmpty) {
-              return Container();
+              return const Text('cunxg sai ne');
             } else {
               return Column(
-                  children: snapshot.data!.map((e) {
-                return product(context, e);
-              }).toList());
+                  children:
+                      snapshot.data!.map((e) => product(context, e)).toList());
             }
           }
-          return Container();
+          return const Text('sai ne');
         });
   }
 }
@@ -57,7 +56,7 @@ Widget product(context, Cart cart) {
     padding: const EdgeInsets.all(defaultPadding / 4),
     margin: const EdgeInsets.only(bottom: defaultPadding),
     child: Row(children: <Widget>[
-      Image.network('http://10.0.2.2:8080/upload/product/${cart.avatar}',
+      Image.network('http://10.0.2.2/upload/product/${cart.avatar}',
           width: 120),
       // SizedBox(width: 120, child: Text(widget.cart.avatar)),
       Flexible(

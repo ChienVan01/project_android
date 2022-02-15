@@ -4,8 +4,8 @@ import 'package:project_android/constants.dart';
 import 'package:project_android/screens/favorite/components/body.dart';
 
 class FavoriteScreen extends StatelessWidget {
-  const FavoriteScreen({Key? key}) : super(key: key);
-
+  const FavoriteScreen({Key? key, required this.userId}) : super(key: key);
+  final int userId;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +24,7 @@ class FavoriteScreen extends StatelessWidget {
                   ),
                 ),
               ])),
-      body: const Body(),
+      body: Body(userId: userId),
     );
   }
 }

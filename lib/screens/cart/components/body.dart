@@ -44,7 +44,7 @@ class _BodyCartState extends State<BodyCart> {
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context);
     return FutureBuilder(
-        future: cart.getData(user.id),
+        future: cart.getData(user.id, 'cart'),
         builder: (context, AsyncSnapshot<List<Cart>> snapshot) {
           if (snapshot.hasData) {
             if (snapshot.data!.isEmpty) {
