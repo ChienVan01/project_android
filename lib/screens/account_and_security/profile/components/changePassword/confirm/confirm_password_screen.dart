@@ -1,9 +1,14 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:project_android/DB/db_config.dart';
 import 'package:project_android/components/text_style.dart';
 import 'package:project_android/constants.dart';
 import 'package:project_android/components/header.dart';
 import 'package:project_android/model/user.dart';
+import 'package:project_android/services/update_password_service.dart';
+
+
 class ConfirmPasswordScreen extends StatefulWidget {
   const ConfirmPasswordScreen({Key? key}) : super(key: key);
 
@@ -74,15 +79,8 @@ class _ConfirmPasswordScreenState extends State<ConfirmPasswordScreen> {
                 const SizedBox(height: defaultPadding),
               ElevatedButton(
                 onPressed: () {
-                  print(controller.text.toString());
-                  print(user.password);
-                  if(controller.text.toString()==user.password)
-                  {
-                    print('pass trung khop');
-                  }
-                  else{
-                    print('sai pass');
-                  }
+                  updatePassword(controller.text.toString(), user.id, context);
+                
                 },
                 style: ButtonStyle(
                     minimumSize: MaterialStateProperty.all(const Size(400, 50))),
