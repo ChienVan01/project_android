@@ -71,8 +71,11 @@ class _BodyState extends State<Body> {
                       leading: "Điện thoại",
                       title: snapshot.data!.phone.toString(),
                       press:
-                          '/account_and_security/profile/components/updateName',
-                      trailing: const Text("")),
+                          '/account_and_security/profile/components/updatePhone',
+                      trailing:const  Icon(
+                      Icons.navigate_next_outlined,
+                      color: primaryColor,
+                    )),
                   const Divider(height: 1),
                   Item(
                       leading: "Email",

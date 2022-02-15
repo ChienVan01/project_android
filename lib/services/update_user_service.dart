@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 
 import '../constants.dart';
 
-Future<void> updateUser(String? name, String? password, id, context) async {
+Future<void> updateUser(String? name,String? password,String? phone ,id,context) async {
   // Profile result = Profile( tokenUser: "",
   // user: User(id: 0, email: "", password: "", name: "", phone: "", address: "", avatar: "", userTypeId: 0, status: 0)) ;
 
@@ -18,8 +18,8 @@ Future<void> updateUser(String? name, String? password, id, context) async {
         "Name": name,
         "Password": password,
         // "email": email,
-        // "phone": phone,
-
+        "Phone": phone,
+     
         // "password_confirmation": repassword,
       }),
       headers: {

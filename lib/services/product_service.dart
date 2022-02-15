@@ -19,10 +19,12 @@ Future<List<Product>> getAllProduct(context) async {
       final item = json.decode(response.body);
 
       result = (item as List).map((p) => Product.fromJson(p)).toList();
+      print('result $result');
     }
   } catch (e) {
     rethrow;
   }
+  
   return result;
 }
 

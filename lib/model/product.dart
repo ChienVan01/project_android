@@ -1,7 +1,7 @@
 class Product {
   int id;
   String name;
-  String configuration;
+  String? configuration;
   String info;
   String origin;
   int productTypeId;
@@ -15,7 +15,7 @@ class Product {
   Product({
     required this.id,
     required this.name,
-    required this.configuration,
+    this.configuration,
     required this.info,
     required this.origin,
     required this.productTypeId,

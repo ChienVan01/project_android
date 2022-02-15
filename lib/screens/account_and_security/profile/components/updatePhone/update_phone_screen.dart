@@ -1,5 +1,3 @@
-// ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
 import 'package:project_android/DB/db_config.dart';
 import 'package:project_android/constants.dart';
@@ -7,17 +5,15 @@ import 'package:project_android/components/header.dart';
 import 'package:project_android/model/user.dart';
 import 'package:project_android/services/update_user_service.dart';
 
-class UpdateNameScreen extends StatefulWidget {
-  const UpdateNameScreen({Key? key}) : super(key: key);
+class UpdatePhoneScreen extends StatefulWidget {
+  const UpdatePhoneScreen({Key? key}) : super(key: key);
 
   @override
-  State<UpdateNameScreen> createState() => _UpdateNameScreenState();
+  State<UpdatePhoneScreen> createState() => _UpdatePhoneScreenState();
 }
-
 DBConfig? dbConfig = DBConfig.instance;
-
-class _UpdateNameScreenState extends State<UpdateNameScreen> {
-  UserProfile user = UserProfile(
+class _UpdatePhoneScreenState extends State<UpdatePhoneScreen> {
+   UserProfile user = UserProfile(
       id: 0,
       email: '',
       password: '',
@@ -44,7 +40,7 @@ class _UpdateNameScreenState extends State<UpdateNameScreen> {
     return Scaffold(
         appBar: PreferredSize(
           child: Header(
-              title: 'Sửa tên',
+              title: 'Sửa số điện thoại',
               backgroundColor: primaryColor,
               textColor: colorWhite,
               action: <Widget>[
@@ -53,22 +49,21 @@ class _UpdateNameScreenState extends State<UpdateNameScreen> {
                       print(controller.text.toString());
                       print(user.id);
                       print(user.password);
-                      updateUser(controller.text.toString(), user.password, user.phone, user.id, context);
+                      updateUser(user.name, user.password,controller.text.toString(), user.id, context);
                       dbConfig!.updateUser(UserProfile(
                         id: user.id, 
                         email: user.email, 
                         password: user.password, 
-                        name: controller.text.toString(),
-                        phone:user.phone,
+                        name: user.name, 
+                        phone:controller.text.toString(),
                         tokenUser: user.tokenUser, 
                         status: user.status,
-                      ))
-                          .then((value) {
-                        print('sua thanh cong');
-                      }).onError((error, stackTrace) {
-                        print(error.toString());
-                        print('sua that bai');
-                      });
+                      )).then((value) {
+                            print('sua thanh cong');
+                          }).onError((error, stackTrace) {
+                            print(error.toString());
+                              print('sua that bai');
+                          });
                     },
                     child: const Text("Lưu"),
                     style: ButtonStyle(
@@ -85,22 +80,23 @@ class _UpdateNameScreenState extends State<UpdateNameScreen> {
                 child: TextField(
                   controller: controller,
                   obscureText: false,
-                  decoration: const InputDecoration(
+                  decoration:const InputDecoration(
                     hintText: "Nhập vào đây",
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                      borderSide: BorderSide(color: colorBorder),
-                    ),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                        borderSide: BorderSide(
-                          width: 1,
-                        )),
+                     enabledBorder:  OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  borderSide: BorderSide(color: colorBorder),
+                ),
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    borderSide: BorderSide(
+                      width: 1,
+                    )),
                   ),
+            
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.all(defaultPadding / 2),
+             const Padding(
+                padding:  EdgeInsets.all(defaultPadding / 2),
                 child: Text("dưới 100 kí tự"),
               )
             ]));

@@ -6,6 +6,7 @@ import 'package:project_android/components/search_screen.dart';
 import 'package:project_android/constants.dart';
 import 'package:project_android/screens/account/account_screen.dart';
 import 'package:project_android/screens/account/components/user_provider.dart';
+import 'package:project_android/screens/account_and_security/profile/components/updatePhone/update_phone_screen.dart';
 import 'package:project_android/screens/address/address_screen.dart';
 import 'package:project_android/screens/cart/cart_screen.dart';
 import 'package:project_android/screens/account_and_security/address/address_screen.dart';
@@ -107,8 +108,8 @@ class MyApp extends StatelessWidget {
             '/cart': (context) => const CartScreen(),
             '/forgotpassword/step02': (context) => const ForgotPassStep2(),
             '/forgotpassword/step03': (context) => const ForgotPassStep3(),
-            '/account_and_security/profile/components/updateName': (context) =>
-                const UpdateNameScreen(),
+            '/account_and_security/profile/components/updateName': (context) => const UpdateNameScreen(),
+            '/account_and_security/profile/components/updatePhone':(context) => const UpdatePhoneScreen(),
             '/account_and_security/profile/components/changePassword/comfirm':
                 (context) => const ConfirmPasswordScreen(),
             '/account_and_security/profile/components/changePassword/change':
