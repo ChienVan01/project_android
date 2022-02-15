@@ -55,6 +55,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             const SizedBox(height: defaultPadding),
             ElevatedButton(
               onPressed: () {
+                print(emailController.text.toString());
                 forgotPassword(emailController.text.toString(),context);
               },
               style: ButtonStyle(

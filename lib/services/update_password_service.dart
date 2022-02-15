@@ -7,20 +7,13 @@ import 'package:http/http.dart' as http;
 
 import '../constants.dart';
 
-Future<void> updateUser(String? name,String? password,String? phone ,id,context) async {
-  // Profile result = Profile( tokenUser: "",
-  // user: User(id: 0, email: "", password: "", name: "", phone: "", address: "", avatar: "", userTypeId: 0, status: 0)) ;
+Future<void> updatePassword(String password ,id,context) async {
 
   try {
     final response = await http.put(
-      Uri.parse(UpdateUserUrl + '/$id'),
+      Uri.parse(UpdatePasswordUrl + '/$id'),
       body: json.encode({
-        "Name": name,
-        "Password": password,
-        // "email": email,
-        "Phone": phone,
-     
-        // "password_confirmation": repassword,
+        "Password": password,  
       }),
       headers: {
         "Content-Type": "application/json",
@@ -32,18 +25,17 @@ Future<void> updateUser(String? name,String? password,String? phone ,id,context)
     if (response.statusCode == 200) {
       print("response status ${response.statusCode}");
       print("response body ${response.body}");
-
       showDialog(
           context: context,
           builder: (context) => AlertDialog(
-                content: const Text("Cập nhật thành công"),
+                content: const Text("Xác nhận thành công"),
                 actions: <Widget>[
                   // usually buttons at the bottom of the dialog
                   TextButton(
                     child: const Text("OK"),
                     onPressed: () {
-                      Navigator.pushNamedAndRemoveUntil(
-                          context, "/account", (route) => false);
+                      Navigator.pushNamed(
+                          context, "/account_and_security/profile/components/changePassword/change");
                     },
                   ),
                 ],
@@ -52,9 +44,9 @@ Future<void> updateUser(String? name,String? password,String? phone ,id,context)
       showDialog(
           context: context,
           builder: (context) => AlertDialog(
-                title: const Text("Cập nhật thất bại "),
+                title: const Text("Xác nhận thất bại "),
                 content:
-                    const Text("Vui lòng nhập lại tài khoản hoặc mật khẩu"),
+                    const Text("Vui lòng nhập lại mật khẩu"),
                 actions: <Widget>[
                   // usually buttons at the bottom of the dialog
                   TextButton(

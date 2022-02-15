@@ -18,6 +18,8 @@ const RegisterUrl = BaseUrl + '/register';
 const LogoutUrl = BaseUrl + '/logout';
 const SaveOrdertUrl = BaseUrl + '/order/create';
 const UpdateUserUrl = BaseUrl + '/user/update';
+const UpdatePasswordUrl = BaseUrl + '/user/updatePassword';
+
 const ForgotUserPassword = BaseUrl + '/user/forgot-password';
 
 final otpInputDecoration = InputDecoration(
