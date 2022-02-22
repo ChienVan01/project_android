@@ -37,7 +37,7 @@ class ListProducts extends StatelessWidget {
         builder: (context, AsyncSnapshot<List<Cart>> snapshot) {
           if (snapshot.hasData) {
             if (snapshot.data!.isEmpty) {
-              return const Text('cunxg sai ne');
+              return const Text('cung sai ne');
             } else {
               return Column(
                   children:

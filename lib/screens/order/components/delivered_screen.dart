@@ -20,7 +20,7 @@ class _DeliveredOrderScreenState extends State<DeliveredOrderScreen> {
     // print('userId ${widget.userId}');
     super.initState();
     final orders = Provider.of<OrderProvider>(context, listen: false);
-    orders.getOrderByStatusProvider(context, widget.userId.toString(), '5');
+    orders.getOrderByStatusProvider(context, widget.userId.toString(), '3');
   }
 
   @override
@@ -30,7 +30,7 @@ class _DeliveredOrderScreenState extends State<DeliveredOrderScreen> {
         padding: const EdgeInsets.only(top: defaultPadding / 2),
         child: Consumer<OrderProvider>(builder: (context, state, child) {
           if (state.loading == true) {
-            return const CircularProgressIndicator();
+            return const Center(child: CircularProgressIndicator());
           } else {
             if (state.orders.isEmpty) {
               return const Center(
@@ -43,6 +43,7 @@ class _DeliveredOrderScreenState extends State<DeliveredOrderScreen> {
                 itemCount: state.orders.length,
                 itemBuilder: (context, i) {
                   return detailOrderWidget(
+                      id: state.orders[i].orderId,
                       img: state.orders[i].avatar,
                       productName: state.orders[i].name,
                       qty: 1,

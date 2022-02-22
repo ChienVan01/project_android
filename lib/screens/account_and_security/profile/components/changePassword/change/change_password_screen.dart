@@ -91,29 +91,36 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  if(passwordController.text.toString() == repasswordController.text.toString() && passwordController.text.toString() != user.password)
-                  {
+                  if (passwordController.text.toString() ==
+                          repasswordController.text.toString() &&
+                      passwordController.text.toString() != user.password) {
                     print(user.id);
-                      print(user.password);
-                      updateUser(user.name, passwordController.text.toString(), user.phone, user.id, context);
-                      dbConfig!.updateUser(UserProfile(
-                        id: user.id, 
-                        email: user.email, 
-                        password:passwordController.text.toString(),
-                        name: user.name,
-                        phone:user.phone,
-                        tokenUser: user.tokenUser, 
-                        status: user.status,
-                      ))
-                          .then((value) {
-                        print('sua thanh cong');
-                      }).onError((error, stackTrace) {
-                        print(error.toString());
-                        print('sua that bai');
-                      });
-                  }
-                  else{
-                     print('sai');
+                    print(user.password);
+                    updateUser(
+                        user.name,
+                        user.email,
+                        passwordController.text.toString(),
+                        user.phone,
+                        user.id,
+                        context);
+                    dbConfig!
+                        .updateUser(UserProfile(
+                      id: user.id,
+                      email: user.email,
+                      password: passwordController.text.toString(),
+                      name: user.name,
+                      phone: user.phone,
+                      tokenUser: user.tokenUser,
+                      status: user.status,
+                    ))
+                        .then((value) {
+                      print('sua thanh cong');
+                    }).onError((error, stackTrace) {
+                      print(error.toString());
+                      print('sua that bai');
+                    });
+                  } else {
+                    print('sai');
                   }
                 },
                 style: ButtonStyle(

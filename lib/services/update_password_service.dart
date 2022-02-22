@@ -7,13 +7,12 @@ import 'package:http/http.dart' as http;
 
 import '../constants.dart';
 
-Future<void> updatePassword(String password ,id,context) async {
-
+Future<void> updatePassword(String password, id, context) async {
   try {
     final response = await http.put(
       Uri.parse(UpdatePasswordUrl + '/$id'),
       body: json.encode({
-        "Password": password,  
+        "password": password,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -34,8 +33,8 @@ Future<void> updatePassword(String password ,id,context) async {
                   TextButton(
                     child: const Text("OK"),
                     onPressed: () {
-                      Navigator.pushNamed(
-                          context, "/account_and_security/profile/components/changePassword/change");
+                      Navigator.pushNamed(context,
+                          "/account_and_security/profile/components/changePassword/change");
                     },
                   ),
                 ],
@@ -45,8 +44,7 @@ Future<void> updatePassword(String password ,id,context) async {
           context: context,
           builder: (context) => AlertDialog(
                 title: const Text("Xác nhận thất bại "),
-                content:
-                    const Text("Vui lòng nhập lại mật khẩu"),
+                content: const Text("Vui lòng nhập lại mật khẩu"),
                 actions: <Widget>[
                   // usually buttons at the bottom of the dialog
                   TextButton(

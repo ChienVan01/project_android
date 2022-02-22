@@ -53,14 +53,16 @@ class _UpdateNameScreenState extends State<UpdateNameScreen> {
                       print(controller.text.toString());
                       print(user.id);
                       print(user.password);
-                      updateUser(controller.text.toString(), user.password, user.phone, user.id, context);
-                      dbConfig!.updateUser(UserProfile(
-                        id: user.id, 
-                        email: user.email, 
-                        password: user.password, 
+                      updateUser(controller.text.toString(), user.email,
+                          user.password, user.phone, user.id, context);
+                      dbConfig!
+                          .updateUser(UserProfile(
+                        id: user.id,
+                        email: user.email,
+                        password: user.password,
                         name: controller.text.toString(),
-                        phone:user.phone,
-                        tokenUser: user.tokenUser, 
+                        phone: user.phone,
+                        tokenUser: user.tokenUser,
                         status: user.status,
                       ))
                           .then((value) {

@@ -59,7 +59,7 @@ class _FilterListProductState extends State<FilterListProduct> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: SearchWidget(onChanged: searchBook),
+        title: SearchWidget(onChanged: searchProduct),
         centerTitle: true,
       ),
       body: Column(
@@ -77,7 +77,7 @@ class _FilterListProductState extends State<FilterListProduct> {
     );
   }
 
-  Future searchBook(String query) async => debounce(() async {
+  Future searchProduct(String query) async => debounce(() async {
         // final products = Provider.of<ProductProvider>(context);
         products = productStock.where((e) {
           final nameLower = e.name.toLowerCase();

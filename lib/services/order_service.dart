@@ -101,62 +101,45 @@ Future<List<Order>> getOrderByStatus(context, userId, id) async {
   return result;
 }
 
-// Future<OrderDetail> getOrderDetail(context, id) async {
-//   OrderDetail result = OrderDetail(
-//     id: 0,
-//     orderId: 0,
-//     productId: 0,
-//     unitPrice: '',
-//     quantity: 0,
-//     intoMoney: '',
-//     status: 0,
-//     createdAt: '',
-//     updatedAt: '',
-//   );
-//   try {
-//     final response = await http.get(
-//       Uri.parse(BaseUrl + '/order/detail/' + id),
-//       headers: {
-//         HttpHeaders.contentTypeHeader: "application/json",
-//       },
-//     );
-//     if (response.statusCode == 200) {
-//       final item = json.decode(response.body);
-
-//       result = OrderDetail.fromJson(item);
-//     }
-//   } catch (e) {
-//     rethrow;
-//   }
-//   return result;
-// }
-
-// Future<OrderDetail> getOrderDetail(context, id) async {
-//   OrderDetail result = OrderDetail(
-//     id: 0,
-//     orderId: 0,
-//     productId: 0,
-//     unitPrice: '',
-//     quantity: 0,
-//     intoMoney: '',
-//     status: 0,
-//     createdAt: '',
-//     updatedAt: '',
-//   );
-//   try {
-//     final response = await http.get(
-//       Uri.parse(BaseUrl + '/order/detail/' + id),
-//       headers: {
-//         HttpHeaders.contentTypeHeader: "application/json",
-//       },
-//     );
-//     if (response.statusCode == 200) {
-//       final item = json.decode(response.body);
-
-//       result = OrderDetail.fromJson(item);
-//     }
-//   } catch (e) {
-//     rethrow;
-//   }
-//   return result;
-// }
+Future<void> cancelOrder(id, context) async {
+  final response = await http.post(Uri.parse(BaseUrl + '/order/update'),
+      body: ({
+        'id': id.toString(),
+        'OrderStatus_id': '4',
+      }));
+  //check api status
+  if (response.statusCode == 200) {
+    // ScaffoldMessenger.of(context)
+    //     .showSnackBar(const SnackBar(content: Text("Hủy đơn hàng thành công")));
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+              title: const Text("Hủy đơn hàng thành công"),
+              actions: <Widget>[
+                // usually buttons at the bottom of the dialog
+                TextButton(
+                  child: const Text("OK"),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            ));
+    // Navigator.pushNamedAndRemoveUntil(context, "/", (route) => false);
+  } else {
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+              title: const Text("Hủy đơn hàng KHÔNG thành công"),
+              actions: <Widget>[
+                // usually buttons at the bottom of the dialog
+                TextButton(
+                  child: const Text("OK"),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            ));
+  }
+}

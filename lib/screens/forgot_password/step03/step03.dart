@@ -125,8 +125,13 @@ class _ForgotPassStep3State extends State<ForgotPassStep3> {
                     repasswordController.text.isNotEmpty &&
                     passwordController.text.toString() ==
                         repasswordController.text.toString()) {
-                  updateUser(user.name, passwordController.text.toString(),user.phone,
-                      user.id, context);
+                  updateUser(
+                      user.name,
+                      user.email,
+                      passwordController.text.toString(),
+                      user.phone,
+                      user.id,
+                      context);
                   DBConfig.instance.deleteOpt();
                 } else {
                   print('mat khau khong trung khop');

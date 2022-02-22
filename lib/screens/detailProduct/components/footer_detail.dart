@@ -52,6 +52,8 @@ class _FooterDetailState extends State<FooterDetail> {
   @override
   Widget build(BuildContext context) {
     DBConfig dbConfig = DBConfig.instance;
+    final cartProvider = Provider.of<CartProvider>(context);
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: <Widget>[
@@ -153,7 +155,8 @@ class _FooterDetailState extends State<FooterDetail> {
             child: Center(
               child: InkWell(
                 onTap: () async {
-                  dbConfig.deleteAll();
+                  // dbConfig.deleteAll();
+
                   dbConfig
                       .insertCart(
                           Cart(
@@ -171,9 +174,12 @@ class _FooterDetailState extends State<FooterDetail> {
                           'checkout')
                       .then((value) {
                     print('Them checkout thanh cong');
+
+                    print('Them checkout thanh cong: ${widget.product.price}');
                   }).onError((error, stackTrace) {
                     print("error: " + error.toString());
                   });
+                  cartProvider.checked(true, widget.product.price.toDouble());
                   getCart();
 
                   Navigator.push(

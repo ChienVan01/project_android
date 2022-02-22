@@ -24,7 +24,7 @@ Future<List<Product>> getAllProduct(context) async {
   } catch (e) {
     rethrow;
   }
-  
+
   return result;
 }
 
@@ -56,6 +56,26 @@ Future<List<Product>> getAllProductbyProductType(context, String id) async {
 //http://10.0.2.2:8000/api/product_type/{id}
 
       Uri.parse(ProductTypeUrl + '/' + id),
+      headers: {
+        HttpHeaders.contentTypeHeader: "application/json",
+      },
+    );
+    if (response.statusCode == 200) {
+      final item = json.decode(response.body);
+
+      result = (item as List).map((p) => Product.fromJson(p)).toList();
+    }
+  } catch (e) {
+    rethrow;
+  }
+  return result;
+}
+
+Future<List<Product>> filterByPrice(context, sort) async {
+  List<Product> result = [];
+  try {
+    final response = await http.get(
+      Uri.parse(BaseUrl + '/products/filterByPrice/' + sort),
       headers: {
         HttpHeaders.contentTypeHeader: "application/json",
       },

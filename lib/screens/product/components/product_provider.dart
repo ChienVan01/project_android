@@ -27,6 +27,20 @@ class ProductProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  getProductByFliterByPriceDesc(context) async {
+    loading = true;
+    products = await filterByPrice(context, 'DESC');
+    loading = false;
+    notifyListeners();
+  }
+
+  getProductByFliterByPriceAsc(context) async {
+    loading = true;
+    products = await filterByPrice(context, 'ASC');
+    loading = false;
+    notifyListeners();
+  }
+
   getProductbyProductType(context, id) async {
     loading = true;
     products = await getAllProductbyProductType(context, id);

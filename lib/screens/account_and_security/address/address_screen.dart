@@ -11,15 +11,7 @@ class AddressScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      appBar:  PreferredSize(
-        child:  Header(
-            title: 'Thay đổi địa chỉ',
-            backgroundColor: primaryColor,
-            textColor: colorWhite,
-            action: null),
-        preferredSize: Size(double.infinity, 55),
-      ),
-      body:  Body(),
+      body: Body(),
     );
   }
 }

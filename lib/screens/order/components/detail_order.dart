@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:project_android/constants.dart';
 import 'package:project_android/screens/rating/components/rating_popup.dart';
+import 'package:project_android/services/order_service.dart';
 
 class detailOrderWidget extends StatelessWidget {
   detailOrderWidget({
@@ -12,11 +13,12 @@ class detailOrderWidget extends StatelessWidget {
     required this.qty,
     required this.status,
     required this.txtButton,
+    required this.id,
     this.press,
   }) : super(key: key);
   final String img, productName, status, txtButton;
   String? press;
-  final int qty, unitPrice;
+  final int id, qty, unitPrice;
 
   @override
   Widget build(BuildContext context) {
@@ -139,11 +141,14 @@ class detailOrderWidget extends StatelessWidget {
                 alignment: Alignment.topRight,
                 child: ElevatedButton(
                   onPressed: () {
-                    if (txtButton != "Đánh Giá") {
-                      press == '' ? '' : Navigator.pushNamed(context, press!);
-                    } else {
-                      showRatingDialog(context, img);
+                    if (txtButton == "Hủy Đơn Hàng") {
+                      cancelOrder(id, context);
                     }
+                    // if (txtButton != "Đánh Giá") {
+                    //   press == '' ? '' : Navigator.pushNamed(context, press!);
+                    // } else {
+                    //   showRatingDialog(context, img);
+                    // }
                   },
                   child: Text(txtButton),
                 ),

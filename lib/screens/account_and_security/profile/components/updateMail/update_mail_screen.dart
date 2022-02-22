@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:project_android/DB/db_config.dart';
 import 'package:project_android/constants.dart';
@@ -5,16 +7,16 @@ import 'package:project_android/components/header.dart';
 import 'package:project_android/model/user.dart';
 import 'package:project_android/services/update_user_service.dart';
 
-class UpdatePhoneScreen extends StatefulWidget {
-  const UpdatePhoneScreen({Key? key}) : super(key: key);
+class UpdateMailScreen extends StatefulWidget {
+  const UpdateMailScreen({Key? key}) : super(key: key);
 
   @override
-  State<UpdatePhoneScreen> createState() => _UpdatePhoneScreenState();
+  State<UpdateMailScreen> createState() => _UpdateMailScreenState();
 }
 
 DBConfig? dbConfig = DBConfig.instance;
 
-class _UpdatePhoneScreenState extends State<UpdatePhoneScreen> {
+class _UpdateMailScreenState extends State<UpdateMailScreen> {
   UserProfile user = UserProfile(
       id: 0,
       email: '',
@@ -42,7 +44,7 @@ class _UpdatePhoneScreenState extends State<UpdatePhoneScreen> {
     return Scaffold(
         appBar: PreferredSize(
           child: Header(
-              title: 'Sửa số điện thoại',
+              title: 'Sửa Email',
               backgroundColor: primaryColor,
               textColor: colorWhite,
               action: <Widget>[
@@ -51,15 +53,15 @@ class _UpdatePhoneScreenState extends State<UpdatePhoneScreen> {
                       print(controller.text.toString());
                       print(user.id);
                       print(user.password);
-                      updateUser(user.name, user.email, user.password,
-                          controller.text.toString(), user.id, context);
+                      updateUser(controller.text.toString(), user.email,
+                          user.password, user.phone, user.id, context);
                       dbConfig!
                           .updateUser(UserProfile(
                         id: user.id,
-                        email: user.email,
+                        email: controller.text.toString(),
                         password: user.password,
                         name: user.name,
-                        phone: controller.text.toString(),
+                        phone: user.phone,
                         tokenUser: user.tokenUser,
                         status: user.status,
                       ))

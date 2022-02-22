@@ -1,44 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:project_android/constants.dart';
-
-// Widget navBar() {
-//   return Container(
-//     padding: const EdgeInsets.only(left: defaultPadding, right: defaultPadding),
-//     height: 30,
-//     color: primaryColor,
-//     child: Row(
-//       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//       // crossAxisAlignment: CrossAxisAlignment.start,
-//       children: [
-//         ElevatedButton(
-//           onPressed: () {},
-//           child: Row(
-//             children: const [
-//               Text(
-//                 'Sắp xếp',
-//                 style: TextStyle(fontSize: 18, color: backgroundColor),
-//               ),
-//               Icon(Icons.arrow_drop_down, color: backgroundColor, size: 30),
-//             ],
-//           ),
-//         ),
-//         ElevatedButton(
-//           onPressed: () {},
-//           child: Row(
-//             children: const [
-//               Text(
-//                 'Bộ lọc',
-//                 style: TextStyle(fontSize: 18, color: backgroundColor),
-//               ),
-//               Icon(Icons.filter_alt_outlined, color: backgroundColor, size: 23)
-//             ],
-//           ),
-//         )
-//       ],
-//     ),
-//   );
-// }
+import 'package:project_android/screens/product/components/product_provider.dart';
+import 'package:provider/provider.dart';
 
 class Navbar extends StatefulWidget {
   const Navbar({Key? key}) : super(key: key);
@@ -48,6 +12,19 @@ class Navbar extends StatefulWidget {
 }
 
 class _NavbarState extends State<Navbar> {
+// @override
+//   void initState() {
+//     super.initState();
+//     if (widget.id == '') {
+//       final products = Provider.of<ProductProvider>(context, listen: false);
+//       products.getProduct(context);
+//     } else {
+//       final products = Provider.of<ProductProvider>(context, listen: false);
+//       products.getProductbyProductType(context, widget.id);
+//     }
+//     widget.nameProduct;
+//   }
+
   String dropdownValue = 'Sắp xếp';
   @override
   Widget build(BuildContext context) {
@@ -81,6 +58,22 @@ class _NavbarState extends State<Navbar> {
             onChanged: (String? newValue) {
               setState(() {
                 dropdownValue = newValue!;
+                print('filter: $newValue');
+                if (newValue == 'Sắp xếp') {
+                  final products =
+                      Provider.of<ProductProvider>(context, listen: false);
+                  products.getProduct(context);
+                }
+                if (newValue == 'Giá (thấp - cao)') {
+                  final products =
+                      Provider.of<ProductProvider>(context, listen: false);
+                  products.getProductByFliterByPriceAsc(context);
+                }
+                if (newValue == 'Giá (cao - thấp)') {
+                  final products =
+                      Provider.of<ProductProvider>(context, listen: false);
+                  products.getProductByFliterByPriceDesc(context);
+                }
               });
             },
             items: <String>[

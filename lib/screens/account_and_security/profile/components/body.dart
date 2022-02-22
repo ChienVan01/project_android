@@ -66,22 +66,21 @@ class _BodyState extends State<Body> {
                   const SizedBox(
                     height: 20,
                   ),
-                  
-                   Item(
+                  Item(
                       leading: "Điện thoại",
                       title: snapshot.data!.phone.toString(),
                       press:
                           '/account_and_security/profile/components/updatePhone',
-                      trailing:const  Icon(
-                      Icons.navigate_next_outlined,
-                      color: primaryColor,
-                    )),
+                      trailing: const Icon(
+                        Icons.navigate_next_outlined,
+                        color: primaryColor,
+                      )),
                   const Divider(height: 1),
                   Item(
                       leading: "Email",
                       title: snapshot.data!.email,
                       press:
-                          '/account_and_security/profile/components/updateName',
+                          '/account_and_security/profile/components/updateMail',
                       trailing: const Text("")),
                   const Divider(height: 1),
                   const SizedBox(
