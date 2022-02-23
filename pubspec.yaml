@@ -1,12 +1,12 @@
 name: project_android
 description: A new Flutter project.
 
-publish_to: "none" # Remove this line if you wish to publish to pub.dev
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
   flutter:
@@ -33,10 +33,10 @@ dependencies:
   shared_preferences: ^2.0.8
   flutter_chat_types: ^3.2.0
   flutter_chat_ui: ^1.5.2
-  uuid: ^3.0.5 
+  uuid: ^3.0.5
   rating_dialog: ^2.0.3
   encrypt: ^5.0.1
-  
+  readmore: ^2.1.0
   # percent_indicator: ^3.4.0
 
 dev_dependencies:

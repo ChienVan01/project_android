@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:project_android/DB/db_config.dart';
 import 'package:project_android/constants.dart';
+import 'package:project_android/model/user.dart';
 
 class ChooseAddressScreen extends StatelessWidget {
   const ChooseAddressScreen({Key? key}) : super(key: key);
@@ -35,10 +37,40 @@ class _AddressScreen extends StatefulWidget {
 }
 
 class _MyStatefulWidgetState extends State<_AddressScreen> {
+  UserProfile user = UserProfile(
+      id: 0,
+      email: '',
+      password: '',
+      name: '',
+      phone: '',
+      address: '',
+      avatar: '',
+      tokenUser: '',
+      status: 0);
+
+  @override
+  void initState() {
+    super.initState();
+
+    refreshNote();
+    // getCart();
+  }
+
+  Future refreshNote() async {
+    user = await DBConfig.instance.getUser();
+  }
+
   int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
+    final List<Address> _address = [
+      Address(
+        name: user.name,
+        phoneNumber: user.phone.toString(),
+        address: user.address.toString(),
+      )
+    ];
     return Column(
       children: [
         Expanded(
@@ -115,18 +147,3 @@ class Address {
     required this.address,
   });
 }
-
-final List<Address> _address = [
-  Address(
-      name: "Trương Văn Chiến",
-      phoneNumber: "0326465173",
-      address: "141 Tám Danh, phường 4, quận 8, TP Hồ Chí Minh"),
-  Address(
-      name: "Trương Văn Chiến",
-      phoneNumber: "0326465173",
-      address: "341 Tám Danh, phường 5, quận 8, TP Hồ Chí Minh"),
-  Address(
-      name: "Trương Văn Chiến",
-      phoneNumber: "0326465173",
-      address: "41 Tám Danh, phường 6, quận 8, TP Hồ Chí Minh"),
-];

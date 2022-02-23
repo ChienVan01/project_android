@@ -20,6 +20,7 @@ import 'package:project_android/screens/account_and_security/security_screen.dar
 import 'package:project_android/screens/account_and_security/support/support_screen.dart';
 import 'package:project_android/screens/cart/components/cart_provider.dart';
 import 'package:project_android/screens/cart/components/product_cart.dart';
+import 'package:project_android/screens/chat/chat_screen.dart';
 import 'package:project_android/screens/choose_voucher/choose_voucher_screen.dart';
 import 'package:project_android/screens/detailProduct/detail_product_screen.dart';
 import 'package:project_android/screens/discount/component/voucher_provider.dart';
@@ -122,6 +123,7 @@ class MyApp extends StatelessWidget {
             '/choosevoucher': (context) => const ChooseVoucherScreen(),
             '/choosepayment': (context) => const ChoosePaymentScreen(),
             '/address': (context) => const ChooseAddressScreen(),
+            '/chat': (context) => const ChatScreen()
             //'/rating': (context)=> const RatingScreen(),
             // '/payment': (context) => const PaymentScreen(),
           },

@@ -10,6 +10,7 @@ import 'package:project_android/model/product.dart';
 import 'package:project_android/model/user.dart';
 import 'package:project_android/screens/favorite/components/favorite_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:readmore/readmore.dart';
 
 UserProfile user = UserProfile(
     id: 0,
@@ -239,6 +240,30 @@ class _TitleProductState extends State<TitleProduct> {
                 ),
                 child: boxDiscount(),
               ),
+            ],
+          ),
+        ),
+        Container(
+          margin: const EdgeInsets.only(top: defaultPadding / 2),
+          padding: const EdgeInsets.all(defaultPadding / 2),
+          color: Colors.white,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text("Mô tả",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  )),
+              const SizedBox(height: 10),
+              ReadMoreText(widget.product.info,
+                  trimLines: 4,
+                  trimLength: 10000,
+                  trimMode: TrimMode.Line,
+                  trimCollapsedText: 'Xem thêm',
+                  trimExpandedText: 'Thu gọn',
+                  style: const TextStyle(fontSize: 15)),
+              // Text(widget.product.info, style: TextStyle(fontSize: 15)),
             ],
           ),
         ),
