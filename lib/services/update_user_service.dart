@@ -7,11 +7,8 @@ import 'package:http/http.dart' as http;
 
 import '../constants.dart';
 
-Future<void> updateUser(String? name, String? email, String? password,
+Future<void> updateUser(String? name, String? email,String? address, String? password,
     String? phone, id, context) async {
-  // Profile result = Profile( tokenUser: "",
-  // user: User(id: 0, email: "", password: "", name: "", phone: "", address: "", avatar: "", userTypeId: 0, status: 0)) ;
-
   try {
     final response = await http.put(
       Uri.parse(UpdateUserUrl + '/$id'),
@@ -20,8 +17,7 @@ Future<void> updateUser(String? name, String? email, String? password,
         "Password": password,
         "Email": email,
         "Phone": phone,
-
-        // "password_confirmation": repassword,
+        "Address": address,
       }),
       headers: {
         "Content-Type": "application/json",

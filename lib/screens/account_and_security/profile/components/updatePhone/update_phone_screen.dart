@@ -51,7 +51,7 @@ class _UpdatePhoneScreenState extends State<UpdatePhoneScreen> {
                       print(controller.text.toString());
                       print(user.id);
                       print(user.password);
-                      updateUser(user.name, user.email, user.password,
+                      updateUser(user.name, user.email,user.address, user.password,
                           controller.text.toString(), user.id, context);
                       dbConfig!
                           .updateUser(UserProfile(
@@ -60,6 +60,7 @@ class _UpdatePhoneScreenState extends State<UpdatePhoneScreen> {
                         password: user.password,
                         name: user.name,
                         phone: controller.text.toString(),
+                        address: user.address,
                         tokenUser: user.tokenUser,
                         status: user.status,
                       ))

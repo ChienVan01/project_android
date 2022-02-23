@@ -99,6 +99,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                     updateUser(
                         user.name,
                         user.email,
+                        user.address,
                         passwordController.text.toString(),
                         user.phone,
                         user.id,

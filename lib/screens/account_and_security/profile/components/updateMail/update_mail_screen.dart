@@ -53,7 +53,7 @@ class _UpdateMailScreenState extends State<UpdateMailScreen> {
                       print(controller.text.toString());
                       print(user.id);
                       print(user.password);
-                      updateUser(controller.text.toString(), user.email,
+                      updateUser(controller.text.toString(), user.email,user.address,
                           user.password, user.phone, user.id, context);
                       dbConfig!
                           .updateUser(UserProfile(
@@ -62,6 +62,7 @@ class _UpdateMailScreenState extends State<UpdateMailScreen> {
                         password: user.password,
                         name: user.name,
                         phone: user.phone,
+                        address:user.address,
                         tokenUser: user.tokenUser,
                         status: user.status,
                       ))

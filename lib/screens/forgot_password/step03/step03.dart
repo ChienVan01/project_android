@@ -128,6 +128,7 @@ class _ForgotPassStep3State extends State<ForgotPassStep3> {
                   updateUser(
                       user.name,
                       user.email,
+                      user.address,
                       passwordController.text.toString(),
                       user.phone,
                       user.id,
