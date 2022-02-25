@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:project_android/screens/discount/component/voucher_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:rating_dialog/rating_dialog.dart';
 
 class DiscountBody extends StatefulWidget {
   const DiscountBody({Key? key}) : super(key: key);
@@ -52,7 +53,36 @@ class _DiscountBodyState extends State<DiscountBody> {
                         //     width: 60, height: 60),
                         titleText: state.vouchers[index].name,
                         subTitleText: "HSD: " + state.vouchers[index].exd,
-                        onTap: () {},
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            barrierDismissible: true,
+                            builder: (context) {
+                              return RatingDialog(
+                                starSize: 0,
+                                enableComment: false,
+                                title: Text(
+                                  state.vouchers[index].name,
+                                  textAlign: TextAlign.center,
+                                  style: const TextStyle(
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                starColor: primaryColor,
+                                message: Text(
+                                  state.vouchers[index].content,
+                                  textAlign: TextAlign.center,
+                                  style: const TextStyle(fontSize: 15),
+                                ),
+                                // your app's logo?
+                                submitButtonText: "",
+                                onCancelled: () {},
+                                onSubmitted: (response) {},
+                              );
+                            },
+                          );
+                        },
                         padding: const EdgeInsets.all(defaultPadding / 2),
                         margin: const EdgeInsets.only(
                             top: 7.0, bottom: defaultPadding / 4),
@@ -62,11 +92,40 @@ class _DiscountBodyState extends State<DiscountBody> {
                   itemCount: state.vouchers.length,
                   itemBuilder: (context, index) {
                     return GFListTile(
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            barrierDismissible: true,
+                            builder: (context) {
+                              return RatingDialog(
+                                starSize: 0,
+                                enableComment: false,
+                                title: Text(
+                                  state.vouchers[index].name,
+                                  textAlign: TextAlign.center,
+                                  style: const TextStyle(
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                starColor: primaryColor,
+                                message: Text(
+                                  state.vouchers[index].content,
+                                  textAlign: TextAlign.center,
+                                  style: const TextStyle(fontSize: 15),
+                                ),
+                                // your app's logo?
+                                submitButtonText: "",
+                                onCancelled: () {},
+                                onSubmitted: (response) {},
+                              );
+                            },
+                          );
+                        },
                         // avatar: Image.asset(state.vouchers[index].logo,
                         //     width: 60, height: 60),
                         titleText: state.vouchers[index].name,
                         subTitleText: "HSD: " + state.vouchers[index].exd,
-                        onTap: () {},
                         padding: const EdgeInsets.all(defaultPadding / 2),
                         margin: const EdgeInsets.only(
                             top: 7.0, bottom: defaultPadding / 4),
