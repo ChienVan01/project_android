@@ -126,6 +126,7 @@ class MyApp extends StatelessWidget {
             '/chat': (context) => const ChatScreen()
             //'/rating': (context)=> const RatingScreen(),
             // '/payment': (context) => const PaymentScreen(),
+            '/chat': (context) => const ChatScreen()
           },
         ));
   }

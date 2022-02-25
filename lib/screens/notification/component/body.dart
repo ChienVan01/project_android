@@ -4,6 +4,7 @@ import 'package:getwidget/getwidget.dart';
 import 'package:project_android/screens/notification/component/notify_provider.dart';
 
 import 'package:provider/provider.dart';
+import 'package:rating_dialog/rating_dialog.dart';
 
 class NotifyBody extends StatefulWidget {
   const NotifyBody({Key? key, required this.id}) : super(key: key);
@@ -17,7 +18,8 @@ class _NotifyBodyState extends State<NotifyBody> {
   void initState() {
     super.initState();
     final notifies = Provider.of<NotifyProvider>(context, listen: false);
-    notifies.getNotifyByUserID(context, '2'); //widget.id.toString()
+    notifies.getNotifyByUserID(
+        context, widget.id.toString()); //widget.id.toString()
   }
 
   @override
@@ -35,6 +37,36 @@ class _NotifyBodyState extends State<NotifyBody> {
             itemCount: state.notifies.length,
             itemBuilder: (context, index) {
               return GFListTile(
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    barrierDismissible: true,
+                    builder: (context) {
+                      return RatingDialog(
+                        starSize: 0,
+                        enableComment: false,
+                        title: Text(
+                          state.notifies[index].name,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        starColor: primaryColor,
+                        message: Text(
+                          state.notifies[index].content,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(fontSize: 15),
+                        ),
+                        // your app's logo?
+                        submitButtonText: "",
+                        onCancelled: () {},
+                        onSubmitted: (response) {},
+                      );
+                    },
+                  );
+                },
                 color: Colors.white,
                 avatar: Image.asset("assets/images/logo_chu_s.png",
                     width: 60, height: 60),

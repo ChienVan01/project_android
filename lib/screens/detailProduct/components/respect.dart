@@ -69,7 +69,7 @@ class _RespectState extends State<Respect> {
                                   height: 25,
                                   color: Colors.grey,
                                   child: Text(
-                                    'C',
+                                    state.ratings[index].name.toString()[0],
                                     textAlign: TextAlign.center,
                                     style: style(
                                         20, primaryTextColor, FontWeight.bold),
