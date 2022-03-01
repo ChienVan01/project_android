@@ -57,8 +57,8 @@ class detailOrderWidget extends StatelessWidget {
                                 color: Colors.black,
                               )),
                           const SizedBox(height: 10),
-                          const Text(
-                            "Số lượng : Chưa làm",
+                          Text(
+                            "Số lượng : ${qty.toString()}",
                           ),
                           const SizedBox(height: 20),
                           Text(

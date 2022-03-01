@@ -18,30 +18,12 @@ class DirectionalItem extends StatefulWidget {
 }
 
 class _DirectionalItemState extends State<DirectionalItem> {
-  // UserProfile user = UserProfile(
-  //     id: 0,
-  //     email: '',
-  //     password: '',
-  //     name: '',
-  //     phone: '',
-  //     address: '',
-  //     avatar: '',
-  //     tokenUser: '',
-  //     status: 0);
-  // @override
   @override
   void initState() {
     super.initState();
-
-    // refreshNote();
   }
 
   late UserProfile user;
-  // bool check = false;
-
-  // Future refreshNote() async {
-  //   user = await DBConfig.instance.getUser();
-  // }
 
   @override
   Widget build(BuildContext context) {

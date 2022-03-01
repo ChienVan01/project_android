@@ -155,8 +155,8 @@ class _FooterDetailState extends State<FooterDetail> {
             child: Center(
               child: InkWell(
                 onTap: () async {
-                  // dbConfig.deleteAll();
-
+                  dbConfig.deleteAll();
+                  cartProvider.removeAllTotalPrice();
                   dbConfig
                       .insertCart(
                           Cart(

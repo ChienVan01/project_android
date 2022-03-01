@@ -6,14 +6,33 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:project_android/DB/db_config.dart';
 import 'package:project_android/model/order.dart';
+import 'package:project_android/model/user.dart';
+import 'package:project_android/screens/order/order_screen.dart';
 
 import '../constants.dart';
+
+UserProfile user = UserProfile(
+    id: 0,
+    email: '',
+    password: '',
+    name: '',
+    phone: '',
+    address: '',
+    avatar: '',
+    tokenUser: '',
+    status: 0);
+
+Future refreshNote() async {
+  user = await DBConfig.instance.getUser();
+}
 
 Future<void> orderService(int paymentId, int userId, int voucherId,
     int orderStatusId, double totalPrice, List cart, context) async {
   // Profile result = Profile( tokenUser: "",
   // user: User(id: 0, email: "", password: "", name: "", phone: "", address: "", avatar: "", userTypeId: 0, status: 0)) ;
+  refreshNote();
 
   if (paymentId != 0 &&
       userId != 0 &&
@@ -120,7 +139,16 @@ Future<void> cancelOrder(id, context) async {
                 TextButton(
                   child: const Text("OK"),
                   onPressed: () {
-                    Navigator.of(context).pop();
+                    // Navigator.of(context).pop();
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => OrderScreen(
+                          userId: user.id.toString(),
+                        ),
+                      ),
+                    );
+                    print('user: ${user.id.toString()}');
                   },
                 ),
               ],

@@ -63,6 +63,12 @@ class CartProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  void removeAllTotalPrice() {
+    _totalPrice = _totalPrice - _totalPrice;
+    _setPrefItems();
+    notifyListeners();
+  }
+
   double getTotalPrice() {
     _getPrefItems();
     return _totalPrice;

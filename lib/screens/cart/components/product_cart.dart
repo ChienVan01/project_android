@@ -23,6 +23,13 @@ DBConfig? dbConfig = DBConfig.instance;
 class _ProductCartState extends State<ProductCart> {
   bool isChecked = false;
 
+  List<Cart> cart = [];
+  Future getCart() async {
+    // getUser();
+    final cartP = Provider.of<CartProvider>(context);
+    cart = await cartP.getData(2, 'checkout');
+  }
+
   @override
   Widget build(BuildContext context) {
     final cartProvider = Provider.of<CartProvider>(context);
@@ -64,6 +71,7 @@ class _ProductCartState extends State<ProductCart> {
                 }).onError((error, stackTrace) {
                   print("error: " + error.toString());
                 });
+                getCart();
               } else {
                 print('xoa checkout thanh cong');
                 // dbConfig!.deleteAll();
